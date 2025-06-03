@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tagsContainer.querySelectorAll('.tag.active').forEach(t => {
                     t.classList.remove('active');
                 });
-                // Не подсвечиваем "Показать все" как активный, если только не нужно явно
             } else {
                 const tagIndex = activeTags.indexOf(selectedTag);
 
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             filterPranayamas();
 
-            // Скролл, только если есть активные теги (не "Показать все")
             if (activeTags.length > 0 && pranayamaGrid) {
                  const gridTop = pranayamaGrid.getBoundingClientRect().top + window.pageYOffset;
                  if (gridTop > window.innerHeight || pranayamaGrid.offsetTop < window.pageYOffset) {
@@ -52,13 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterPranayamas() {
         pranayamaBlocks.forEach(block => {
-            if (activeTags.length === 0) {
+            if (activeTags.length === 0) { // Если нет активных тегов, показать все
                 block.classList.remove('filtered-out');
             } else {
                 const blockTags = block.dataset.tags.split(' ');
-                const matchesAllActiveTags = activeTags.every(activeTag => blockTags.includes(activeTag));
+                // Блок должен содержать ХОТЯ БЫ ОДИН из активных тегов (логика "ИЛИ")
+                const matchesSomeActiveTags = activeTags.some(activeTag => blockTags.includes(activeTag));
 
-                if (matchesAllActiveTags) {
+                if (matchesSomeActiveTags) {
                     block.classList.remove('filtered-out');
                 } else {
                     block.classList.add('filtered-out');
@@ -67,5 +66,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    filterPranayamas();
+    filterPranayamas(); // Инициализация при загрузке
 });
