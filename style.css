@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Poppins добавлен */
     line-height: 1.6;
     color: #4A4A4A;
     background: linear-gradient(135deg, #FFF0E0 0%, #FFFAF0 100%); /* Светло-персиковый к пастельно-желтому */
@@ -33,11 +33,12 @@ body {
 }
 
 .site-header h1 {
-    font-size: 2.5em;
+    font-size: 2.5em; /* Размер можно будет скорректировать */
     color: #333;
     margin-bottom: 20px;
-    font-weight: 300;
+    font-weight: 600; /* Poppins хорошо смотрится с таким весом */
     letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif; /* Убедимся, что шрифт применен */
 }
 
 /* Навигация по тегам */
@@ -104,10 +105,12 @@ body {
     color: #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.3s ease-in-out;
-    display: flex; /* Для вертикального центрирования, если нужно */
+    display: flex; 
     flex-direction: column;
     justify-content: center;
-    min-height: 120px; /* Минимальная высота карточки */
+    min-height: 120px; 
+    position: relative; /* Для позиционирования лейбла и тултипа */
+    padding-top: 40px; /* Добавим отступ сверху для лейбла/иконки */
 }
 
 .pranayama-block:hover {
@@ -119,6 +122,81 @@ body {
     font-size: 1.4em;
     font-weight: 500;
     margin: 0;
+}
+
+/* Лейбл класса пранаямы */
+.pranayama-class-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.label-basic { background-color: #808000; } /* Оливковый */
+.label-balancing { background-color: #40E0D0; } /* Бирюзовый */
+.label-activating { background-color: #FFA500; } /* Оранжевый */
+.label-calming { background-color: #B0C4DE; } /* Спокойный сине-лавандовый */
+
+/* Иконка и всплывающее окно (тултип) */
+.tooltip-icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.tooltip-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #A0A0A0; /* Нейтральный серый */
+    color: white;
+    text-align: center;
+    line-height: 22px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.tooltip-icon-container:hover .tooltip-icon {
+    background-color: #777;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    width: 280px; /* Ширина всплывающего окна */
+    background-color: #333; /* Темный фон */
+    color: #fff; /* Белый текст */
+    text-align: left;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%; /* Позиция над иконкой */
+    right: 0; 
+    margin-left: -140px; /* Сдвинуть, чтобы центрировалось (половина ширины) */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 0.85em;
+    line-height: 1.5;
+}
+
+.tooltip-text strong {
+    color: #FFA500; /* Акцентный цвет для заголовка в тултипе */
+    display: block;
+    margin-bottom: 8px;
+}
+
+.tooltip-icon-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Стили для фильтрации */
@@ -156,6 +234,10 @@ footer {
     .pranayama-block h3 {
         font-size: 1.2em;
     }
+    .tooltip-text {
+        width: 240px; /* Чуть меньше на средних экранах */
+        margin-left: -120px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -163,7 +245,8 @@ footer {
         padding: 15px;
     }
     .site-header h1 {
-        font-size: 1.6em;
+        font-size: 1.8em; /* Немного больше для Poppins */
+        line-height: 1.3;
     }
     .pranayama-content h2 {
         font-size: 1.5em;
@@ -176,18 +259,32 @@ footer {
         font-size: 0.8em;
     }
     .pranayama-grid {
-        /* На совсем маленьких экранах можно и в одну колонку, если нужно,
-           но minmax(250px, 1fr) уже должен справляться.
-           Если хотим строго одну колонку:
-           grid-template-columns: 1fr;
-        */
         gap: 15px;
     }
      .pranayama-block {
         min-height: 100px;
-        padding: 20px 15px;
+        padding: 40px 15px 20px 15px; /* Учитываем отступ сверху */
     }
     .pranayama-block h3 {
         font-size: 1.1em;
+    }
+    .tooltip-text {
+        width: 90vw; /* Занимает почти всю ширину экрана */
+        max-width: 260px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        margin-left: 0;
+        bottom: calc(100% + 10px); /* Чуть выше от иконки */
+    }
+    .tooltip-icon-container {
+        top: 8px;
+        right: 8px;
+    }
+    .pranayama-class-label {
+        top: 8px;
+        left: 8px;
+        font-size: 0.7em;
+        padding: 3px 7px;
     }
 }
