@@ -54,12 +54,12 @@ body {
     background-color: var(--tag-color, #E0E0E0);
     color: #fff; /* Текст тегов всегда белый */
     padding: 10px 20px;
-    border: none;
+    border: 3px solid transparent; /* Добавим прозрачную рамку для плавного перехода */
     border-radius: 25px;
     cursor: pointer;
     font-size: 0.9em;
     font-weight: 500;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, filter 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, filter 0.2s ease-in-out, border-color 0.2s ease-in-out;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
@@ -69,15 +69,24 @@ body {
 }
 
 .tag.active {
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 2px 8px rgba(0,0,0,0.2);
-    filter: brightness(1.15); /* Немного ярче при активации */
+    border: 3px solid #FFFFFF; /* Белая рамка */
+    box-shadow: 0 0 10px var(--tag-color, #777), 0 0 5px rgba(0,0,0,0.3); /* Тень от цвета тега + общая тень */
+    filter: brightness(1.1); /* Немного ярче при активации */
+    transform: scale(1.03); /* Небольшое увеличение */
 }
+
 .tag.reset-filter {
     background-color: #777;
     color: white;
+    border-color: transparent; /* Убираем особую рамку для кнопки сброса */
 }
 .tag.reset-filter:hover {
      background-color: #555;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Стандартная тень при наведении */
+}
+.tag.reset-filter.active { /* Если вдруг решим ее тоже подсвечивать */
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 10px #555, 0 0 5px rgba(0,0,0,0.3);
 }
 
 
@@ -105,11 +114,11 @@ body {
     text-decoration: none;
     color: #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.3s ease-in-out;
-    display: flex; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Увеличена длительность transition */
+    display: flex;
     flex-direction: column;
     justify-content: center; /* Центрирует h3, если блок выше минимальной высоты */
-    min-height: 150px; /* Немного увеличил, чтобы вместить информацию */
+    min-height: 150px;
     position: relative;
 }
 
@@ -122,8 +131,8 @@ body {
     font-size: 1.4em;
     font-weight: 500;
     margin: 0;
-    margin-top: auto; /* Прижимает заголовок вниз, если есть место сверху */
-    padding-top: 10px; /* Небольшой отступ от верхних элементов */
+    margin-top: auto; 
+    padding-top: 10px; 
 }
 
 /* Контейнер для лейбла класса и иконки уровня */
@@ -133,7 +142,7 @@ body {
     left: 15px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Расстояние между лейблом класса и иконкой уровня */
+    gap: 8px;
 }
 
 /* Лейбл класса пранаямы */
@@ -147,10 +156,10 @@ body {
     letter-spacing: 0.5px;
 }
 
-.label-basic { background-color: #808000; } /* Оливковый */
-.label-balancing { background-color: #40E0D0; } /* Бирюзовый */
-.label-activating { background-color: #FFA500; } /* Оранжевый */
-.label-calming { background-color: #B0C4DE; } /* Спокойный сине-лавандовый */
+.label-basic { background-color: #808000; } 
+.label-balancing { background-color: #40E0D0; } 
+.label-activating { background-color: #FFA500; } 
+.label-calming { background-color: #B0C4DE; }
 
 
 /* Индикатор уровня сложности (иконка + тултип) */
@@ -162,22 +171,22 @@ body {
 }
 
 .level-icon {
-    font-size: 1.2em; /* Размер эмодзи */
-    line-height: 1; /* Для лучшего выравнивания эмодзи */
+    font-size: 1.2em; 
+    line-height: 1; 
 }
 
 .level-tooltip-text {
     visibility: hidden;
     opacity: 0;
     width: 260px;
-    background-color: #444; /* Немного светлее основного тултипа */
+    background-color: #444; 
     color: #fff;
     text-align: left;
     border-radius: 6px;
     padding: 10px 15px;
     position: absolute;
-    z-index: 11; /* Выше, чем основной тултип, если будут пересекаться */
-    bottom: 140%; /* Позиция над иконкой */
+    z-index: 11; 
+    bottom: 140%; 
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -186,7 +195,7 @@ body {
     line-height: 1.5;
 }
 .level-tooltip-text strong {
-    color: #FFD700; /* Акцент для заголовка уровня */
+    color: #FFD700; 
     display: block;
     margin-bottom: 5px;
 }
@@ -253,9 +262,9 @@ body {
 
 /* Стили для фильтрации */
 .pranayama-block.filtered-out {
-    opacity: 0.25; /* Более выраженное затемнение */
+    opacity: 0.25; 
     pointer-events: none;
-    transform: scale(0.95); /* Небольшое уменьшение для отфильтрованных */
+    transform: scale(0.95) translateY(0); /* Убираем translateY если был на :hover */
 }
 
 /* Подвал */
