@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мама — это Пранаяма</title>
+    <title>Мама-Пранаяма</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,237 +14,225 @@
         <header class="site-header">
             <h1>ДЫХАНИЕ • УМ • ЭМОЦИИ • ТЕЛО</h1>
             <nav class="tags-navigation" aria-label="Фильтр техник по тегам">
-                <!-- Теги с коррекцией цвета текста для лучшей читаемости -->
-                <button class="tag" data-tag="Внутреннее_Спокойствие" style="--tag-color: #C3B1E1;">Внутреннее Спокойствие</button>
-                <button class="tag" data-tag="Успокоение_Ума" style="--tag-color: #B0C4DE;">Успокоение Ума</button>
-                <button class="tag" data-tag="Концентрация" style="--tag-color: #DAA520;">Концентрация</button>
-                <button class="tag" data-tag="Снятие_Напряжения" style="--tag-color: #BDB76B;">Снятие Напряжения</button>
-                <button class="tag" data-tag="Расслабление" style="--tag-color: #8FBC8F;">Расслабление</button>
-                <button class="tag" data-tag="Гармония" style="--tag-color: #98FB98; color: #333; text-shadow: none;">Гармония</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Осознанность" style="--tag-color: #7FFFD4; color: #333; text-shadow: none;">Осознанность</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Снижение_Стресса" style="--tag-color: #ADD8E6; color: #333; text-shadow: none;">Снижение Стресса</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Энергия" style="--tag-color: #FF6B6B;">Энергия</button>
-                <button class="tag" data-tag="Бодрость" style="--tag-color: #FFB347;">Бодрость</button>
-                <button class="tag" data-tag="Продуктивность" style="--tag-color: #FFC300;">Продуктивность</button>
-                <button class="tag" data-tag="Решительность" style="--tag-color: #FF8C00;">Решительность</button>
-                <button class="tag" data-tag="Умиротворение" style="--tag-color: #6495ED;">Умиротворение</button>
-                <button class="tag" data-tag="Глубокий_Сон" style="--tag-color: #87CEEB;">Глубокий Сон</button>
-                <button class="tag" data-tag="Охлаждение" style="--tag-color: #AFEEEE; color: #333; text-shadow: none;">Охлаждение</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Ясность_Ума" style="--tag-color: #FFD700; color: #333; text-shadow: none;">Ясность Ума</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Очищение_Дыхания" style="--tag-color: #FFDEAD; color: #333; text-shadow: none;">Очищение Дыхания</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Мощная_Энергия" style="--tag-color: #FF4500;">Мощная Энергия</button>
-                <button class="tag" data-tag="Уверенность" style="--tag-color: #FFA07A;">Уверенность</button>
-                <button class="tag" data-tag="Сила_Духа" style="--tag-color: #CD5C5C;">Сила Духа</button>
-                <button class="tag" data-tag="Пробуждение" style="--tag-color: #FF7F50;">Пробуждение</button>
-                <button class="tag" data-tag="Глубокое_Расслабление" style="--tag-color: #556B2F;">Глубокое Расслабление</button>
-                <button class="tag" data-tag="Анти-Стресс" style="--tag-color: #B0E0E6; color: #333; text-shadow: none;">Анти-Стресс</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Эмоциональная_Стабильность" style="--tag-color: #DE6FA1;">Эмоциональная Стабильность</button>
-                <button class="tag" data-tag="Баланс" style="--tag-color: #A0D6B4; color: #333; text-shadow: none;">Баланс</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Устойчивость" style="--tag-color: #D2B48C;">Устойчивость</button>
-                <button class="tag" data-tag="Управление_Состоянием" style="--tag-color: #778899;">Управление Состоянием</button>
-                <button class="tag" data-tag="Адаптивность" style="--tag-color: #BEBEBE; color: #333; text-shadow: none;">Адаптивность</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Контроль_Дыхания" style="--tag-color: #C0C0C0; color: #333; text-shadow: none;">Контроль Дыхания</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Снижение_Тревожности" style="--tag-color: #E0FFFF; color: #333; text-shadow: none;">Снижение Тревожности</button> <!-- Изменен цвет текста -->
-                <button class="tag" data-tag="Свежесть" style="--tag-color: #F0FFFF; color: #333; text-shadow: none;">Свежесть</button>
-                <button class="tag" data-tag="Комфорт_в_Жару" style="--tag-color: #E6E6FA; color: #333; text-shadow: none;">Комфорт в Жару</button>
-                <button class="tag" data-tag="Утоление_Жажды" style="--tag-color: #F5F5F5; color: #333; text-shadow: none;">Утоление Жажды</button>
-                <button class="tag" data-tag="Облегчение" style="--tag-color: #DCDCDC; color: #333; text-shadow: none;">Облегчение</button>
+                <!-- Обновленный список тегов с белым текстом и повторяющимися цветами -->
+                <button class="tag" data-tag="Снятие_Напряжения" style="--tag-color: #FF6B6B;">Снятие Напряжения</button>
+                <button class="tag" data-tag="Расслабление" style="--tag-color: #FFA07A;">Расслабление</button>
+                <button class="tag" data-tag="Концентрация" style="--tag-color: #FFC300;">Концентрация</button>
+                <button class="tag" data-tag="Осознанность" style="--tag-color: #4CAF50;">Осознанность</button>
+                <button class="tag" data-tag="Гармония" style="--tag-color: #2196F3;">Гармония</button>
+                <button class="tag" data-tag="Наполненность" style="--tag-color: #9C27B0;">Наполненность</button>
+                <button class="tag" data-tag="Анти-Стресс" style="--tag-color: #009688;">Анти-Стресс</button>
+                <button class="tag" data-tag="Энергия" style="--tag-color: #E91E63;">Энергия</button>
+                <button class="tag" data-tag="Бодрость" style="--tag-color: #795548;">Бодрость</button>
+                <button class="tag" data-tag="Активация" style="--tag-color: #607D8B;">Активация</button>
+                <button class="tag" data-tag="Продуктивность" style="--tag-color: #FF9800;">Продуктивность</button>
+                <button class="tag" data-tag="Уверенность" style="--tag-color: #3F51B5;">Уверенность</button>
+                <button class="tag" data-tag="Умиротворение" style="--tag-color: #FF6B6B;">Умиротворение</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Спокойный_Сон" style="--tag-color: #FFA07A;">Спокойный Сон</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Снижение_Тревожности" style="--tag-color: #FFC300;">Снижение Тревожности</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Ясность_Ума" style="--tag-color: #4CAF50;">Ясность Ума</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Пробуждение" style="--tag-color: #2196F3;">Пробуждение</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Свежесть" style="--tag-color: #9C27B0;">Свежесть</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Баланс" style="--tag-color: #009688;">Баланс</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Эмоциональная_Стабильность" style="--tag-color: #E91E63;">Эмоциональная Стабильность</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Устойчивость" style="--tag-color: #795548;">Устойчивость</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Управление_Состоянием" style="--tag-color: #607D8B;">Управление Состоянием</button> <!-- Повтор цвета -->
+                <button class="tag" data-tag="Гибкость_Ума" style="--tag-color: #FF9800;">Гибкость Ума</button> <!-- Повтор цвета -->
                 <button class="tag reset-filter" data-tag="все">Показать все</button>
             </nav>
         </header>
 
         <main class="pranayama-content">
-            <h2>Дыхательные практики ❤️</h2>
+            <h2>Выбери карточку ❤️</h2>
             <div class="pranayama-grid" id="pranayamaGrid">
-                <a href="https://www.notion.so/private25/20151b7e2adf80cb8f91f09eb7b09124?pvs=4" target="_blank" class="pranayama-block" data-tags="Внутреннее_Спокойствие Успокоение_Ума Концентрация Снятие_Напряжения">
-                    <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
+                <!-- Удджайя -->
+                <a href="https://www.notion.so/private25/20151b7e2adf80cb8f91f09eb7b09124?pvs=4" target="_blank" class="pranayama-block" data-tags="Снятие_Напряжения Расслабление Концентрация Осознанность Гармония">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Удджайя</h3>
                 </a>
-                <a href="https://www.notion.so/private25/20351b7e2adf81bca24de6d83148cae1?pvs=4" target="_blank" class="pranayama-block" data-tags="Расслабление Гармония Осознанность Снижение_Стресса">
-                    <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
+
+                <!-- Полное Йоговское Дыхание -->
+                <a href="https://www.notion.so/private25/20351b7e2adf81bca24de6d83148cae1?pvs=4" target="_blank" class="pranayama-block" data-tags="Расслабление Гармония Осознанность Наполненность Анти-Стресс">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Полное Йоговское Дыхание</h3>
                 </a>
-                <a href="https://www.notion.so/private25/20451b7e2adf816ca20cdd4e38d946eb?source=copy_link" target="_blank" class="pranayama-block" data-tags="Энергия Бодрость Продуктивность Решительность">
-                    <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
+
+                <!-- Сурья Бхедана -->
+                <a href="https://www.notion.so/private25/20451b7e2adf816ca20cdd4e38d946eb?source=copy_link" target="_blank" class="pranayama-block" data-tags="Энергия Бодрость Активация Продуктивность Уверенность">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Сурья Бхедана</h3>
                 </a>
-                 <a href="https://www.notion.so/private25/20451b7e2adf8106994deae06a643e02?source=copy_link" target="_blank" class="pranayama-block" data-tags="Ясность_Ума Энергия Очищение_Дыхания Бодрость">
-                    <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
+
+                <!-- Чандра Бхедана -->
+                <a href="https://www.notion.so/private25/20451b7e2adf81799304e0b106d814d6?source=copy_link" target="_blank" class="pranayama-block" data-tags="Расслабление Умиротворение Спокойный_Сон Снижение_Тревожности Анти-Стресс">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
-                    </div>
-                    <h3>Капалабхати</h3>
-                </a>
-                <a href="https://www.notion.so/private25/20451b7e2adf81e1a036ef50a4230554?pvs=4" target="_blank" class="pranayama-block" data-tags="Мощная_Энергия Уверенность Сила_Духа Пробуждение">
-                    <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
-                     <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
-                    </div>
-                    <h3>Бхастрика</h3>
-                </a>
-                <a href="https://www.notion.so/private25/20751b7e2adf81749119dce6d41836e8?source=copy_link" target="_blank" class="pranayama-block" data-tags="Внутреннее_Спокойствие Гармония Ясность_Ума Снижение_Тревожности">
-                    <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                     <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
-                    </div>
-                    <h3>Нади Шодхана</h3>
-                </a>
-                <a href="https://www.notion.so/private25/20651b7e2adf81409e9dea1211b85c59?source=copy_link" target="_blank" class="pranayama-block" data-tags="Эмоциональная_Стабильность Баланс Концентрация Устойчивость">
-                    <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
-                    </div>
-                    <h3>Сама Вритти</h3>
-                </a>
-                <a href="https://www.notion.so/private25/20651b7e2adf8116b438ceb226ccd67a?source=copy_link" target="_blank" class="pranayama-block" data-tags="Управление_Состоянием Адаптивность Расслабление Энергия Контроль_Дыхания">
-                    <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
-                    </div>
-                    <h3>Вишама Вритти</h3>
-                </a>
-                <a href="https://www.notion.so/private25/20451b7e2adf81799304e0b106d814d6?source=copy_link" target="_blank" class="pranayama-block" data-tags="Расслабление Умиротворение Глубокий_Сон Охлаждение">
-                    <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Чандра Бхедана</h3>
                 </a>
-                <a href="https://www.notion.so/private25/20551b7e2adf81d89455d8811e0de34b?source=copy_link" target="_blank" class="pranayama-block" data-tags="Глубокое_Расслабление Анти-Стресс Глубокий_Сон Успокоение_Ума">
-                    <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+
+                <!-- Капалабхати -->
+                <a href="https://www.notion.so/private25/20451b7e2adf8106994deae06a643e02?source=copy_link" target="_blank" class="pranayama-block" data-tags="Ясность_Ума Энергия Бодрость Пробуждение Свежесть">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🪴</span>
+                            <div class="level-tooltip-text"><strong>Средний уровень:</strong><br>Требует освоения базовых навыков или большей внимательности.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
+                         <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
+                    </div>
+                    <h3>Капалабхати</h3>
+                </a>
+
+                <!-- Бхастрика -->
+                <a href="https://www.notion.so/private25/20451b7e2adf81e1a036ef50a4230554?pvs=4" target="_blank" class="pranayama-block" data-tags="Энергия Активация Уверенность Пробуждение Бодрость">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌳</span>
+                            <div class="level-tooltip-text"><strong>Продвинутый уровень:</strong><br>Для опытных практиков или под руководством инструктора.</div>
                         </div>
+                    </div>
+                    <div class="tooltip-icon-container">
+                        <span class="tooltip-icon">ⓘ</span>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
+                    </div>
+                    <h3>Бхастрика</h3>
+                </a>
+
+                <!-- Брамари -->
+                <a href="https://www.notion.so/private25/20551b7e2adf81d89455d8811e0de34b?source=copy_link" target="_blank" class="pranayama-block" data-tags="Расслабление Анти-Стресс Спокойный_Сон Умиротворение Снижение_Тревожности">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
+                    <div class="tooltip-icon-container">
+                        <span class="tooltip-icon">ⓘ</span>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Брамари</h3>
                 </a>
-                <a href="https://www.notion.so/private25/20551b7e2adf8191912ef4be6786b3de?source=copy_link" target="_blank" class="pranayama-block" data-tags="Охлаждение Свежесть Комфорт_в_Жару Успокоение_Ума">
-                    <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+
+                <!-- Сама Вритти -->
+                <a href="https://www.notion.so/private25/20651b7e2adf81409e9dea1211b85c59?source=copy_link" target="_blank" class="pranayama-block" data-tags="Баланс Эмоциональная_Стабильность Устойчивость Концентрация Гармония">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
+                    </div>
+                    <h3>Сама Вритти</h3>
+                </a>
+
+                <!-- Вишама Вритти -->
+                <a href="https://www.notion.so/private25/20651b7e2adf8116b438ceb226ccd67a?source=copy_link" target="_blank" class="pranayama-block" data-tags="Управление_Состоянием Осознанность Гибкость_Ума Расслабление Энергия Концентрация">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🪴</span>
+                            <div class="level-tooltip-text"><strong>Средний уровень:</strong><br>Требует освоения базовых навыков или большей внимательности.</div>
                         </div>
+                    </div>
+                    <div class="tooltip-icon-container">
+                        <span class="tooltip-icon">ⓘ</span>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
+                    </div>
+                    <h3>Вишама Вритти</h3>
+                </a>
+
+                <!-- Нади Шодхана -->
+                <a href="https://www.notion.so/private25/20751b7e2adf81749119dce6d41836e8?source=copy_link" target="_blank" class="pranayama-block" data-tags="Баланс Гармония Ясность_Ума Снижение_Тревожности Умиротворение">
+                     <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
+                    <div class="tooltip-icon-container">
+                        <span class="tooltip-icon">ⓘ</span>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
+                    </div>
+                    <h3>Нади Шодхана</h3>
+                </a>
+
+                <!-- Ситкари -->
+                <a href="https://www.notion.so/private25/20551b7e2adf8191912ef4be6786b3de?source=copy_link" target="_blank" class="pranayama-block" data-tags="Свежесть Расслабление Умиротворение Снятие_Напряжения Ясность_Ума">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                           <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
+                    <div class="tooltip-icon-container">
+                        <span class="tooltip-icon">ⓘ</span>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Ситкари</h3>
                 </a>
-                <a href="https://www.notion.so/private25/20551b7e2adf8119a300c871b4f2ddaa?source=copy_link" target="_blank" class="pranayama-block" data-tags="Охлаждение Свежесть Утоление_Жажды Облегчение">
-                    <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+
+                <!-- Ситали -->
+                <a href="https://www.notion.so/private25/20551b7e2adf8119a300c871b4f2ddaa?source=copy_link" target="_blank" class="pranayama-block" data-tags="Свежесть Расслабление Умиротворение Снятие_Напряжения Спокойный_Сон">
+                    <div class="pranayama-top-info">
+                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
+                        <div class="level-indicator">
+                            <span class="level-icon">🌿</span>
+                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт.</div>
+                        </div>
+                    </div>
                     <div class="tooltip-icon-container">
                         <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>
-                            Внутренний покой и умиротворение<br>
-                            Облегчение от стресса, тревожности и беспокойства<br>
-                            Приятное тепло, физический комфорт и расслабление<br>
-                            Прилив внутренней силы и стабильности<br>
-                            Ясность, "чистоту" и собранность ума<br>
-                            Улучшение настроения благодаря снижению негативных состояний
-                        </div>
+                        <div class="tooltip-text"><strong>🎯 ЧТО ВЫ ПОЧУВСТВУЕТЕ</strong><br>Внутренний покой и умиротворение...</div>
                     </div>
                     <h3>Ситали</h3>
                 </a>
@@ -252,7 +240,7 @@
         </main>
 
         <footer>
-            <p>© Мама — это Пранаяма, 2025</p>
+            <p>© Мама Пранаяма, 2025</p>
         </footer>
     </div>
     <script src="script.js"></script>
