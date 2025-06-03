@@ -1,66 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Овальные плашки</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .box {
-      padding: 10px 20px;
-      border-radius: 25px;
-      color: #ffffff;
-      font-size: 16px;
-      white-space: nowrap;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир Пранаямы</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="box" style="background-color: #FF4C4C;">
-      энергия
+    <div class="container">
+        <header class="site-header">
+            <h1>ДЫХАНИЕ – УМ – ЭМОЦИИ – ТЕЛО</h1>
+            <nav class="tags-navigation" aria-label="Фильтр техник по тегам">
+                <button class="tag" data-tag="энергия" style="--tag-color: #FF6B6B;">Энергия</button>
+                <button class="tag" data-tag="уверенность" style="--tag-color: #FFA07A;">Уверенность</button>
+                <button class="tag" data-tag="продуктивность" style="--tag-color: #FFC300;">Продуктивность</button>
+                <button class="tag" data-tag="расслабление" style="--tag-color: #8FBC8F;">Расслабление</button>
+                <button class="tag" data-tag="качественный сон" style="--tag-color: #87CEEB;">Качественный сон</button>
+                <button class="tag" data-tag="умиротворение" style="--tag-color: #6495ED;">Умиротворение</button>
+                <button class="tag" data-tag="внутреннее спокойствие" style="--tag-color: #C3B1E1;">Внутреннее спокойствие</button>
+                <button class="tag" data-tag="эмоциональная стабильность" style="--tag-color: #DE6FA1;">Эмоциональная стабильность</button>
+                <button class="tag" data-tag="устойчивость" style="--tag-color: #D2B48C;">Устойчивость</button>
+                <button class="tag" data-tag="успокоение ума" style="--tag-color: #B0C4DE;">Успокоение ума</button>
+                <button class="tag" data-tag="осознанность" style="--tag-color: #7FFFD4;">Осознанность</button>
+                <button class="tag reset-filter" data-tag="все">Показать все</button>
+            </nav>
+        </header>
+
+        <main class="pranayama-content">
+            <h2>Обучающие карточки</h2>
+            <div class="pranayama-grid" id="pranayamaGrid">
+                <a href="https://www.notion.so/private25/20451b7e2adf81e1a036ef50a4230554?pvs=4" target="_blank" class="pranayama-block" data-tags="энергия уверенность продуктивность устойчивость успокоение_ума">
+                    <h3>Бхастрика</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20451b7e2adf8106994deae06a643e02?source=copy_link" target="_blank" class="pranayama-block" data-tags="энергия уверенность продуктивность устойчивость">
+                    <h3>Капалабхати</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20451b7e2adf816ca20cdd4e38d946eb?source=copy_link" target="_blank" class="pranayama-block" data-tags="энергия уверенность продуктивность устойчивость">
+                    <h3>Сурья Бхедана</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20451b7e2adf81799304e0b106d814d6?source=copy_link" target="_blank" class="pranayama-block" data-tags="расслабление качественный_сон умиротворение внутреннее_спокойствие успокоение_ума осознанность">
+                    <h3>Чандра Бхедана</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20551b7e2adf8119a300c871b4f2ddaa?source=copy_link" target="_blank" class="pranayama-block" data-tags="продуктивность">
+                    <h3>Ситали</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20551b7e2adf8191912ef4be6786b3de?source=copy_link" target="_blank" class="pranayama-block" data-tags="продуктивность">
+                    <h3>Ситкари</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20751b7e2adf81749119dce6d41836e8?source=copy_link" target="_blank" class="pranayama-block" data-tags="продуктивность расслабление качественный_сон умиротворение">
+                    <h3>Нади Шодхана</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20651b7e2adf81409e9dea1211b85c59?source=copy_link" target="_blank" class="pranayama-block" data-tags="расслабление качественный_сон внутреннее_спокойствие успокоение_ума">
+                    <h3>Сама Вритти</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20651b7e2adf8116b438ceb226ccd67a?source=copy_link" target="_blank" class="pranayama-block" data-tags="продуктивность расслабление">
+                    <h3>Вишама Вритти</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20551b7e2adf81d89455d8811e0de34b?source=copy_link" target="_blank" class="pranayama-block" data-tags="продуктивность расслабление успокоение_ума качественный_сон умиротворение внутреннее_спокойствие эмоциональная_стабильность">
+                    <h3>Брамари</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20151b7e2adf80cb8f91f09eb7b09124?pvs=4" target="_blank" class="pranayama-block" data-tags="уверенность расслабление внутреннее_спокойствие">
+                    <h3>Удджайя</h3>
+                </a>
+                <a href="https://www.notion.so/private25/20351b7e2adf81bca24de6d83148cae1?pvs=4" target="_blank" class="pranayama-block" data-tags="расслабление внутреннее_спокойствие">
+                    <h3>Полное Йоговское Дыхание</h3>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>© Мир Пранаямы, 2024</p>
+        </footer>
     </div>
-    <div class="box" style="background-color: #FF7F50;">
-      уверенность
-    </div>
-    <div class="box" style="background-color: #FFD700;">
-      продуктивность
-    </div>
-    <div class="box" style="background-color: #32CD32;">
-      расслабление
-    </div>
-    <div class="box" style="background-color: #00CED1;">
-      качественный сон
-    </div>
-    <div class="box" style="background-color: #1E90FF;">
-      умиротворение
-    </div>
-    <div class="box" style="background-color: #9370DB;">
-      внутреннее спокойствие
-    </div>
-    <div class="box" style="background-color: #FF69B4;">
-      эмоциональная стабильность
-    </div>
-    <div class="box" style="background-color: #8B4513;">
-      устойчивость
-    </div>
-    <div class="box" style="background-color: #708090;">
-      успокоение ума
-    </div>
-    <div class="box" style="background-color: #20B2AA;">
-      осознанность
-    </div>
-  </div>
+    <script src="script.js"></script>
 </body>
 </html>
