@@ -114,7 +114,7 @@ body {
     font-size: 0.9em;
     transition: background-color 0.2s, transform 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border: 1.5px solid #D7CCC8;
-    /* white-space: nowrap;
+    white-space: nowrap;
 }
 
 .nav-button:hover {
@@ -199,9 +199,9 @@ body {
 
 .pranayama-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* ИЗМЕНЕНО: Возвращаем auto-fill */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Возвращаем auto-fill для правильной сетки */
     gap: 25px;
-    justify-content: center; /* Для центрирования грида, если элементы не занимают всю ширину */
+    justify-content: center; /* Центрируем группу карточек */
 }
 
 .pranayama-block {
@@ -291,7 +291,7 @@ body {
 
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 280px;  */  ТУТ ШИРИНА
+    width: 280px; 
     background-color: #3f3f3f;
     color: #f0f0f0;
     text-align: left;
@@ -304,8 +304,8 @@ body {
                 visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    font-size: 0.7em; /* ТУТ ПОМЕНЯЛ */
-    line-height: 1.5; /* ТУТ ПОМЕНЯЛ */
+    font-size: 0.7em; 
+    line-height: 1.5; 
     transform: translateY(10px);
 }
 
@@ -325,7 +325,8 @@ body {
 }
 
 .tooltip-text p {
-    margin-bottom: 4px; /* ТУТ ПОМЕНЯЛ /*
+    margin-bottom: 4px;
+    /* white-space: nowrap;    // Убедись, что это закомментировано или удалено для переноса */
 }
 .tooltip-text p:last-child {
     margin-bottom: 0;
@@ -370,8 +371,6 @@ body {
 .duration-text {
     font-weight: 500;
 }
-
-/* ... (остальной код без изменений) ... */
 
 /* Стили для контентных страниц (friends.html, projects.html, 101.html) */
 .content-page {
@@ -478,9 +477,10 @@ footer {
     .site-title { font-size: 1.9em; margin-bottom: 10px; order: -1; }
     .tag-prompt { text-align: center; margin-top: 10px; }
     .pranayama-content h2, .content-page h2 { font-size: 1.8em; }
-    .pranayama-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Для мобильных auto-fit может быть предпочтительнее */
+    .pranayama-grid { /* На мобильных auto-fit может быть предпочтительнее, чтобы избежать пустого пространства справа, если последняя строка неполная */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
         gap: 20px;
+        /* justify-content: center; -- Для auto-fit обычно не так критично, как для auto-fill */
     }
     .content-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .tooltip-text { width: calc(100vw - 60px) !important; max-width: 300px !important; }
