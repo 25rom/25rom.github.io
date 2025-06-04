@@ -114,7 +114,7 @@ body {
     font-size: 0.9em;
     transition: background-color 0.2s, transform 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border: 1.5px solid #D7CCC8;
-    /* white-space: nowrap;
+    white-space: nowrap;
 }
 
 .nav-button:hover {
