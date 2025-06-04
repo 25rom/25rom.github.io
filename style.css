@@ -304,8 +304,8 @@ body {
                 visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    font-size: 0.85em; /* ИЗМЕНЕНИЕ: было 0.9em */
-    line-height: 1.6; /* ИЗМЕНЕНИЕ: было 1.7 */
+    font-size: 0.70em; /* ИЗМЕНЕНИЕ: было 0.9em */
+    line-height: 1.5; /* ИЗМЕНЕНИЕ: было 1.7 */
     transform: translateY(10px);
 }
 
@@ -318,7 +318,7 @@ body {
 .tooltip-text strong { /* Заголовок РЕЗУЛЬТАТ ОТ ПРАКТИКИ */
     color: #FFC107;
     display: block;
-    margin-bottom: 10px; /* ИЗМЕНЕНИЕ: было 12px */
+    margin-bottom: 4px; /* ИЗМЕНЕНИЕ: было 12px */
     font-size: 1.05em; /* ИЗМЕНЕНИЕ: было 1.1em (относительно нового font-size родителя) */
     border-bottom: 1px solid #555;
     padding-bottom: 6px; /* ИЗМЕНЕНИЕ: было 8px */
