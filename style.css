@@ -220,12 +220,12 @@ body {
     justify-content: center;
     min-height: 170px;
     position: relative;
-    z-index: 1; /* ИЗМЕНЕНИЕ: Добавляем базовый z-index */
+    z-index: 1;
 }
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    z-index: 20; /* ИЗМЕНЕНИЕ: Значительно увеличиваем z-index при наведении */
+    z-index: 20;
 }
 .pranayama-block h3 {
     font-size: 1.4em;
@@ -265,7 +265,7 @@ body {
 .level-tooltip-text {
     visibility: hidden; opacity: 0; width: 260px; background-color: #444;
     color: #fff; text-align: left; border-radius: 6px; padding: 10px 15px;
-    position: absolute; z-index: 25; /* ИЗМЕНЕНИЕ: Увеличим z-index на всякий случай, чтобы был выше tooltip-text */
+    position: absolute; z-index: 25;
     bottom: 140%; left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -279,7 +279,7 @@ body {
     top: 15px;
     right: 15px;
     cursor: pointer;
-    z-index: 5; /* Этот z-index для самого контейнера иконки */
+    z-index: 5;
 }
 .tooltip-icon {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
@@ -291,21 +291,21 @@ body {
 /* Улучшенные стили для всплывающего окна */
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 280px; /* ИЗМЕНЕНИЕ: было 320px */
+    width: 280px; /* ИЗМЕНЕНИЕ: Возвращаем фиксированную ширину для десктопа */
     background-color: #3f3f3f;
     color: #f0f0f0;
     text-align: left;
     border-radius: 8px;
-    padding: 15px; /* ИЗМЕНЕНИЕ: было 20px */
-    position: absolute; z-index: 22; /* ИЗМЕНЕНИЕ: z-index должен быть выше чем у соседних блоков, но ниже level-tooltip, если он активен */
+    padding: 15px;
+    position: absolute; z-index: 22;
     bottom: 130%;
     right: 0;
     transition: opacity 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    font-size: 0.70em; /* ИЗМЕНЕНИЕ: было 0.9em */
-    line-height: 1.5; /* ИЗМЕНЕНИЕ: было 1.7 */
+    font-size: 0.70em;
+    line-height: 1.5;
     transform: translateY(10px);
 }
 
@@ -315,26 +315,26 @@ body {
     transform: translateY(0);
 }
 
-.tooltip-text strong { /* Заголовок РЕЗУЛЬТАТ ОТ ПРАКТИКИ */
+.tooltip-text strong {
     color: #FFC107;
     display: block;
-    margin-bottom: 4px; /* ИЗМЕНЕНИЕ: было 12px */
-    font-size: 1.05em; /* ИЗМЕНЕНИЕ: было 1.1em (относительно нового font-size родителя) */
+    margin-bottom: 4px;
+    font-size: 1.05em;
     border-bottom: 1px solid #555;
-    padding-bottom: 6px; /* ИЗМЕНЕНИЕ: было 8px */
+    padding-bottom: 6px;
 }
 
 .tooltip-text p {
-    margin-bottom: 8px; /* ИЗМЕНЕНИЕ: было 10px */
-    white-space: nowrap;
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+    margin-bottom: 8px;
+    /* white-space: nowrap;    // Убедимся, что это закомментировано или удалено для переноса */
+    /* overflow: hidden;       // Это не нужно, если текст переносится */
+    /* text-overflow: ellipsis; // Это не нужно, если текст переносится */
 }
-}
+/* Закрывающая скобка для .tooltip-text p была лишней, убираем ее */
 .tooltip-text p:last-child {
     margin-bottom: 0;
 }
-/* Стрелка-указатель для тултипа */
+
 .tooltip-text::after {
     content: "";
     position: absolute;
@@ -352,7 +352,6 @@ body {
     transform: scale(0.95) translateY(0);
 }
 
-/* Стили для иконки времени и текста */
 .pranayama-duration {
     position: absolute;
     bottom: 15px;
@@ -364,18 +363,17 @@ body {
     background-color: rgba(240, 240, 240, 0.9);
     padding: 5px 8px;
     border-radius: 6px;
-    z-index: 5; /* z-index для элемента внутри блока */
+    z-index: 5;
 }
 
 .duration-icon {
-    margin-right: 6px; /* ИЗМЕНЕНО: отступ */
+    margin-right: 6px;
     font-size: 1.1em;
     line-height: 1;
 }
 .duration-text {
     font-weight: 500;
 }
-
 
 /* Стили для контентных страниц (friends.html, projects.html, 101.html) */
 .content-page {
@@ -483,7 +481,7 @@ footer {
     .tag-prompt { text-align: center; margin-top: 10px; }
     .pranayama-content h2, .content-page h2 { font-size: 1.8em; }
     .pranayama-grid, .content-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .tooltip-text { width: calc(100vw - 60px); max-width: 300px; /* Адаптация ширины тултипа */ }
+    .tooltip-text { width: calc(100vw - 60px) !important; max-width: 300px !important; /* Адаптация ширины тултипа, !important чтобы переопределить базовый width */ }
 }
 
 @media (max-width: 480px) {
@@ -493,10 +491,10 @@ footer {
     .nav-group-left, .nav-group-right { flex-wrap: wrap; gap: 8px; }
     .tag-prompt { font-size: 1em; }
     .tag { padding: 7px 12px; font-size: 0.8em; }
-    .pranayama-block, .content-block { min-height: 100px; } /* min-height для .pranayama-block здесь меньше, чем базовый 170px, это нормально */
+    .pranayama-block, .content-block { min-height: 100px; }
     .pranayama-block h3, .content-block h3 { font-size: 1.1em; }
     .pranayama-top-info { top: 10px; left: 10px; gap: 6px;}
     .tooltip-icon-container { top: 10px; right: 10px; }
-    .tooltip-text, .level-tooltip-text { width: calc(100vw - 40px); max-width: 250px; }
-    .pranayama-duration { bottom: 10px; left: 10px; font-size: 0.75em; } /* Специфичные стили для малых экранов, они переопределят базовые */
+    .tooltip-text, .level-tooltip-text { width: calc(100vw - 40px) !important; max-width: 250px !important; /* !important чтобы переопределить базовый width */ }
+    .pranayama-duration { bottom: 10px; left: 10px; font-size: 0.75em; }
 }
