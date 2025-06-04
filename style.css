@@ -206,11 +206,10 @@ body {
 .pranayama-block {
     background-color: #ffffff;
     border-radius: 12px;
-    /* padding: 20px; -- Заменено на раздельные padding */
-    padding-left: 20px; /* Отступ слева */
-    padding-right: 20px; /* Отступ справа */
-    padding-top: 50px; /* Место для верхних элементов */
-    padding-bottom: 40px; /* Место для нижнего элемента с временем */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    padding-bottom: 40px;
     text-align: center;
     text-decoration: none;
     color: #333;
@@ -218,18 +217,20 @@ body {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* ИЗМЕНЕНО: для вертикального центрирования h3 */
-    min-height: 170px; /* ИЗМЕНЕНО: увеличена минимальная высота */
+    justify-content: center;
+    min-height: 170px;
     position: relative;
+    z-index: 1; /* ИЗМЕНЕНИЕ: Добавляем базовый z-index */
 }
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 20; /* ИЗМЕНЕНИЕ: Значительно увеличиваем z-index при наведении */
 }
 .pranayama-block h3 {
     font-size: 1.4em;
     font-weight: 500;
-    margin: 0; /* ИЗМЕНЕНО: убраны margin-top: auto и padding-top */
+    margin: 0;
 }
 .pranayama-top-info {
     position: absolute;
@@ -238,7 +239,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
+    z-index: 5;
 }
 .pranayama-class-label {
     padding: 4px 10px;
@@ -264,7 +265,8 @@ body {
 .level-tooltip-text {
     visibility: hidden; opacity: 0; width: 260px; background-color: #444;
     color: #fff; text-align: left; border-radius: 6px; padding: 10px 15px;
-    position: absolute; z-index: 11; bottom: 140%; left: 50%;
+    position: absolute; z-index: 25; /* ИЗМЕНЕНИЕ: Увеличим z-index на всякий случай, чтобы был выше tooltip-text */
+    bottom: 140%; left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-size: 0.8em; line-height: 1.5;
@@ -277,7 +279,7 @@ body {
     top: 15px;
     right: 15px;
     cursor: pointer;
-    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
+    z-index: 5; /* Этот z-index для самого контейнера иконки */
 }
 .tooltip-icon {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
@@ -289,21 +291,21 @@ body {
 /* Улучшенные стили для всплывающего окна */
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 320px;
+    width: 280px; /* ИЗМЕНЕНИЕ: было 320px */
     background-color: #3f3f3f;
     color: #f0f0f0;
     text-align: left;
     border-radius: 8px;
-    padding: 20px;
-    position: absolute; z-index: 10;
+    padding: 15px; /* ИЗМЕНЕНИЕ: было 20px */
+    position: absolute; z-index: 22; /* ИЗМЕНЕНИЕ: z-index должен быть выше чем у соседних блоков, но ниже level-tooltip, если он активен */
     bottom: 130%;
     right: 0;
     transition: opacity 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    font-size: 0.9em;
-    line-height: 1.7;
+    font-size: 0.85em; /* ИЗМЕНЕНИЕ: было 0.9em */
+    line-height: 1.6; /* ИЗМЕНЕНИЕ: было 1.7 */
     transform: translateY(10px);
 }
 
@@ -313,22 +315,22 @@ body {
     transform: translateY(0);
 }
 
-.tooltip-text strong {
+.tooltip-text strong { /* Заголовок РЕЗУЛЬТАТ ОТ ПРАКТИКИ */
     color: #FFC107;
     display: block;
-    margin-bottom: 12px;
-    font-size: 1.1em;
+    margin-bottom: 10px; /* ИЗМЕНЕНИЕ: было 12px */
+    font-size: 1.05em; /* ИЗМЕНЕНИЕ: было 1.1em (относительно нового font-size родителя) */
     border-bottom: 1px solid #555;
-    padding-bottom: 8px;
+    padding-bottom: 6px; /* ИЗМЕНЕНИЕ: было 8px */
 }
 
 .tooltip-text p {
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* ИЗМЕНЕНИЕ: было 10px */
 }
 .tooltip-text p:last-child {
     margin-bottom: 0;
 }
-
+/* Стрелка-указатель для тултипа */
 .tooltip-text::after {
     content: "";
     position: absolute;
@@ -354,11 +356,11 @@ body {
     display: flex;
     align-items: center;
     font-size: 0.8em;
-    color: #555; /* ИЗМЕНЕНО: цвет текста */
-    background-color: rgba(240, 240, 240, 0.9); /* ИЗМЕНЕНО: фон */
-    padding: 5px 8px; /* ИЗМЕНЕНО: отступы */
-    border-radius: 6px; /* ИЗМЕНЕНО: скругление */
-    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
+    color: #555;
+    background-color: rgba(240, 240, 240, 0.9);
+    padding: 5px 8px;
+    border-radius: 6px;
+    z-index: 5; /* z-index для элемента внутри блока */
 }
 
 .duration-icon {
