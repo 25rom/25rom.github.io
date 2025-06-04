@@ -52,7 +52,7 @@ body {
     gap: 10px; /* Расстояние между кнопками в группе */
 }
 
-.site-title { /* Заголовок "ДЫХАНИЕ..." */
+.site-title { /* Родительский H1 для заголовка "ДЫХАНИЕ..." */
     font-size: 2em; /* Можно настроить */
     color: #333;
     font-weight: 600;
@@ -64,6 +64,53 @@ body {
     min-width: 200px; /* Чтобы заголовок не схлопывался слишком сильно */
 }
 
+/* Стили для кликабельного заголовка сайта */
+.site-title-link {
+    text-decoration: none;
+    color: inherit; /* Наследуем цвет от .site-title */
+    position: relative;
+    display: inline-block; 
+    padding-bottom: 8px; /* Место для линии подчеркивания, чтобы текст не "прыгал" */
+    transition: letter-spacing 0.3s ease-out; /* Плавное изменение межбуквенного расстояния */
+    cursor: pointer; 
+}
+
+/* Стили для разделителей внутри заголовка */
+.site-title-link .title-separator {
+    /* Начальный цвет наследуется, как и у остального текста заголовка */
+    transition: color 0.3s ease-out; /* Плавное изменение цвета сепараторов */
+}
+
+/* Линия подчеркивания при наведении */
+.site-title-link::after {
+    content: '';
+    position: absolute;
+    left: 10%; /* Начало линии с отступом от края текста */
+    width: 80%; /* Ширина линии (не на всю длину, для "воздушности") */
+    bottom: 0; /* Расположение линии под текстом (учитывая padding-bottom у .site-title-link) */
+    height: 1.5px; /* Толщина линии */
+    background-color: #E67E22; /* Цвет линии (акцентный оранжевый, как у .tag-prompt) */
+    transform: scaleX(0); /* Изначально линия "сжата" (невидима) */
+    transform-origin: center; /* Анимация масштабирования от центра */
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1); /* Эффектная анимация появления */
+}
+
+/* Эффекты при наведении на заголовок */
+.site-title-link:hover {
+    /* Увеличиваем межбуквенное расстояние для эффекта "воздушности"
+       Исходный letter-spacing у .site-title: 1px. */
+    letter-spacing: 1.8px; 
+}
+
+.site-title-link:hover .title-separator {
+    color: #E67E22; /* Сепараторы становятся акцентного оранжевого цвета */
+}
+
+.site-title-link:hover::after {
+    transform: scaleX(1); /* Линия "раскрывается" до полной ширины (заданной в width) */
+}
+
+
 .nav-button {
     background-color: #D2B48C; /* #FF8C69 цвета, можно изменить */
     color: white;
@@ -72,7 +119,7 @@ body {
     border-radius: 20px; /* Овальная форма */
     font-weight: 500;
     font-size: 0.9em;
-   transition: background-color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: background-color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     border: 2px solid transparent; /* Прозрачная рамка для плавности */
     white-space: nowrap; 
 }
@@ -84,7 +131,7 @@ body {
 .nav-button.active {
     background-color: #C1A37E;
     border: 2px solid #FFFFFF;
-    bbox-shadow: 0 0 8px rgba(210, 180, 140, 0.7);
+    box-shadow: 0 0 8px rgba(210, 180, 140, 0.7); /* Исправлена опечатка bbox-shadow на box-shadow */
 }
 
 /* 
