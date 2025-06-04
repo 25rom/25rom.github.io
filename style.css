@@ -69,10 +69,10 @@ body {
     text-decoration: none;
     color: #A0522D; /* Светло-коричневый, "сиена" - для "светлого тона" */
     position: relative; /* Необходимо для позиционирования псевдоэлемента ::after */
-    display: inline-block; 
+    display: inline-block;
     padding-bottom: 8px; /* Место для линии подчеркивания, чтобы текст не "прыгал" */
     transition: letter-spacing 0.3s ease-out, color 0.3s ease-out;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .site-title-link .title-separator {
@@ -119,7 +119,7 @@ body {
     font-size: 0.9em;
     transition: background-color 0.2s, transform 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border: 1.5px solid #D7CCC8; /* Светлая, едва заметная рамка */
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .nav-button:hover {
@@ -137,29 +137,15 @@ body {
     box-shadow: 0 0 8px rgba(121, 85, 72, 0.2); /* Тень для выделения */
 }
 
-/* Если у .panel-values (кнопка "ЦЕННОСТИ") должны быть другие стили, их можно раскомментировать и настроить */
-/*
-.panel-values {
-    background-color: #8FBC8F; 
-}
-.panel-values:hover {
-    background-color: #79A879;
-}
-.panel-values.active {
-     background-color: #79A879;
-     border-color: #FFFFFF;
-}
-*/
-
 /* Надпись "Кликни тег чтобы" */
 .tag-prompt {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.1em; 
+    font-size: 1.1em;
     font-weight: 600;
     color: #E67E22;
-    margin-bottom: 15px; 
-    text-align: left; 
-    padding-left: 10px; 
+    margin-bottom: 15px;
+    text-align: left;
+    padding-left: 10px;
     -webkit-text-stroke: 1px #8B4513;
     text-stroke: 1px #8B4513;
     paint-order: stroke fill;
@@ -228,7 +214,8 @@ body {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    padding-top: 50px;
+    padding-top: 50px; /* Оставляем место для верхних элементов */
+    padding-bottom: 40px; /* Добавляем место для нижнего элемента с временем */
     text-align: center;
     text-decoration: none;
     color: #333;
@@ -236,7 +223,7 @@ body {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Распределяем пространство, чтобы h3 был внизу, если есть место */
     min-height: 150px;
     position: relative;
 }
@@ -248,8 +235,8 @@ body {
     font-size: 1.4em;
     font-weight: 500;
     margin: 0;
-    margin-top: auto; 
-    padding-top: 10px; 
+    margin-top: auto;
+    padding-top: 10px;
 }
 .pranayama-top-info {
     position: absolute;
@@ -268,10 +255,11 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-.label-basic { background-color: #808000; } 
-.label-balancing { background-color: #40E0D0; } 
-.label-activating { background-color: #FFA500; } 
+.label-basic { background-color: #808000; }
+.label-balancing { background-color: #40E0D0; }
+.label-activating { background-color: #FFA500; }
 .label-calming { background-color: #B0C4DE; }
+
 .level-indicator {
     position: relative;
     display: inline-flex;
@@ -280,7 +268,7 @@ body {
 }
 .level-icon { font-size: 1.2em; line-height: 1; }
 .level-tooltip-text {
-    visibility: hidden; opacity: 0; width: 260px; background-color: #444; 
+    visibility: hidden; opacity: 0; width: 260px; background-color: #444;
     color: #fff; text-align: left; border-radius: 6px; padding: 10px 15px;
     position: absolute; z-index: 11; bottom: 140%; left: 50%;
     transform: translateX(-50%);
@@ -289,6 +277,7 @@ body {
 }
 .level-tooltip-text strong { color: #FFD700; display: block; margin-bottom: 5px; }
 .level-indicator:hover .level-tooltip-text { visibility: visible; opacity: 1; }
+
 .tooltip-icon-container { position: absolute; top: 15px; right: 15px; cursor: pointer; }
 .tooltip-icon {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
@@ -296,20 +285,91 @@ body {
     line-height: 22px; font-size: 0.9em; font-weight: bold; transition: background-color 0.2s;
 }
 .tooltip-icon-container:hover .tooltip-icon { background-color: #777; }
+
+/* Улучшенные стили для всплывающего окна */
 .tooltip-text {
-    visibility: hidden; opacity: 0; width: 280px; background-color: #333;
-    color: #fff; text-align: left; border-radius: 6px; padding: 15px;
-    position: absolute; z-index: 10; bottom: 125%; right: 0; 
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-size: 0.85em; line-height: 1.5;
+    visibility: hidden; opacity: 0;
+    width: 320px; /* Было 280px, делаем шире */
+    background-color: #3f3f3f; /* Немного светлее #333 */
+    color: #f0f0f0; /* Светлый текст для лучшей читаемости */
+    text-align: left;
+    border-radius: 8px; /* Более скругленные углы */
+    padding: 20px; /* Было 15px, больше "воздуха" */
+    position: absolute; z-index: 10;
+    bottom: 130%; /* Немного выше из-за увеличенного размера и стрелки */
+    right: 0;
+    transition: opacity 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Улучшенная тень */
+    font-size: 0.9em; /* Было 0.85em, чуть крупнее текст */
+    line-height: 1.7; /* Было 1.5, для лучшей читаемости */
+    transform: translateY(10px); /* Начальное положение для анимации "всплытия" */
 }
-.tooltip-text strong { color: #FFA500; display: block; margin-bottom: 8px; }
-.tooltip-icon-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+.tooltip-icon-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Возвращаем на место при появлении */
+}
+
+.tooltip-text strong { /* Заголовок РЕЗУЛЬТАТ ОТ ПРАКТИКИ */
+    color: #FFC107; /* Яркий желтый, хорошо контрастирует на темном фоне */
+    display: block;
+    margin-bottom: 12px; /* Было 8px, больше отступ */
+    font-size: 1.1em; /* Чуть крупнее относительно основного текста тултипа */
+    border-bottom: 1px solid #555; /* Декоративная линия-разделитель */
+    padding-bottom: 8px; /* Отступ для линии */
+}
+
+.tooltip-text p {
+    margin-bottom: 10px; /* Отступ между абзацами с результатами */
+}
+.tooltip-text p:last-child {
+    margin-bottom: 0; /* Убираем отступ у последнего абзаца */
+}
+
+/* Стрелка-указатель для тултипа */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Располагаем стрелку на нижней границе тултипа */
+    right: 15px; /* Позиционируем относительно правого края, где иконка ⓘ */
+    border-width: 7px; /* Размер стрелки */
+    border-style: solid;
+    border-color: #3f3f3f transparent transparent transparent; /* Цвет стрелки совпадает с фоном тултипа */
+}
+
+
 .pranayama-block.filtered-out {
-    opacity: 0.25; 
+    opacity: 0.25;
     pointer-events: none;
     transform: scale(0.95) translateY(0);
 }
+
+/* Стили для иконки времени и текста */
+.pranayama-duration {
+    position: absolute;
+    bottom: 15px; /* Отступ снизу */
+    left: 15px;   /* Отступ слева */
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    color: #666; /* Цвет текста времени, чуть темнее */
+    background-color: rgba(255, 255, 255, 0.7); /* Легкий фон для читаемости поверх картинки, если будет */
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.duration-icon {
+    margin-right: 5px; /* Отступ между иконкой и текстом */
+    font-size: 1.1em; /* Размер иконки чуть больше текста */
+    line-height: 1; /* Для лучшего вертикального выравнивания */
+}
+.duration-text {
+    font-weight: 500;
+}
+
 
 /* Стили для контентных страниц (friends.html, projects.html, 101.html) */
 .content-page {
@@ -417,6 +477,7 @@ footer {
     .tag-prompt { text-align: center; margin-top: 10px; }
     .pranayama-content h2, .content-page h2 { font-size: 1.8em; }
     .pranayama-grid, .content-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .tooltip-text { width: calc(100vw - 60px); max-width: 300px; /* Адаптация ширины тултипа */ }
 }
 
 @media (max-width: 480px) {
@@ -431,4 +492,5 @@ footer {
     .pranayama-top-info { top: 10px; left: 10px; gap: 6px;}
     .tooltip-icon-container { top: 10px; right: 10px; }
     .tooltip-text, .level-tooltip-text { width: calc(100vw - 40px); max-width: 250px; }
+    .pranayama-duration { bottom: 10px; left: 10px; font-size: 0.75em; }
 }
