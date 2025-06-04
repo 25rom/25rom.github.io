@@ -291,7 +291,7 @@ body {
 /* Улучшенные стили для всплывающего окна */
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 280px; /* ИЗМЕНЕНИЕ: было 320px */
+   /* width: 280px; /* ИЗМЕНЕНИЕ: было 320px */
     background-color: #3f3f3f;
     color: #f0f0f0;
     text-align: left;
@@ -326,6 +326,10 @@ body {
 
 .tooltip-text p {
     margin-bottom: 8px; /* ИЗМЕНЕНИЕ: было 10px */
+    white-space: nowrap;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
 }
 .tooltip-text p:last-child {
     margin-bottom: 0;
