@@ -68,9 +68,9 @@ body {
 .site-title-link {
     text-decoration: none;
     color: #A0522D; /* Светло-коричневый, "сиена" - для "светлого тона" */
-    position: relative;
+    position: relative; /* Необходимо для позиционирования псевдоэлемента ::after */
     display: inline-block; 
-    /* padding-bottom: 8px; Убрано, так как нет подчеркивания */
+    padding-bottom: 8px; /* Место для линии подчеркивания, чтобы текст не "прыгал" */
     transition: letter-spacing 0.3s ease-out, color 0.3s ease-out;
     cursor: pointer; 
 }
@@ -80,19 +80,32 @@ body {
     transition: color 0.3s ease-out;
 }
 
-/* Убираем псевдоэлемент для подчеркивания */
+/* Линия подчеркивания при наведении */
 .site-title-link::after {
-    display: none; /* Подчеркивание убрано */
+    content: '';
+    position: absolute;
+    left: 10%; /* Начало линии с отступом от края текста */
+    width: 80%; /* Ширина линии (не на всю длину, для "воздушности") */
+    bottom: 0; /* Расположение линии под текстом (учитывая padding-bottom) */
+    height: 1.5px; /* Толщина линии */
+    background-color: #E67E22; /* Цвет линии (акцентный оранжевый) */
+    transform: scaleX(0); /* Изначально линия "сжата" (невидима) */
+    transform-origin: center; /* Анимация масштабирования от центра */
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1); /* Эффектная анимация появления */
 }
 
 /* Эффекты при наведении на заголовок */
 .site-title-link:hover {
     letter-spacing: 1.8px; /* Увеличиваем межбуквенное расстояние */
-    color: #E67E22; /* Основной текст заголовка становится ярче при наведении (акцентный оранжевый) */
+    color: #E67E22; /* Основной текст заголовка становится ярче при наведении */
 }
 
 .site-title-link:hover .title-separator {
-    color: #FFB74D; /* Сепараторы тоже становятся ярче, но чуть мягче основного текста при наведении */
+    color: #FFB74D; /* Сепараторы тоже становятся ярче */
+}
+
+.site-title-link:hover::after {
+    transform: scaleX(1); /* Линия "раскрывается" до полной ширины */
 }
 
 /* Кнопки навигации */
