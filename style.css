@@ -65,29 +65,29 @@ body {
 }
 
 .nav-button {
-    background-color: #FF8C69; /* Пример цвета, можно изменить */
+    background-color: #D2B48C; /* #FF8C69 цвета, можно изменить */
     color: white;
     padding: 8px 18px;
     text-decoration: none;
     border-radius: 20px; /* Овальная форма */
     font-weight: 500;
     font-size: 0.9em;
-    transition: background-color 0.2s, transform 0.2s;
-    border: 2px solid transparent;
-    white-space: nowrap; /* Чтобы текст не переносился */
+   transition: background-color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent; /* Прозрачная рамка для плавности */
+    white-space: nowrap; 
 }
 
 .nav-button:hover {
-    background-color: #FF7043; /* Чуть темнее при наведении */
+    background-color: #C1A37E; /* Чуть темнее при наведении */
     transform: translateY(-1px);
 }
 .nav-button.active {
-    background-color: #FF7043;
-    border: 2px solid #FFF;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: #C1A37E;
+    border: 2px solid #FFFFFF;
+    bbox-shadow: 0 0 8px rgba(210, 180, 140, 0.7);
 }
 
-
+/* 
 .panel-101 {
    /* Стили для панели 101, если нужны особые */
    background-color: #6CA6CD; /* Другой цвет для примера */
@@ -105,17 +105,22 @@ body {
 .panel-values:hover {
     background-color: #79A879;
 }
+*/
 
 
 /* Надпись "Кликни тег чтобы" */
 .tag-prompt {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.1em; /* Размер */
-    font-weight: 500;
-    color: #E67E22; /* Яркий цвет */
-    margin-bottom: 15px; /* Отступ до тегов */
-    text-align: left; /* Слева, как на скриншоте */
-    padding-left: 10px; /* Небольшой отступ слева */
+    font-size: 1.1em; 
+    font-weight: 600; /* Можно сделать чуть жирнее для лучшего эффекта с обводкой */
+    color: #E67E22; /* Яркий оранжевый цвет текста */
+    margin-bottom: 15px; 
+    text-align: left; 
+    padding-left: 10px; 
+    -webkit-text-stroke: 1px #8B4513; /* Обводка: 1px толщиной, темно-коричневый цвет (SaddleBrown) */
+    text-stroke: 1px #8B4513; /* Стандартное свойство (меньшая поддержка браузерами) */
+    paint-order: stroke fill; /* Гарантирует, что обводка рисуется под заливкой текста */
+    letter-spacing: 0.5px; /* Небольшое увеличение межбуквенного расстояния для читаемости с обводкой */
 }
 
 
