@@ -15,7 +15,8 @@ body {
     color: #4A4A4A;
     background: linear-gradient(135deg, #FFF0E0 0%, #FFFAF0 100%);
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Чтобы footer был внизу, если контента мало */
+    align-items: center; /* Центрируем .container */
     min-height: 100vh;
     padding: 20px;
 }
@@ -24,37 +25,114 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Чтобы .container занимал доступную высоту */
 }
 
-/* Заголовок сайта */
+/* Заголовок сайта и верхняя навигация */
 .site-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* Уменьшил отступ, так как теги ниже */
+    width: 100%;
 }
 
-.site-header h1 {
-    font-size: 2.5em;
+.top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px; /* Отступ до надписи "кликни тег" или до тегов */
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+.nav-group-left,
+.nav-group-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между кнопками в группе */
+}
+
+.site-title { /* Заголовок "ДЫХАНИЕ..." */
+    font-size: 2em; /* Можно настроить */
     color: #333;
-    margin-bottom: 20px;
     font-weight: 600;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
+    margin: 0 15px; /* Отступы по бокам, чтобы не прилипал */
+    flex-grow: 1; /* Позволит заголовку занимать центральное место */
+    text-align: center; /* Убедимся, что текст заголовка центрирован */
+    min-width: 200px; /* Чтобы заголовок не схлопывался слишком сильно */
 }
 
-/* Навигация по тегам */
+.nav-button {
+    background-color: #FF8C69; /* Пример цвета, можно изменить */
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    border-radius: 20px; /* Овальная форма */
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: background-color 0.2s, transform 0.2s;
+    border: 2px solid transparent;
+    white-space: nowrap; /* Чтобы текст не переносился */
+}
+
+.nav-button:hover {
+    background-color: #FF7043; /* Чуть темнее при наведении */
+    transform: translateY(-1px);
+}
+.nav-button.active {
+    background-color: #FF7043;
+    border: 2px solid #FFF;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+
+.panel-101 {
+   /* Стили для панели 101, если нужны особые */
+   background-color: #6CA6CD; /* Другой цвет для примера */
+}
+.panel-101:hover {
+    background-color: #5A90B6;
+}
+.panel-101.active {
+    background-color: #5A90B6;
+}
+
+.panel-values {
+    background-color: #8FBC8F; /* Еще один цвет */
+}
+.panel-values:hover {
+    background-color: #79A879;
+}
+
+
+/* Надпись "Кликни тег чтобы" */
+.tag-prompt {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em; /* Размер */
+    font-weight: 500;
+    color: #E67E22; /* Яркий цвет */
+    margin-bottom: 15px; /* Отступ до тегов */
+    text-align: left; /* Слева, как на скриншоте */
+    padding-left: 10px; /* Небольшой отступ слева */
+}
+
+
+/* Навигация по тегам (стили из предыдущей версии) */
 .tags-navigation {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px 15px;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Отступ до карточек пранаям */
 }
 
 .tag {
     background-color: var(--tag-color, #E0E0E0);
-    color: #fff; /* Текст тегов всегда белый */
+    color: #fff;
     padding: 10px 20px;
-    border: 3px solid transparent; /* Добавим прозрачную рамку для плавного перехода */
+    border: 3px solid transparent;
     border-radius: 25px;
     cursor: pointer;
     font-size: 0.9em;
@@ -69,28 +147,23 @@ body {
 }
 
 .tag.active {
-    border: 3px solid #FFFFFF; /* Белая рамка */
-    box-shadow: 0 0 10px var(--tag-color, #777), 0 0 5px rgba(0,0,0,0.3); /* Тень от цвета тега + общая тень */
-    filter: brightness(1.1); /* Немного ярче при активации */
-    transform: scale(1.03); /* Небольшое увеличение */
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 10px var(--tag-color, #777), 0 0 5px rgba(0,0,0,0.3);
+    filter: brightness(1.1);
+    transform: scale(1.03);
 }
-
 .tag.reset-filter {
     background-color: #777;
     color: white;
-    border-color: transparent; /* Убираем особую рамку для кнопки сброса */
+    border-color: transparent;
 }
 .tag.reset-filter:hover {
      background-color: #555;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Стандартная тень при наведении */
-}
-.tag.reset-filter.active { /* Если вдруг решим ее тоже подсвечивать */
-    border: 3px solid #FFFFFF;
-    box-shadow: 0 0 10px #555, 0 0 5px rgba(0,0,0,0.3);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 
-/* Контент с пранаямами */
+/* Контент с пранаямами (index.html) */
 .pranayama-content h2 {
     text-align: center;
     font-size: 2em;
@@ -108,25 +181,23 @@ body {
 .pranayama-block {
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 20px; /* Общий padding */
-    padding-top: 50px; /* Больше отступ сверху для лейблов и иконок */
+    padding: 20px;
+    padding-top: 50px;
     text-align: center;
     text-decoration: none;
     color: #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Увеличена длительность transition */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Центрирует h3, если блок выше минимальной высоты */
+    justify-content: center;
     min-height: 150px;
     position: relative;
 }
-
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-
 .pranayama-block h3 {
     font-size: 1.4em;
     font-weight: 500;
@@ -134,8 +205,6 @@ body {
     margin-top: auto; 
     padding-top: 10px; 
 }
-
-/* Контейнер для лейбла класса и иконки уровня */
 .pranayama-top-info {
     position: absolute;
     top: 15px;
@@ -144,8 +213,6 @@ body {
     align-items: center;
     gap: 8px;
 }
-
-/* Лейбл класса пранаямы */
 .pranayama-class-label {
     padding: 4px 10px;
     font-size: 0.75em;
@@ -155,161 +222,207 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
 .label-basic { background-color: #808000; } 
 .label-balancing { background-color: #40E0D0; } 
 .label-activating { background-color: #FFA500; } 
 .label-calming { background-color: #B0C4DE; }
-
-
-/* Индикатор уровня сложности (иконка + тултип) */
 .level-indicator {
     position: relative;
     display: inline-flex;
     align-items: center;
     cursor: default;
 }
-
-.level-icon {
-    font-size: 1.2em; 
-    line-height: 1; 
-}
-
+.level-icon { font-size: 1.2em; line-height: 1; }
 .level-tooltip-text {
-    visibility: hidden;
-    opacity: 0;
-    width: 260px;
-    background-color: #444; 
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 10px 15px;
-    position: absolute;
-    z-index: 11; 
-    bottom: 140%; 
-    left: 50%;
+    visibility: hidden; opacity: 0; width: 260px; background-color: #444; 
+    color: #fff; text-align: left; border-radius: 6px; padding: 10px 15px;
+    position: absolute; z-index: 11; bottom: 140%; left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    font-size: 0.8em;
-    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-size: 0.8em; line-height: 1.5;
 }
-.level-tooltip-text strong {
-    color: #FFD700; 
-    display: block;
-    margin-bottom: 5px;
-}
-
-.level-indicator:hover .level-tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/* Общая информация (иконка ⓘ и всплывающее окно) */
-.tooltip-icon-container {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    cursor: pointer;
-}
-
+.level-tooltip-text strong { color: #FFD700; display: block; margin-bottom: 5px; }
+.level-indicator:hover .level-tooltip-text { visibility: visible; opacity: 1; }
+.tooltip-icon-container { position: absolute; top: 15px; right: 15px; cursor: pointer; }
 .tooltip-icon {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #A0A0A0;
-    color: white;
-    text-align: center;
-    line-height: 22px;
-    font-size: 0.9em;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    display: inline-block; width: 22px; height: 22px; border-radius: 50%;
+    background-color: #A0A0A0; color: white; text-align: center;
+    line-height: 22px; font-size: 0.9em; font-weight: bold; transition: background-color 0.2s;
 }
-.tooltip-icon-container:hover .tooltip-icon {
-    background-color: #777;
-}
-
+.tooltip-icon-container:hover .tooltip-icon { background-color: #777; }
 .tooltip-text {
-    visibility: hidden;
-    opacity: 0;
-    width: 280px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 15px;
-    position: absolute;
-    z-index: 10;
-    bottom: 125%; 
-    right: 0; 
+    visibility: hidden; opacity: 0; width: 280px; background-color: #333;
+    color: #fff; text-align: left; border-radius: 6px; padding: 15px;
+    position: absolute; z-index: 10; bottom: 125%; right: 0; 
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    font-size: 0.85em;
-    line-height: 1.5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-size: 0.85em; line-height: 1.5;
 }
-.tooltip-text strong {
-    color: #FFA500;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.tooltip-icon-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Стили для фильтрации */
+.tooltip-text strong { color: #FFA500; display: block; margin-bottom: 8px; }
+.tooltip-icon-container:hover .tooltip-text { visibility: visible; opacity: 1; }
 .pranayama-block.filtered-out {
     opacity: 0.25; 
     pointer-events: none;
-    transform: scale(0.95) translateY(0); /* Убираем translateY если был на :hover */
+    transform: scale(0.95) translateY(0);
+}
+
+
+/* Стили для контентных страниц (friends.html, projects.html, 101.html) */
+.content-page {
+    padding: 20px 0;
+    flex-grow: 1; /* Чтобы main занимал место до футера */
+}
+.content-page h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.content-block {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px; /* Минимальная высота карточки */
+}
+
+.content-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.content-block h3 {
+    font-size: 1.3em;
+    font-weight: 500;
+    margin: 0;
+}
+/* Кнопки контактов в футере */
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Расстояние между кнопками */
+    margin-bottom: 15px; /* Отступ до текста копирайта */
+}
+
+.contact-button {
+    display: inline-flex; /* Для выравнивания иконки внутри */
+    align-items: center;
+    justify-content: center;
+    width: 44px; /* Размер кнопки */
+    height: 44px; /* Размер кнопки */
+    border-radius: 50%; /* Круглая форма */
+    color: white; /* Цвет иконки */
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.contact-button svg {
+    width: 22px; /* Размер иконки внутри кнопки */
+    height: 22px;
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Цвета для кнопок */
+.contact-telegram {
+    background-color: #0088cc; /* Фирменный цвет Telegram (примерный) */
+}
+.contact-telegram:hover {
+    background-color: #0077b3;
+}
+
+.contact-email {
+    background-color: #c71610; /* Примерный цвет для email, можно взять из вашей палитры */
+    /* Например, если вы хотите один из "теплых оранжевых": */
+    /* background-color: #FF8C69; */
+}
+.contact-email:hover {
+    background-color: #b3120e;
+    /* background-color: #FF7043; */
 }
 
 /* Подвал */
 footer {
     text-align: center;
-    margin-top: 50px;
-    padding: 20px 0;
+    margin-top: auto; /* Прижимает футер к низу, если .container flex-grow:1 */
+    padding: 30px 0 10px 0; /* Отступ сверху, меньше снизу */
     color: #777;
     font-size: 0.9em;
     border-top: 1px solid #eee;
+    width: 100%; /* Чтобы занимал всю ширину .container */
 }
 
 /* Адаптивность */
+@media (max-width: 992px) {
+    .site-title {
+        font-size: 1.8em;
+    }
+    .nav-button {
+        padding: 7px 15px;
+        font-size: 0.85em;
+    }
+}
+
+
 @media (max-width: 768px) {
-    .site-header h1 { font-size: 2em; }
-    .pranayama-content h2 { font-size: 1.8em; }
-    .tag { padding: 8px 15px; font-size: 0.85em; }
-    .pranayama-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .pranayama-block h3 { font-size: 1.2em; }
-    .tooltip-text, .level-tooltip-text { width: 240px; }
+    .top-nav-bar {
+        flex-direction: column; /* Кнопки и заголовок друг под другом */
+        gap: 15px;
+    }
+    .nav-group-left,
+    .nav-group-right {
+        width: 100%;
+        justify-content: center; /* Центрируем группы кнопок */
+    }
+    .site-title {
+        font-size: 1.9em; /* Можно сделать чуть больше, т.к. теперь одна строка */
+        margin-bottom: 10px;
+        order: -1; /* Помещаем заголовок сверху на мобильных */
+    }
+     .tag-prompt {
+        text-align: center; /* Центрируем на мобильных */
+        margin-top: 10px;
+    }
+    .pranayama-content h2, .content-page h2 { font-size: 1.8em; }
+    .pranayama-grid, .content-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 }
 
 @media (max-width: 480px) {
-    body { padding: 15px; }
-    .site-header h1 { font-size: 1.6em; line-height: 1.3; }
-    .pranayama-content h2 { font-size: 1.5em; }
-    .tags-navigation { gap: 8px 10px; }
+    body { padding: 10px; }
+    .site-title { font-size: 1.5em; }
+    .nav-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+    .nav-group-left, .nav-group-right {
+        flex-wrap: wrap; /* Позволяем кнопкам переноситься, если не влезают */
+        gap: 8px;
+    }
+    .tag-prompt { font-size: 1em; }
     .tag { padding: 7px 12px; font-size: 0.8em; }
-    .pranayama-grid { gap: 15px; }
-    .pranayama-block { min-height: 140px; padding: 15px; padding-top: 50px; }
-    .pranayama-block h3 { font-size: 1.1em; }
+    .pranayama-block, .content-block { min-height: 100px; }
+    .pranayama-block h3, .content-block h3 { font-size: 1.1em; }
     
     .pranayama-top-info { top: 10px; left: 10px; gap: 6px;}
-    .pranayama-class-label { font-size: 0.7em; padding: 3px 7px; }
-    .level-icon { font-size: 1.1em; }
     .tooltip-icon-container { top: 10px; right: 10px; }
-
-    .tooltip-text, .level-tooltip-text {
-        width: calc(100vw - 40px); 
-        max-width: 250px;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        bottom: calc(100% + 10px); 
-    }
-    .level-tooltip-text { font-size: 0.75em; }
-    .tooltip-text { font-size: 0.8em; }
+    .tooltip-text, .level-tooltip-text { width: calc(100vw - 40px); max-width: 250px; }
 }
