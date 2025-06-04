@@ -291,7 +291,7 @@ body {
 
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 280px;
+    /* width: 280px;  */ ИЗМЕНИЛ ТУТ
     background-color: #3f3f3f;
     color: #f0f0f0;
     text-align: left;
