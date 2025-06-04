@@ -54,9 +54,8 @@ body {
 
 .site-title { /* Родительский H1 */
     font-size: 2em;
-    /* Цвет теперь управляется через .site-title-link */
     font-weight: 600;
-    letter-spacing: 1px; /* Базовое межбуквенное расстояние, будет меняться при наведении на ссылку */
+    letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
     margin: 0 15px;
     flex-grow: 1;
@@ -64,80 +63,75 @@ body {
     min-width: 200px;
 }
 
-/* Стили для кликабельного заголовка сайта */
 .site-title-link {
     text-decoration: none;
-    color: #A0522D; /* Светло-коричневый, "сиена" - для "светлого тона" */
-    position: relative; /* Необходимо для позиционирования псевдоэлемента ::after */
+    color: #A0522D;
+    position: relative;
     display: inline-block;
-    padding-bottom: 8px; /* Место для линии подчеркивания, чтобы текст не "прыгал" */
+    padding-bottom: 8px;
     transition: letter-spacing 0.3s ease-out, color 0.3s ease-out;
     cursor: pointer;
 }
 
 .site-title-link .title-separator {
-    color: #BCAAA4; /* Нейтральный, чуть более светлый цвет для разделителей */
+    color: #BCAAA4;
     transition: color 0.3s ease-out;
 }
 
-/* Линия подчеркивания при наведении */
 .site-title-link::after {
     content: '';
     position: absolute;
-    left: 10%; /* Начало линии с отступом от края текста */
-    width: 80%; /* Ширина линии (не на всю длину, для "воздушности") */
-    bottom: 0; /* Расположение линии под текстом (учитывая padding-bottom) */
-    height: 1.5px; /* Толщина линии */
-    background-color: #E67E22; /* Цвет линии (акцентный оранжевый) */
-    transform: scaleX(0); /* Изначально линия "сжата" (невидима) */
-    transform-origin: center; /* Анимация масштабирования от центра */
-    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1); /* Эффектная анимация появления */
+    left: 10%;
+    width: 80%;
+    bottom: 0;
+    height: 1.5px;
+    background-color: #E67E22;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Эффекты при наведении на заголовок */
 .site-title-link:hover {
-    letter-spacing: 1.8px; /* Увеличиваем межбуквенное расстояние */
-    color: #E67E22; /* Основной текст заголовка становится ярче при наведении */
+    letter-spacing: 1.8px;
+    color: #E67E22;
 }
 
 .site-title-link:hover .title-separator {
-    color: #FFB74D; /* Сепараторы тоже становятся ярче */
+    color: #FFB74D;
 }
 
 .site-title-link:hover::after {
-    transform: scaleX(1); /* Линия "раскрывается" до полной ширины */
+    transform: scaleX(1);
 }
 
-/* Кнопки навигации */
 .nav-button {
-    background-color: #FFFFFF; /* Белый фон для кнопок */
-    color: #8D6E63; /* Мягкий коричнево-серый цвет текста, сочетается с заголовком */
+    background-color: #FFFFFF;
+    color: #8D6E63;
     padding: 8px 18px;
     text-decoration: none;
     border-radius: 20px;
     font-weight: 500;
     font-size: 0.9em;
     transition: background-color 0.2s, transform 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    border: 1.5px solid #D7CCC8; /* Светлая, едва заметная рамка */
+    border: 1.5px solid #D7CCC8;
     white-space: nowrap;
 }
 
 .nav-button:hover {
-    background-color: #F5F5F5; /* Очень светло-серый фон при наведении */
-    color: #795548; /* Текст чуть темнее при наведении */
-    border-color: #BCAAA4; /* Рамка чуть заметнее */
+    background-color: #F5F5F5;
+    color: #795548;
+    border-color: #BCAAA4;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .nav-button.active {
-    background-color: #E0E0E0; /* Более темный серый фон для активной кнопки */
-    color: #6D4C41; /* Более насыщенный коричневый текст для активной кнопки */
-    border: 1.5px solid #795548; /* Рамка в цвет текста при наведении */
-    box-shadow: 0 0 8px rgba(121, 85, 72, 0.2); /* Тень для выделения */
+    background-color: #E0E0E0;
+    color: #6D4C41;
+    border: 1.5px solid #795548;
+    box-shadow: 0 0 8px rgba(121, 85, 72, 0.2);
 }
 
-/* Надпись "Кликни тег чтобы" */
 .tag-prompt {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -152,7 +146,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Навигация по тегам */
 .tags-navigation {
     display: flex;
     flex-wrap: wrap;
@@ -213,9 +206,11 @@ body {
 .pranayama-block {
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 20px;
-    padding-top: 50px; /* Оставляем место для верхних элементов */
-    padding-bottom: 40px; /* Добавляем место для нижнего элемента с временем */
+    /* padding: 20px; -- Заменено на раздельные padding */
+    padding-left: 20px; /* Отступ слева */
+    padding-right: 20px; /* Отступ справа */
+    padding-top: 50px; /* Место для верхних элементов */
+    padding-bottom: 40px; /* Место для нижнего элемента с временем */
     text-align: center;
     text-decoration: none;
     color: #333;
@@ -223,8 +218,8 @@ body {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Распределяем пространство, чтобы h3 был внизу, если есть место */
-    min-height: 150px;
+    justify-content: center; /* ИЗМЕНЕНО: для вертикального центрирования h3 */
+    min-height: 170px; /* ИЗМЕНЕНО: увеличена минимальная высота */
     position: relative;
 }
 .pranayama-block:hover {
@@ -234,9 +229,7 @@ body {
 .pranayama-block h3 {
     font-size: 1.4em;
     font-weight: 500;
-    margin: 0;
-    margin-top: auto;
-    padding-top: 10px;
+    margin: 0; /* ИЗМЕНЕНО: убраны margin-top: auto и padding-top */
 }
 .pranayama-top-info {
     position: absolute;
@@ -245,6 +238,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
 }
 .pranayama-class-label {
     padding: 4px 10px;
@@ -278,7 +272,13 @@ body {
 .level-tooltip-text strong { color: #FFD700; display: block; margin-bottom: 5px; }
 .level-indicator:hover .level-tooltip-text { visibility: visible; opacity: 1; }
 
-.tooltip-icon-container { position: absolute; top: 15px; right: 15px; cursor: pointer; }
+.tooltip-icon-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
+}
 .tooltip-icon {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
     background-color: #A0A0A0; color: white; text-align: center;
@@ -289,55 +289,54 @@ body {
 /* Улучшенные стили для всплывающего окна */
 .tooltip-text {
     visibility: hidden; opacity: 0;
-    width: 320px; /* Было 280px, делаем шире */
-    background-color: #3f3f3f; /* Немного светлее #333 */
-    color: #f0f0f0; /* Светлый текст для лучшей читаемости */
+    width: 320px;
+    background-color: #3f3f3f;
+    color: #f0f0f0;
     text-align: left;
-    border-radius: 8px; /* Более скругленные углы */
-    padding: 20px; /* Было 15px, больше "воздуха" */
+    border-radius: 8px;
+    padding: 20px;
     position: absolute; z-index: 10;
-    bottom: 130%; /* Немного выше из-за увеличенного размера и стрелки */
+    bottom: 130%;
     right: 0;
     transition: opacity 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 visibility 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
                 transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Улучшенная тень */
-    font-size: 0.9em; /* Было 0.85em, чуть крупнее текст */
-    line-height: 1.7; /* Было 1.5, для лучшей читаемости */
-    transform: translateY(10px); /* Начальное положение для анимации "всплытия" */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    font-size: 0.9em;
+    line-height: 1.7;
+    transform: translateY(10px);
 }
 
 .tooltip-icon-container:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0); /* Возвращаем на место при появлении */
+    transform: translateY(0);
 }
 
-.tooltip-text strong { /* Заголовок РЕЗУЛЬТАТ ОТ ПРАКТИКИ */
-    color: #FFC107; /* Яркий желтый, хорошо контрастирует на темном фоне */
+.tooltip-text strong {
+    color: #FFC107;
     display: block;
-    margin-bottom: 12px; /* Было 8px, больше отступ */
-    font-size: 1.1em; /* Чуть крупнее относительно основного текста тултипа */
-    border-bottom: 1px solid #555; /* Декоративная линия-разделитель */
-    padding-bottom: 8px; /* Отступ для линии */
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 8px;
 }
 
 .tooltip-text p {
-    margin-bottom: 10px; /* Отступ между абзацами с результатами */
+    margin-bottom: 10px;
 }
 .tooltip-text p:last-child {
-    margin-bottom: 0; /* Убираем отступ у последнего абзаца */
+    margin-bottom: 0;
 }
 
-/* Стрелка-указатель для тултипа */
 .tooltip-text::after {
     content: "";
     position: absolute;
-    top: 100%; /* Располагаем стрелку на нижней границе тултипа */
-    right: 15px; /* Позиционируем относительно правого края, где иконка ⓘ */
-    border-width: 7px; /* Размер стрелки */
+    top: 100%;
+    right: 15px;
+    border-width: 7px;
     border-style: solid;
-    border-color: #3f3f3f transparent transparent transparent; /* Цвет стрелки совпадает с фоном тултипа */
+    border-color: #3f3f3f transparent transparent transparent;
 }
 
 
@@ -350,21 +349,22 @@ body {
 /* Стили для иконки времени и текста */
 .pranayama-duration {
     position: absolute;
-    bottom: 15px; /* Отступ снизу */
-    left: 15px;   /* Отступ слева */
+    bottom: 15px;
+    left: 15px;
     display: flex;
     align-items: center;
     font-size: 0.8em;
-    color: #666; /* Цвет текста времени, чуть темнее */
-    background-color: rgba(255, 255, 255, 0.7); /* Легкий фон для читаемости поверх картинки, если будет */
-    padding: 3px 6px;
-    border-radius: 4px;
+    color: #555; /* ИЗМЕНЕНО: цвет текста */
+    background-color: rgba(240, 240, 240, 0.9); /* ИЗМЕНЕНО: фон */
+    padding: 5px 8px; /* ИЗМЕНЕНО: отступы */
+    border-radius: 6px; /* ИЗМЕНЕНО: скругление */
+    z-index: 5; /* ДОБАВЛЕНО: для корректного отображения слоев */
 }
 
 .duration-icon {
-    margin-right: 5px; /* Отступ между иконкой и текстом */
-    font-size: 1.1em; /* Размер иконки чуть больше текста */
-    line-height: 1; /* Для лучшего вертикального выравнивания */
+    margin-right: 6px; /* ИЗМЕНЕНО: отступ */
+    font-size: 1.1em;
+    line-height: 1;
 }
 .duration-text {
     font-weight: 500;
@@ -487,10 +487,10 @@ footer {
     .nav-group-left, .nav-group-right { flex-wrap: wrap; gap: 8px; }
     .tag-prompt { font-size: 1em; }
     .tag { padding: 7px 12px; font-size: 0.8em; }
-    .pranayama-block, .content-block { min-height: 100px; }
+    .pranayama-block, .content-block { min-height: 100px; } /* min-height для .pranayama-block здесь меньше, чем базовый 170px, это нормально */
     .pranayama-block h3, .content-block h3 { font-size: 1.1em; }
     .pranayama-top-info { top: 10px; left: 10px; gap: 6px;}
     .tooltip-icon-container { top: 10px; right: 10px; }
     .tooltip-text, .level-tooltip-text { width: calc(100vw - 40px); max-width: 250px; }
-    .pranayama-duration { bottom: 10px; left: 10px; font-size: 0.75em; }
+    .pranayama-duration { bottom: 10px; left: 10px; font-size: 0.75em; } /* Специфичные стили для малых экранов, они переопределят базовые */
 }
