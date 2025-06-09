@@ -535,7 +535,7 @@ footer {
 .chakra-info-container:hover .chakra-tooltip-text {
     visibility: visible;
     opacity: 1;
-    transform: translateX(50%) translateY(0); /* Конечное положение для анимации */
+    transform: translateY(0); /* ЧАКРА Конечное положение для анимации */
 }
 
 .chakra-tooltip-text strong {
@@ -543,8 +543,8 @@ footer {
     display: block;
     margin-bottom: 4px;
     font-size: 1.05em;
-    border-bottom: 1px solid #555;  /* ЧАКРА РАЗДЕЛИТЕЛЬ
     padding-bottom: 6px
+    border-bottom: 1px solid #555;  /* ЧАКРА РАЗДЕЛИТЕЛЬ
 }
 
 /* Маленькая стрелочка для тултипа, направленная вниз */
