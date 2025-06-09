@@ -1,5 +1,3 @@
-КОПИЯ CSS
-
 /* Общие стили и сброс */
 * {
     box-sizing: border-box;
@@ -486,6 +484,77 @@ footer {
     }
     .content-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .tooltip-text { width: calc(100vw - 60px) !important; max-width: 300px !important; }
+}
+/* Стили для иконки чакры (глаз) и ее тултипа */
+.chakra-info-container {
+    position: absolute; /* Позиционируем относительно родительского .pranayama-block */
+    bottom: 15px;       /* Отступ от нижнего края карточки (такой же как у pranayama-duration) */
+    right: 15px;        /* Отступ от правого края карточки */
+    z-index: 5;         /* Такой же z-index, как у других элементов на карточке */
+    cursor: default;    /* Или 'pointer', если хочешь, чтобы курсор менялся */
+}
+
+.chakra-eye-icon {
+    display: inline-block;
+    font-size: 1.5em; /* Размер иконки "глаз", подбери по вкусу */
+    line-height: 1;
+    /* Можно добавить цвет, если нужно, например: color: #795548; */
+    /* Можно добавить небольшой фон для лучшей видимости, если нужно */
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* border-radius: 50%; */
+    /* padding: 2px; */
+    transition: transform 0.2s;
+}
+
+.chakra-info-container:hover .chakra-eye-icon {
+    transform: scale(1.1); /* Небольшое увеличение иконки при наведении на контейнер */
+}
+
+.chakra-tooltip-text {
+    visibility: hidden; 
+    opacity: 0;
+    width: 200px; /* Ширина тултипа, можно настроить */
+    background-color: #3f3f3f; /* Такой же фон, как у других тултипов */
+    color: #f0f0f0;
+    text-align: left;
+    border-radius: 8px;
+    padding: 10px 15px;
+    position: absolute; 
+    z-index: 22; /* Выше, чем сама иконка, но ниже других возможных оверлеев, если есть */
+    bottom: 130%; /* Положение тултипа над иконкой */
+    right: 50%; /* Центрируем тултип относительно иконки */
+    transform: translateX(50%) translateY(10px); /* Начальное смещение для анимации */
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    font-size: 0.8em; /* Размер текста в тултипе */
+    line-height: 1.4;
+}
+
+.chakra-info-container:hover .chakra-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(50%) translateY(0); /* Конечное положение для анимации */
+}
+
+.chakra-tooltip-text strong {
+    color: #FFD700; /* Цвет для заголовка "ЧАКРА:", как у других тултипов */
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.05em;
+}
+
+/* Маленькая стрелочка для тултипа, направленная вниз */
+.chakra-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Стрелка снизу тултипа */
+    left: 50%; /* Центрируем стрелку */
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #3f3f3f transparent transparent transparent; /* Треугольник, указывающий вниз */
 }
 
 @media (max-width: 480px) {
