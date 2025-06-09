@@ -518,7 +518,7 @@ footer {
     color: #f0f0f0;
     text-align: left;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 8px 12px  /*10px 15px;
     position: absolute; 
     z-index: 22; /* Выше, чем сама иконка, но ниже других возможных оверлеев, если есть */
     bottom: 130%; /* Положение тултипа над иконкой */
@@ -541,8 +541,10 @@ footer {
 .chakra-tooltip-text strong {
     color: #FFD700; /* Цвет для заголовка "ЧАКРА:", как у других тултипов */
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     font-size: 1.05em;
+    border-bottom: 1px solid #555;  /* ЧАКРА РАЗДЕЛИТЕЛЬ
+    padding-bottom: 6px
 }
 
 /* Маленькая стрелочка для тултипа, направленная вниз */
