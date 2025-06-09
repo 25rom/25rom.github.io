@@ -559,10 +559,18 @@ footer {
     
     /* --- ЛИНИЯ-РАЗДЕЛИТЕЛЬ И ОТСТУПЫ (как у .tooltip-text strong) --- */
     border-bottom: 1px solid #555; /* Линия-разделитель */
-    margin-bottom: 5px;   /* Отступ ПОД текстом заголовка ДО линии */
-    padding-bottom: 5px;  /* Отступ ПОД линией ДО первого названия чакры */
+    margin-bottom: 4px;   /* Отступ ПОД текстом заголовка ДО линии */
+    padding-bottom: 6px;  /* Отступ ПОД линией ДО первого названия чакры */
 }
-
+/* ЭТУ ШТУКУ ВСТАВИЛ
+.tooltip-text p {
+    margin-bottom: 4px;
+    /* white-space: nowrap;    // Убедись, что это закомментировано или удалено для переноса */
+}
+.tooltip-text p:last-child {
+    margin-bottom: 0;
+}
+/* ЭТУ ШТУКУ ВСТАВИЛ
 /* --- СТРЕЛОЧКА (как у .tooltip-text::after, но центрируем) --- */
 .chakra-tooltip-text::after {
     content: "";
