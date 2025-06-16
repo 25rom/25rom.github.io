@@ -623,11 +623,7 @@ footer {
 
 .silhouette-infographic-section {
     text-align: center;
-    /* Убираем верхний padding, чтобы не было двойного отступа */
     padding: 0 20px 60px 20px; 
-    
-    /* !!! УПРАВЛЯЕМ РАССТОЯНИЕМ ЗДЕСЬ !!! */
-    /* Это и есть расстояние между печатающимся текстом и картинкой. */
     margin-top: 20px; 
 }
 
@@ -637,7 +633,6 @@ footer {
     color: #333;
 }
 
-/* Контейнер для картинки остается с прежним классом, так как он вложен внутрь */
 .infographic-container {
     position: relative;
     max-width: 500px;
@@ -650,73 +645,82 @@ footer {
     aspect-ratio: 1 / 1;
 }
 
-
 .interactive-marker {
-    position: absolute; /* Позиционируем относительно .infographic-container */
-    transform: translate(-50%, -50%); /* Центрируем маркер относительно его координат top/left */
+    position: absolute;
+    transform: translate(-50%, -50%);
 }
 
 .marker-dot {
     width: 20px;
     height: 20px;
-    background-color: rgba(255, 122, 89, 0.7); /* Цвет в стиле вашего сайта (оранжевый) */
+    background-color: rgba(255, 122, 89, 0.7);
     border-radius: 50%;
     border: 2px solid white;
-    box-shadow: 0 0 0 5px rgba(255, 122, 89, 0.3); /* Эффект пульсирующего свечения */
+    box-shadow: 0 0 0 5px rgba(255, 122, 89, 0.3);
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 /* =================================================================== */
-/* === ИЗМЕНЕННЫЙ БЛОК: СТИЛИ ДЛЯ АДАПТИВНОГО ТУЛТИПА === */
+/* === ИСПРАВЛЕННЫЙ БЛОК: СТИЛИ ДЛЯ ПРОЗРАЧНОГО ТУЛТИПА С РАМКОЙ === */
 /* =================================================================== */
 .tooltip-content {
-    position: absolute; 
-    bottom: 150%; 
+    position: absolute;
+    bottom: 150%;
     left: 50%;
     transform: translateX(-50%);
     
+    /* Убираем фиксированную ширину для адаптивности */
+    max-width: 300px;
+    
     /* === ИЗМЕНЕНИЯ ЗДЕСЬ === */
-    width: auto;           /* 1. Ширина теперь автоматическая, по содержимому. */
-    white-space: nowrap;   /* 2. Запрещаем перенос коротких фраз на новую строку. */
-    max-width: 300px;      /* 3. Ограничиваем максимальную ширину для очень длинного текста. */
+    background-color: transparent;      /* 1. Делаем фон полностью прозрачным. */
+    border: 2px solid #FFFFFF;          /* 2. Добавляем белую рамку. */
+    /* 3. Добавляем легкое свечение, как у активных тегов. */
+    box-shadow: 0 0 10px rgba(100, 100, 100, 0.3), 0 0 5px rgba(0,0,0,0.2); 
+    
+    /* 4. Эффект "матового стекла" для лучшей читаемости. */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     
     padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Немного увеличим скругление углов */
     text-align: left;
     
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, backdrop-filter 0.3s ease;
     transform: translate(-50%, 10px);
 }
 
 .tooltip-content h4 {
     margin-top: 0;
-    color: #333;
+    margin-bottom: 8px; /* Добавляем отступ под заголовком */
+    /* Делаем текст заголовка темнее для лучшего контраста */
+    color: #2c2c2c;
+    font-weight: 600;
 }
 
 .tooltip-content p {
     font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0;
-    white-space: normal; /* Разрешаем перенос текста внутри параграфа, если он не влезает в max-width */
+    /* Делаем текст параграфа темнее */
+    color: #3f3f3f;
+    line-height: 1.5;
+    margin: 0;
+    white-space: normal; /* Разрешаем перенос текста внутри параграфа */
 }
 
 
 /* --- Эффект при наведении --- */
 
 .interactive-marker:hover .marker-dot {
-    transform: scale(1.1); /* Немного увеличиваем точку для интерактивности */
+    transform: scale(1.1);
 }
 
 .interactive-marker:hover .tooltip-content {
-    /* Показываем блок при наведении на маркер */
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0); /* Возвращаем на место для анимации "всплытия" */
+    transform: translate(-50%, 0);
 }
 
 /* =================================================================== */
@@ -734,23 +738,18 @@ footer {
     align-items: center;
     text-align: center;
     justify-content: center;
-    
-    /* ГЛАВНОЕ РЕШЕНИЕ: Жесткая минимальная высота для всего блока. 
-       Теперь он НИКОГДА не изменит свой размер. */
     min-height: 120px; 
 }
 
-/* --- Стили для верхней строки --- */
 .headline-static-part {
     font-size: 1.8rem;
     font-weight: 300;
     color: #8D6E63;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 15px; /* Отступ для разделения строк */
+    margin-bottom: 15px;
 }
 
-/* --- Стили для нижней строки (упрощенные, без декора) --- */
 .typing-effect {
     font-size: 2.8rem;
     font-weight: 500;
@@ -759,7 +758,6 @@ footer {
     color: #F2C94C;
 }
 
-/* --- Стили для курсора --- */
 .typing-effect::after {
     content: '|';
     position: absolute;
@@ -777,4 +775,5 @@ footer {
     50% { opacity: 0; }
     100% { opacity: 0; }
 }
+
 /* ======================= КОНЕЦ БЛОКА СТИЛЕЙ ======================= */
