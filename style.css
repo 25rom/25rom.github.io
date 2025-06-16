@@ -716,7 +716,8 @@ footer {
 
 .hero-text-container {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 20px 0 20px; /* последние два значения были добавлены мною
+    margin-bottom: 10px; /* Можете уменьшить и этот отступ, например, до 10px БЛОК ХИРО ПЕЙДЖ */
 }
 
 .typing-headline-multiline {
@@ -742,6 +743,11 @@ footer {
     position: relative;
     /* Цвет будет задаваться из JavaScript, но можно задать базовый */
     color: #F2C94C; 
+    /* === НОВЫЕ СВОЙСТВА ДЛЯ СТАБИЛИЗАЦИИ === */
+    display: inline-block; /* Необходимо для правильной работы min-height */
+    min-height: 3rem;      /* Задаем минимальную высоту. Подберите значение, 
+                               чуть большее, чем font-size (2.5rem), чтобы текст точно влез. */
+    vertical-align: top;   /* Выравниваем по верху, чтобы текст не "прыгал" внутри блока */
 }
 
 /* Курсор оставляем без изменений */
