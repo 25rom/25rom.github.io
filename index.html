@@ -18,8 +18,12 @@
                     <a href="101.html" class="nav-button panel-101">101</a>
                 </div>
                 <h1 class="site-title">
-    <a href="index.html" class="site-title-link">
-        <span class="title-part">ДЫХАНИЕ</span><span class="title-separator"> • </span><span class="title-part">УМ</span><span class="title-separator"> • </span><span class="title-part">ЭМОЦИИ</span><span class="title-separator"> • </span><span class="title-part">ТЕЛО</span>
+    <!-- Меняем href на #tags-section. Все стили сохранятся! -->
+    <a class="site-title-link" href="#tags-section"> 
+      <span class="title-part">ДЫХАНИЕ</span><span class="title-separator"> • </span>
+      <span class="title-part">УМ</span><span class="title-separator"> • </span>
+      <span class="title-part">ЭМОЦИИ</span><span class="title-separator"> • </span>
+      <span class="title-part">ТЕЛО</span>
     </a>
 </h1>
                 <div class="nav-group-right">
@@ -30,10 +34,10 @@
 
 <!-- ======================= ИНТЕРАКТИВНЫЙ ЗАГОЛОВОК С ЭФФЕКТОМ ПЕЧАТИ ======================= -->
 <div class="hero-text-container">
-    <h1 class="typing-headline">
-        ОСОЗНАННОЕ ДЫХАНИЕ ДЛЯ УПРАВЛЕНИЯ 
-        <span class="typing-effect"></span> <!-- Сюда JS будет "печатать" слова -->
-    </h1>
+    <div class="typing-headline-multiline">
+        <span class="headline-static-part">ОСОЗНАННОЕ ДЫХАНИЕ ДЛЯ УПРАВЛЕНИЯ</span>
+        <span class="typing-effect"></span> <!-- Сюда по-прежнему будет печататься текст -->
+    </div>
 </div>
 <!-- ======================= КОНЕЦ БЛОКА ======================= -->
             
@@ -73,8 +77,7 @@
 <!-- ======================= КОНЕЦ БЛОКА ИНФОГРАФИКИ ======================= -->
 
 
-            
-            <div class="tag-prompt">КЛИКНИ ТЕГ ЧТОБЫ 💫</div>
+            <div id="tags-section" class="tag-prompt"> КЛИКНИ ТЕГ ЧТОБЫ 💫</div>
             
             <nav class="tags-navigation" aria-label="Фильтр техник по тегам">
                 <!-- Теги как в предыдущей версии, с повторяющимися цветами -->
@@ -562,57 +565,56 @@
 // Хотите изменить скорость? Поиграйте со значением переменной typeSpeed и typeSpeed = 2000; (пауза) в скрипте.
 // Хотите изменить цвет? Поменяйте значения color в CSS-правилах для .typing-effect и .typing-effect::after.
     // Находим наш элемент для печати по классу
+<script>
+    // Находим наш элемент для печати по классу
     const typingElement = document.querySelector('.typing-effect');
     
     // Список слов, которые будут меняться
     const words = ["БАЛАНСОМ", "ЗДОРОВЬЕМ", "ЭМОЦИЯМИ"];
     
+    // !!! НОВОЕ: Массив цветов, соответствующий словам
+    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"]; // Желтый, Зеленый, Синий
+    
     // Переменные для управления процессом
-    let wordIndex = 0; // Индекс текущего слова в массиве
-    let letterIndex = 0; // Индекс текущей буквы в слове
-    let isDeleting = false; // Флаг: печатаем или стираем?
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let isDeleting = false;
 
     function type() {
         const currentWord = words[wordIndex];
+        
+        // !!! НОВОЕ: Применяем цвет для текущего слова
+        typingElement.style.color = colors[wordIndex];
+
         let displayText = '';
 
-        // Логика печати
         if (isDeleting) {
-            // Стираем слово
             displayText = currentWord.substring(0, letterIndex - 1);
             letterIndex--;
         } else {
-            // Печатаем слово
             displayText = currentWord.substring(0, letterIndex + 1);
             letterIndex++;
         }
 
-        // Обновляем текст на странице
         typingElement.textContent = displayText;
 
-        // Определяем скорость
-        let typeSpeed = 200; // Скорость печати
+        let typeSpeed = 200;
         if (isDeleting) {
-            typeSpeed /= 2; // Стираем быстрее
+            typeSpeed /= 2;
         }
         
-        // Логика смены состояния (когда переключаться на стирание или на следующее слово)
         if (!isDeleting && letterIndex === currentWord.length) {
-            // Слово напечатано полностью
             isDeleting = true;
-            typeSpeed = 2000; // Пауза перед стиранием
+            typeSpeed = 2000;
         } else if (isDeleting && letterIndex === 0) {
-            // Слово стерто полностью
             isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length; // Переходим к следующему слову (с зацикливанием)
-            typeSpeed = 500; // Пауза перед печатью нового слова
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500;
         }
 
-        // Запускаем следующий "кадр" анимации
         setTimeout(type, typeSpeed);
     }
 
-    // Запускаем функцию в первый раз, когда страница загрузится
     document.addEventListener('DOMContentLoaded', type);
 </script>
 </html>
