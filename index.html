@@ -32,11 +32,11 @@
                 </div>
             </div>
 
-<!-- ======================= ИНТЕРАКТИВНЫЙ ЗАГОЛОВОК С ЭФФЕКТОМ ПЕЧАТИ ======================= -->
+<!-- ======================= ПРАВИЛЬНЫЙ HTML-КОД ДЛЯ ИНТЕРАКТИВНОГО ЗАГОЛОВКА ======================= -->
 <div class="hero-text-container">
     <div class="typing-headline-multiline">
         <span class="headline-static-part">ОСОЗНАННОЕ ДЫХАНИЕ ДЛЯ УПРАВЛЕНИЯ</span>
-        <span class="typing-effect"></span> <!-- Сюда по-прежнему будет печататься текст -->
+        <span class="typing-effect"></span> <!-- ВАЖНО: У этого span только ОДИН класс -->
     </div>
 </div>
 <!-- ======================= КОНЕЦ БЛОКА ======================= -->
@@ -559,12 +559,7 @@
     </div>
     <script src="script.js"></script>
 </body>
-<script>
-    // Для кастомизации:
-// Хотите изменить слова? Просто отредактируйте массив const words = [...] в JavaScript.
-// Хотите изменить скорость? Поиграйте со значением переменной typeSpeed и typeSpeed = 2000; (пауза) в скрипте.
-// Хотите изменить цвет? Поменяйте значения color в CSS-правилах для .typing-effect и .typing-effect::after.
-    // Находим наш элемент для печати по классу
+<!-- ======================= ПРАВИЛЬНЫЙ JAVASCRIPT ДЛЯ ПЕЧАТАЮЩЕГОСЯ ТЕКСТА ======================= -->
 <script>
     // Находим наш элемент для печати по классу
     const typingElement = document.querySelector('.typing-effect');
@@ -572,7 +567,7 @@
     // Список слов, которые будут меняться
     const words = ["БАЛАНСОМ", "ЗДОРОВЬЕМ", "ЭМОЦИЯМИ"];
     
-    // !!! НОВОЕ: Массив цветов, соответствующий словам
+    // Массив цветов, соответствующий словам
     const colors = ["#F2C94C", "#5A9C78", "#4A89A3"]; // Желтый, Зеленый, Синий
     
     // Переменные для управления процессом
@@ -581,17 +576,25 @@
     let isDeleting = false;
 
     function type() {
+        // Проверка, что элемент найден. Если нет - скрипт остановится, не ломая страницу.
+        if (!typingElement) {
+            console.error("Элемент с классом .typing-effect не найден на странице.");
+            return;
+        }
+
         const currentWord = words[wordIndex];
         
-        // !!! НОВОЕ: Применяем цвет для текущего слова
+        // Применяем цвет для текущего слова
         typingElement.style.color = colors[wordIndex];
 
         let displayText = '';
 
         if (isDeleting) {
+            // Стираем слово
             displayText = currentWord.substring(0, letterIndex - 1);
             letterIndex--;
         } else {
+            // Печатаем слово
             displayText = currentWord.substring(0, letterIndex + 1);
             letterIndex++;
         }
@@ -615,6 +618,7 @@
         setTimeout(type, typeSpeed);
     }
 
+    // Запускаем функцию, когда весь HTML загрузится
     document.addEventListener('DOMContentLoaded', type);
 </script>
 </html>
