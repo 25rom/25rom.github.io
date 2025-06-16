@@ -658,21 +658,63 @@ footer {
     transition: transform 0.3s ease;
 }
 
+/* =================================================================== */
+/* === ФИНАЛЬНЫЙ ИСПРАВЛЕННЫЙ CSS ДЛЯ ИНФОГРАФИКИ (v3) === */
+/* =================================================================== */
 
-/* --- ОБЩИЕ стили для всех тултипов (с исправленным дизайном) --- */
+/* --- Стили для секции с инфографикой --- */
+.silhouette-infographic-section {
+    text-align: center;
+    padding: 0 20px 60px 20px; 
+    margin-top: 20px; 
+}
+
+.infographic-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.85;
+    background-image: url('pranayama-infographic.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1 / 1;
+}
+
+.interactive-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.marker-dot {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 122, 89, 0.7);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 5px rgba(255, 122, 89, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* --- ОБЩИЕ стили для всех тултипов (ФИНАЛЬНЫЙ ДИЗАЙН) --- */
 .tooltip-content {
     position: absolute;
-    /* ФИКС ЧИТАЕМОСТИ: полупрозрачный фон */
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    /* ФИКС ЧИТАЕМОСТИ И ДИЗАЙНА */
+    background-color: rgba(255, 255, 255, 0.75); /* Полупрозрачный фон */
+    backdrop-filter: blur(8px);                  /* Эффект "матового стекла" */
+    -webkit-backdrop-filter: blur(8px);
     
-    max-width: 240px;
-    padding: 15px;
-    border-radius: 10px;
+    /* РАМКА И СВЕЧЕНИЕ (как у активного тега) */
+    border: 2px solid #FFFFFF;                  
+    box-shadow: 0 0 12px rgba(100, 150, 200, 0.3), 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* ФИКС ШИРИНЫ */
+    width: 260px; /* Задаем комфортную ширину по умолчанию */
+    
+    padding: 18px;
+    border-radius: 12px;
     text-align: left;
     
     opacity: 0;
@@ -688,35 +730,32 @@ footer {
     border-style: solid;
 }
 
-
 /* --- Модификатор: открывается ВПРАВО --- */
 .tooltip-opens-right .tooltip-content {
     top: 50%;
     left: 140%;
-    transform: translate(10px, -50%); /* Начальная позиция для анимации */
+    transform: translate(10px, -50%);
 }
 .tooltip-opens-right .tooltip-content::after {
     top: 50%;
     right: 100%;
     transform: translateY(-50%);
-    border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
+    border-color: transparent white transparent transparent; /* Сделали стрелку непрозрачной */
 }
-
 
 /* --- Модификатор: открывается ВЛЕВО --- */
 .tooltip-opens-left .tooltip-content {
     top: 50%;
     right: 140%;
     left: auto;
-    transform: translate(-10px, -50%); /* Начальная позиция для анимации */
+    transform: translate(-10px, -50%);
 }
 .tooltip-opens-left .tooltip-content::after {
     top: 50%;
     left: 100%;
     transform: translateY(-50%);
-    border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
+    border-color: transparent transparent transparent white; /* Сделали стрелку непрозрачной */
 }
-
 
 /* --- Стили для текста внутри тултипа --- */
 .tooltip-content h4 {
@@ -726,28 +765,25 @@ footer {
     font-weight: 600;
 }
 .tooltip-content p {
-    display: flex; /* Для красивого выравнивания смайлика и текста */
+    display: flex;
     align-items: flex-start;
     gap: 8px;
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Немного увеличим текст для читаемости */
     color: #3f3f3f;
     line-height: 1.5;
     margin: 0;
-    white-space: normal;
+    white-space: normal; /* Разрешаем перенос текста */
 }
-
 
 /* --- Эффект при наведении --- */
 .interactive-marker:hover .marker-dot {
     transform: scale(1.1);
 }
-
 .interactive-marker:hover .tooltip-content {
     opacity: 1;
     visibility: visible;
     transform: translate(0, -50%); /* Финальная позиция для анимации */
 }
-
 
 /* =================================================================== */
 /* === СТИЛИ ДЛЯ ИНТЕРАКТИВНОГО ЗАГОЛОВКА (остаются без изменений) === */
