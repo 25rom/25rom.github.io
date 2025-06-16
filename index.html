@@ -560,48 +560,46 @@
     </div>
     <script src="script.js"></script>
 </body>
-<!-- ======================= ПРАВИЛЬНЫЙ JAVASCRIPT ДЛЯ ПЕЧАТАЮЩЕГОСЯ ТЕКСТА ======================= -->
 <script>
-    // Находим наш элемент для печати по классу
     const typingElement = document.querySelector('.typing-effect');
     
-    // Список слов, которые будут меняться
-    const words = ["УПРАВЛЕНИЯ БАЛАНСОМ", "ЗАРЯДА ЭНЕРГИЕЙ","СОЗДАНИЯ НАСТРОЕНИЯ"];
+    // !!! НОВОЕ: Создаем и вставляем span для текста и курсора
+    const textSpan = document.createElement('span');
+    textSpan.className = 'typing-cursor';
+    typingElement.prepend(textSpan);
     
-    // Массив цветов, соответствующий словам
-    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"]; // Желтый, Зеленый, Синий
+    const words = ["БАЛАНСОМ", "ЗДОРОВЬЕМ", "ЭМОЦИЯМИ"];
+    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"];
     
-    // Переменные для управления процессом
     let wordIndex = 0;
     let letterIndex = 0;
     let isDeleting = false;
 
     function type() {
-        // Проверка, что элемент найден. Если нет - скрипт остановится, не ломая страницу.
-        if (!typingElement) {
-            console.error("Элемент с классом .typing-effect не найден на странице.");
-            return;
-        }
+        if (!typingElement) return;
 
         const currentWord = words[wordIndex];
-        
-        // Применяем цвет для текущего слова
+        // Цвет применяем ко всему блоку .typing-effect, включая линии
         typingElement.style.color = colors[wordIndex];
+        
+        // Цвет линий делаем таким же, как у текста
+        const lineOpacity = 0.4;
+        typingElement.style.setProperty('--line-color', `${colors[wordIndex]}${Math.round(lineOpacity * 255).toString(16).padStart(2, '0')}`);
+
 
         let displayText = '';
-
         if (isDeleting) {
-            // Стираем слово
             displayText = currentWord.substring(0, letterIndex - 1);
             letterIndex--;
         } else {
-            // Печатаем слово
             displayText = currentWord.substring(0, letterIndex + 1);
             letterIndex++;
         }
 
-        typingElement.textContent = displayText;
-
+        // Печатаем текст во вложенный textSpan
+        textSpan.textContent = displayText || '';
+        
+        // Остальная логика без изменений
         let typeSpeed = 200;
         if (isDeleting) {
             typeSpeed /= 2;
@@ -618,8 +616,18 @@
 
         setTimeout(type, typeSpeed);
     }
+    
+    // Немного меняем CSS, чтобы линии тоже меняли цвет
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `
+        .typing-effect::before, .typing-effect::after { 
+            background-color: var(--line-color, #E67E22);
+            transition: background-color 0.3s ease;
+        }
+    `;
+    document.head.appendChild(styleSheet);
 
-    // Запускаем функцию, когда весь HTML загрузится
+
     document.addEventListener('DOMContentLoaded', type);
 </script>
 </html>
