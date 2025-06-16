@@ -779,13 +779,21 @@ footer {
 }
 
 /* --- Эффект при наведении --- */
+/* --- Эффект при наведении (для десктопа) --- */
 .interactive-marker:hover .marker-dot {
     transform: scale(1.1);
 }
 .interactive-marker:hover .tooltip-content {
     opacity: 1;
     visibility: visible;
-    transform: translate(0, -50%); /* Финальная позиция для анимации */
+    transform: translate(0, -50%);
+}
+
+/* !!! НОВОЕ ПРАВИЛО ДЛЯ КЛИКА (для мобильных) !!! */
+.interactive-marker.is-active .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
 }
 
 /* =================================================================== */
