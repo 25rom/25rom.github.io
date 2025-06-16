@@ -636,7 +636,7 @@ footer {
     position: relative; /* САМОЕ ГЛАВНОЕ ПРАВИЛО! Это "якорь", относительно которого мы будем размещать маркеры. */
     max-width: 600px; /* Ограничиваем максимальную ширину */
     margin: 0 auto; /* Центрируем блок */
-    background-image: url('path/to/your/pranayama-infographic.png'); /* <-- УКАЖИТЕ ПРАВИЛЬНЫЙ ПУТЬ К ВАШЕЙ КАРТИНКЕ! */
+    background-image: url('pranayama-infographic.png');'); /* <-- УКАЖИТЕ ПРАВИЛЬНЫЙ ПУТЬ К ВАШЕЙ КАРТИНКЕ! */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
