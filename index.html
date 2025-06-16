@@ -560,14 +560,9 @@
     </div>
     <script src="script.js"></script>
 </body>
+<!-- ======================= ИСПРАВЛЕННЫЙ JAVASCRIPT-КОД ======================= -->
 <script>
     const typingElement = document.querySelector('.typing-effect');
-    
-    // !!! НОВОЕ: Создаем и вставляем span для текста и курсора
-    const textSpan = document.createElement('span');
-    textSpan.className = 'typing-cursor';
-    typingElement.prepend(textSpan);
-    
     const words = ["БАЛАНСОМ", "ЗДОРОВЬЕМ", "ЭМОЦИЯМИ"];
     const colors = ["#F2C94C", "#5A9C78", "#4A89A3"];
     
@@ -576,16 +571,10 @@
     let isDeleting = false;
 
     function type() {
-        if (!typingElement) return;
+        if (!typingElement) { return; }
 
         const currentWord = words[wordIndex];
-        // Цвет применяем ко всему блоку .typing-effect, включая линии
         typingElement.style.color = colors[wordIndex];
-        
-        // Цвет линий делаем таким же, как у текста
-        const lineOpacity = 0.4;
-        typingElement.style.setProperty('--line-color', `${colors[wordIndex]}${Math.round(lineOpacity * 255).toString(16).padStart(2, '0')}`);
-
 
         let displayText = '';
         if (isDeleting) {
@@ -596,14 +585,15 @@
             letterIndex++;
         }
 
-        // Печатаем текст во вложенный textSpan
-        textSpan.textContent = displayText || '';
-        
-        // Остальная логика без изменений
-        let typeSpeed = 200;
-        if (isDeleting) {
-            typeSpeed /= 2;
+        typingElement.textContent = displayText;
+
+        // Двойная гарантия от "скачков": когда текст пуст, вставляем невидимый пробел.
+        if (displayText === '') {
+            typingElement.innerHTML = ' ';
         }
+        
+        let typeSpeed = 200;
+        if (isDeleting) { typeSpeed /= 2; }
         
         if (!isDeleting && letterIndex === currentWord.length) {
             isDeleting = true;
@@ -616,17 +606,6 @@
 
         setTimeout(type, typeSpeed);
     }
-    
-    // Немного меняем CSS, чтобы линии тоже меняли цвет
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `
-        .typing-effect::before, .typing-effect::after { 
-            background-color: var(--line-color, #E67E22);
-            transition: background-color 0.3s ease;
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
 
     document.addEventListener('DOMContentLoaded', type);
 </script>
