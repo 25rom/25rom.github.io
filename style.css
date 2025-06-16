@@ -620,6 +620,8 @@ footer {
 
 /* --- Стили для блока инфографики --- */
 
+/* --- Стили для блока инфографики --- */
+
 /* --- Стили для блока инфографики (ОБНОВЛЕННЫЕ) --- */
 
 .infographic-section {
@@ -647,5 +649,65 @@ footer {
     aspect-ratio: 1 / 1; /* Поддерживаем пропорции */
 }
 
-/* Стили для маркеров и тултипов остаются такими же, как в прошлый раз */
-/* ... (весь код для .interactive-marker, .marker-dot, .tooltip-content) ... */
+.interactive-marker {
+    position: absolute; /* Позиционируем относительно .infographic-container */
+    transform: translate(-50%, -50%); /* Центрируем маркер относительно его координат top/left */
+}
+
+.marker-dot {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 122, 89, 0.7); /* Цвет в стиле вашего сайта (оранжевый) */
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 5px rgba(255, 122, 89, 0.3); /* Эффект пульсирующего свечения */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* --- Стили для всплывающего текста (tooltip) --- */
+
+.tooltip-content {
+    position: absolute; /* Позиционируем относительно маркера */
+    bottom: 150%; /* Располагаем над точкой */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 220px; /* Ширина блока с текстом */
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    
+    /* А вот и магия! Прячем блок по умолчанию */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translate(-50%, 10px); /* Смещаем вниз для анимации "всплытия" */
+}
+
+.tooltip-content h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.tooltip-content p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* --- Эффект при наведении --- */
+
+.interactive-marker:hover .marker-dot {
+    transform: scale(1.1); /* Немного увеличиваем точку для интерактивности */
+}
+
+.interactive-marker:hover .tooltip-content {
+    /* Показываем блок при наведении на маркер */
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0); /* Возвращаем на место для анимации "всплытия" */
+}
