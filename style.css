@@ -667,26 +667,30 @@ footer {
     transition: transform 0.3s ease;
 }
 
-/* --- Стили для всплывающего текста (tooltip) --- */
-
+/* =================================================================== */
+/* === ИЗМЕНЕННЫЙ БЛОК: СТИЛИ ДЛЯ АДАПТИВНОГО ТУЛТИПА === */
+/* =================================================================== */
 .tooltip-content {
-    position: absolute; /* Позиционируем относительно маркера */
-    bottom: 150%; /* Располагаем над точкой */
+    position: absolute; 
+    bottom: 150%; 
     left: 50%;
     transform: translateX(-50%);
     
-    width: 220px; /* Ширина блока с текстом */
+    /* === ИЗМЕНЕНИЯ ЗДЕСЬ === */
+    width: auto;           /* 1. Ширина теперь автоматическая, по содержимому. */
+    white-space: nowrap;   /* 2. Запрещаем перенос коротких фраз на новую строку. */
+    max-width: 300px;      /* 3. Ограничиваем максимальную ширину для очень длинного текста. */
+    
     padding: 15px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: left;
     
-    /* А вот и магия! Прячем блок по умолчанию */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translate(-50%, 10px); /* Смещаем вниз для анимации "всплытия" */
+    transform: translate(-50%, 10px);
 }
 
 .tooltip-content h4 {
@@ -698,6 +702,7 @@ footer {
     font-size: 0.9rem;
     color: #555;
     margin-bottom: 0;
+    white-space: normal; /* Разрешаем перенос текста внутри параграфа, если он не влезает в max-width */
 }
 
 
@@ -772,5 +777,4 @@ footer {
     50% { opacity: 0; }
     100% { opacity: 0; }
 }
-
 /* ======================= КОНЕЦ БЛОКА СТИЛЕЙ ======================= */
