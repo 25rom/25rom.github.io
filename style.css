@@ -715,7 +715,7 @@ footer {
 }
 
 /* =================================================================== */
-/* === СТИЛИ ДЛЯ ЗАГОЛОВКА (ДИЗАЙН "СБАЛАНСИРОВАННЫЙ ЦЕНТР") === */
+/* === ФИНАЛЬНЫЙ ИСПРАВЛЕННЫЙ CSS-КОД ДЛЯ ЗАГОЛОВКА === */
 /* =================================================================== */
 
 .hero-text-container {
@@ -726,65 +726,36 @@ footer {
 .typing-headline-multiline {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Возвращаем центрирование */
+    align-items: center;
     text-align: center;
-    min-height: 120px;
     justify-content: center;
-    gap: 10px; /* Расстояние между строками */
+    
+    /* ГЛАВНОЕ РЕШЕНИЕ: Жесткая минимальная высота для всего блока. 
+       Теперь он НИКОГДА не изменит свой размер. */
+    min-height: 120px; 
 }
 
-/* --- СТИЛИ ДЛЯ ВЕРХНЕЙ СТРОКИ (без разделителя) --- */
-/* Убираем разделитель ::before, так как теперь у нас будут другие акценты */
+/* --- Стили для верхней строки --- */
 .headline-static-part {
     font-size: 1.8rem;
     font-weight: 300;
     color: #8D6E63;
     text-transform: uppercase;
     letter-spacing: 3px;
+    margin-bottom: 15px; /* Отступ для разделения строк */
 }
 
-/* --- СТИЛИ ДЛЯ НИЖНЕЙ СТРОКИ --- */
+/* --- Стили для нижней строки (упрощенные, без декора) --- */
 .typing-effect {
     font-size: 2.8rem;
     font-weight: 500;
     text-transform: uppercase;
     position: relative;
     color: #F2C94C;
-    /* Важно! Делаем контейнер строчным флекс-блоком для выравнивания декора */
-    display: inline-flex;
-    align-items: center;
 }
 
-/* !!! НОВОЕ: ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ПО БОКАМ !!! */
-/* Создаем две тонкие линии по бокам от меняющегося слова */
-
-.typing-effect::before,
+/* --- Стили для курсора --- */
 .typing-effect::after {
-    content: '';
-    display: block;
-    height: 1.5px; /* Толщина линии */
-    width: 60px;  /* Длина линии */
-    background-color: #E67E22;
-    opacity: 0.4;
-}
-
-/* Задаем отступы, чтобы линии не прилипали к тексту */
-.typing-effect::before {
-    margin-right: 20px;
-}
-
-.typing-effect::after {
-    margin-left: 20px;
-}
-
-/* --- СТИЛИ ДЛЯ КУРСОРА (НЕМНОГО ИЗМЕНЕНЫ) --- */
-/* Теперь курсор — это псевдо-элемент не у .typing-effect, а у внутреннего span */
-/* Это изменение нужно, чтобы курсор был рядом с текстом, а не после декоративной линии */
-/* Шаг 1: Добавьте этот CSS */
-.typing-cursor {
-    position: relative;
-}
-.typing-cursor::after {
     content: '|';
     position: absolute;
     right: -15px;
