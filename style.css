@@ -619,32 +619,37 @@ footer {
 }
 
 
-/* --- Стили для блока инфографики --- */
+/* --- Стили для блока инфографики с СИЛУЭТОМ (с новым уникальным классом) --- */
 
-.infographic-section {
+.silhouette-infographic-section {
     text-align: center;
-    padding: 60px 20px;
-    /* background-color: #FFFBF5; <-- Закомментировано, чтобы убрать лишнюю рамку */
+    /* Убираем верхний padding, чтобы не было двойного отступа */
+    padding: 0 20px 60px 20px; 
+    
+    /* !!! УПРАВЛЯЕМ РАССТОЯНИЕМ ЗДЕСЬ !!! */
+    /* Это и есть расстояние между печатающимся текстом и картинкой. */
+    margin-top: 40px; 
 }
 
-.infographic-section h2 {
+.silhouette-infographic-section h2 {
     margin-bottom: 40px;
     font-size: 2.5rem;
     color: #333;
 }
 
+/* Контейнер для картинки остается с прежним классом, так как он вложен внутрь */
 .infographic-container {
     position: relative;
-    max-width: 500px; /* Уменьшили размер для лучшей интеграции */
+    max-width: 500px;
     margin: 0 auto;
-    opacity: 0.85; /* Сделали картинку менее контрастной */
-    
-    background-image: url('pranayama-infographic.png'); /* Убедитесь, что путь верный */
+    opacity: 0.85;
+    background-image: url('pranayama-infographic.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    aspect-ratio: 1 / 1; /* Поддерживаем пропорции */
+    aspect-ratio: 1 / 1;
 }
+
 
 .interactive-marker {
     position: absolute; /* Позиционируем относительно .infographic-container */
@@ -716,8 +721,8 @@ footer {
 
 .hero-text-container {
     text-align: center;
-    padding: 0px 20px; /* было 40 20
-    margin-bottom: 5px; /* Можете уменьшить и этот отступ, например, до 10px БЛОК ХИРО ПЕЙДЖ */
+    padding: 40px 20px 0 20px; /* Верхний отступ 40, нижний 0 */
+    margin-bottom: 0; /* Убираем внешний нижний отступ */
 }
 
 .typing-headline-multiline {
@@ -725,6 +730,10 @@ footer {
     flex-direction: column; /* Располагаем элементы друг под другом */
     align-items: center; /* Центрируем по горизонтали */
     gap: 10px; /* Расстояние между строками */
+     /* !!! ВОТ РЕШЕНИЕ !!! */
+    /* Эта строка заставит все дочерние элементы, включая наш 
+       .typing-effect (который ведет себя как текст), выровняться по центру. */
+    text-align: center; 
 }
 
 .headline-static-part {
