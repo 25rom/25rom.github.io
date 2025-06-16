@@ -707,3 +707,52 @@ footer {
     visibility: visible;
     transform: translate(-50%, 0); /* Возвращаем на место для анимации "всплытия" */
 }
+
+
+/* --- Стили для интерактивного заголовка --- */
+
+.hero-text-container {
+    text-align: center; /* Центрируем текст */
+    padding: 40px 20px;
+}
+
+.typing-headline {
+    font-size: 2rem; /* Настройте размер под ваш дизайн */
+    font-weight: 300; /* Более легкий шрифт выглядит стильно */
+    color: #333;
+    text-transform: uppercase; /* Все буквы заглавные, как в вашем примере */
+}
+
+/* Стили для динамической части и курсора */
+.typing-effect {
+    font-weight: 600; /* Делаем меняющиеся слова более жирными для акцента */
+    color: #FF5C5C; /* Используем акцентный цвет вашего сайта */
+    position: relative; /* Нужно для позиционирования курсора */
+}
+
+/* Создаем мигающий курсор с помощью псевдо-элемента ::after */
+.typing-effect::after {
+    content: '|'; /* Символ курсора */
+    position: absolute;
+    right: -10px; /* Располагаем справа от текста */
+    top: -5px;
+    font-weight: 300; /* Курсор делаем тонким */
+    color: #888;
+    animation: blink 0.7s infinite; /* Запускаем анимацию мигания */
+}
+
+/* Анимация мигания курсора */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
