@@ -716,8 +716,8 @@ footer {
 
 .hero-text-container {
     text-align: center;
-    padding: 40px 20px 0 20px; /* последние два значения были добавлены мною
-    margin-bottom: 10px; /* Можете уменьшить и этот отступ, например, до 10px БЛОК ХИРО ПЕЙДЖ */
+    padding: 0px 20px; /* было 40 20
+    margin-bottom: 5px; /* Можете уменьшить и этот отступ, например, до 10px БЛОК ХИРО ПЕЙДЖ */
 }
 
 .typing-headline-multiline {
