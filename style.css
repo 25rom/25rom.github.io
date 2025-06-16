@@ -628,7 +628,7 @@ footer {
     
     /* !!! УПРАВЛЯЕМ РАССТОЯНИЕМ ЗДЕСЬ !!! */
     /* Это и есть расстояние между печатающимся текстом и картинкой. */
-    margin-top: 40px; 
+    margin-top: 20px; 
 }
 
 .silhouette-infographic-section h2 {
