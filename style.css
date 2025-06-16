@@ -711,48 +711,54 @@ footer {
 
 /* --- Стили для интерактивного заголовка --- */
 
+/* --- Стили для МНОГОСТРОЧНОГО интерактивного заголовка --- */
+
 .hero-text-container {
-    text-align: center; /* Центрируем текст */
+    text-align: center;
     padding: 40px 20px;
 }
 
-.typing-headline {
-    font-size: 2rem; /* Настройте размер под ваш дизайн */
-    font-weight: 300; /* Более легкий шрифт выглядит стильно */
+.typing-headline-multiline {
+    display: flex; /* Используем flexbox для удобного управления */
+    flex-direction: column; /* Располагаем элементы друг под другом */
+    align-items: center; /* Центрируем по горизонтали */
+    gap: 10px; /* Расстояние между строками */
+}
+
+.headline-static-part {
+    font-size: 2.2rem; /* Размер верхней строки */
+    font-weight: 300;
     color: #333;
-    text-transform: uppercase; /* Все буквы заглавные, как в вашем примере */
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Немного разряжаем буквы для воздушности */
 }
 
 /* Стили для динамической части и курсора */
 .typing-effect {
-    font-weight: 600; /* Делаем меняющиеся слова более жирными для акцента */
-    color: #FF5C5C; /* Используем акцентный цвет вашего сайта */
-    position: relative; /* Нужно для позиционирования курсора */
+    font-size: 2.5rem; /* Делаем вторую строку крупнее для акцента */
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    /* Цвет будет задаваться из JavaScript, но можно задать базовый */
+    color: #F2C94C; 
 }
 
-/* Создаем мигающий курсор с помощью псевдо-элемента ::after */
+/* Курсор оставляем без изменений */
 .typing-effect::after {
-    content: '|'; /* Символ курсора */
+    content: '|';
     position: absolute;
-    right: -10px; /* Располагаем справа от текста */
+    right: -15px; /* Немного отодвигаем */
     top: -5px;
-    font-weight: 300; /* Курсор делаем тонким */
+    font-weight: 300;
+    font-size: 2.5rem; /* Увеличиваем под размер шрифта */
     color: #888;
-    animation: blink 0.7s infinite; /* Запускаем анимацию мигания */
+    animation: blink 0.7s infinite;
 }
 
-/* Анимация мигания курсора */
+/* Анимация мигания курсора (остается без изменений) */
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    49% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
 }
