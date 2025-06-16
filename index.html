@@ -609,4 +609,39 @@
 
     document.addEventListener('DOMContentLoaded', type);
 </script>
+    <!-- ======================= СКРИПТ ДЛЯ КЛИКАБЕЛЬНЫХ ТУЛТИПОВ НА МОБИЛЬНЫХ ======================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Находим все интерактивные маркеры на странице
+        const markers = document.querySelectorAll('.interactive-marker');
+
+        // Вешаем обработчик клика на каждый маркер
+        markers.forEach(function(marker) {
+            marker.addEventListener('click', function(event) {
+                // Останавливаем "всплытие" события, чтобы клик по маркеру не закрыл сам себя
+                event.stopPropagation();
+                
+                // Проверяем, активен ли уже этот маркер
+                const isActive = this.classList.contains('is-active');
+
+                // Сначала закрываем ВСЕ остальные открытые тултипы
+                markers.forEach(function(m) {
+                    m.classList.remove('is-active');
+                });
+
+                // Если маркер не был активен, делаем его активным
+                if (!isActive) {
+                    this.classList.add('is-active');
+                }
+            });
+        });
+
+        // Добавляем обработчик на всю страницу, чтобы закрывать тултип по клику вне его
+        document.addEventListener('click', function() {
+            markers.forEach(function(marker) {
+                marker.classList.remove('is-active');
+            });
+        });
+    });
+</script>
 </html>
