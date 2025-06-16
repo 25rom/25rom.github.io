@@ -561,51 +561,40 @@
     <script src="script.js"></script>
 </body>
 <!-- ======================= ИСПРАВЛЕННЫЙ JAVASCRIPT-КОД ======================= -->
+<!-- ======================= ИСПРАВЛЕННЫЙ JAVASCRIPT-КОД ======================= -->
 <script>
-    // Находим наш элемент для печати по классу
     const typingElement = document.querySelector('.typing-effect');
-    
-    // Список слов, которые будут меняться
     const words = ["УПРАВЛЕНИЯ БАЛАНСОМ", "ЗАРЯДА ЭНЕРГИЕЙ","СОЗДАНИЯ НАСТРОЕНИЯ"];
+    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"];
     
-    // Массив цветов, соответствующий словам
-    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"]; // Желтый, Зеленый, Синий
-    
-    // Переменные для управления процессом
     let wordIndex = 0;
     let letterIndex = 0;
     let isDeleting = false;
 
     function type() {
-        // Проверка, что элемент найден. Если нет - скрипт остановится, не ломая страницу.
-        if (!typingElement) {
-            console.error("Элемент с классом .typing-effect не найден на странице.");
-            return;
-        }
+        if (!typingElement) { return; }
 
         const currentWord = words[wordIndex];
-        
-        // Применяем цвет для текущего слова
         typingElement.style.color = colors[wordIndex];
 
         let displayText = '';
-
         if (isDeleting) {
-            // Стираем слово
             displayText = currentWord.substring(0, letterIndex - 1);
             letterIndex--;
         } else {
-            // Печатаем слово
             displayText = currentWord.substring(0, letterIndex + 1);
             letterIndex++;
         }
 
         typingElement.textContent = displayText;
 
-        let typeSpeed = 200;
-        if (isDeleting) {
-            typeSpeed /= 2;
+        // Двойная гарантия от "скачков": когда текст пуст, вставляем невидимый пробел.
+        if (displayText === '') {
+            typingElement.innerHTML = ' ';
         }
+        
+        let typeSpeed = 200;
+        if (isDeleting) { typeSpeed /= 2; }
         
         if (!isDeleting && letterIndex === currentWord.length) {
             isDeleting = true;
@@ -619,7 +608,6 @@
         setTimeout(type, typeSpeed);
     }
 
-    // Запускаем функцию, когда весь HTML загрузится
     document.addEventListener('DOMContentLoaded', type);
 </script>
 </html>
