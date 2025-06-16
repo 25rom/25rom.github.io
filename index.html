@@ -28,6 +28,14 @@
                 </div>
             </div>
 
+<!-- ======================= ИНТЕРАКТИВНЫЙ ЗАГОЛОВОК С ЭФФЕКТОМ ПЕЧАТИ ======================= -->
+<div class="hero-text-container">
+    <h1 class="typing-headline">
+        ОСОЗНАННОЕ ДЫХАНИЕ ДЛЯ УПРАВЛЕНИЯ 
+        <span class="typing-effect"></span> <!-- Сюда JS будет "печатать" слова -->
+    </h1>
+</div>
+<!-- ======================= КОНЕЦ БЛОКА ======================= -->
             
 <!-- ======================= БЛОК ИНФОГРАФИКИ (С ОБНОВЛЕННЫМИ КООРДИНАТАМИ) ======================= -->
 <section class="infographic-section">
@@ -550,4 +558,63 @@
     </div>
     <script src="script.js"></script>
 </body>
+<script>
+    // Для кастомизации:
+// Хотите изменить слова? Просто отредактируйте массив const words = [...] в JavaScript.
+// Хотите изменить скорость? Поиграйте со значением переменной typeSpeed и typeSpeed = 2000; (пауза) в скрипте.
+// Хотите изменить цвет? Поменяйте значения color в CSS-правилах для .typing-effect и .typing-effect::after.
+    // Находим наш элемент для печати по классу
+    const typingElement = document.querySelector('.typing-effect');
+    
+    // Список слов, которые будут меняться
+    const words = ["БАЛАНСОМ", "ЗДОРОВЬЕМ", "ЭМОЦИЯМИ"];
+    
+    // Переменные для управления процессом
+    let wordIndex = 0; // Индекс текущего слова в массиве
+    let letterIndex = 0; // Индекс текущей буквы в слове
+    let isDeleting = false; // Флаг: печатаем или стираем?
+
+    function type() {
+        const currentWord = words[wordIndex];
+        let displayText = '';
+
+        // Логика печати
+        if (isDeleting) {
+            // Стираем слово
+            displayText = currentWord.substring(0, letterIndex - 1);
+            letterIndex--;
+        } else {
+            // Печатаем слово
+            displayText = currentWord.substring(0, letterIndex + 1);
+            letterIndex++;
+        }
+
+        // Обновляем текст на странице
+        typingElement.textContent = displayText;
+
+        // Определяем скорость
+        let typeSpeed = 200; // Скорость печати
+        if (isDeleting) {
+            typeSpeed /= 2; // Стираем быстрее
+        }
+        
+        // Логика смены состояния (когда переключаться на стирание или на следующее слово)
+        if (!isDeleting && letterIndex === currentWord.length) {
+            // Слово напечатано полностью
+            isDeleting = true;
+            typeSpeed = 2000; // Пауза перед стиранием
+        } else if (isDeleting && letterIndex === 0) {
+            // Слово стерто полностью
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length; // Переходим к следующему слову (с зацикливанием)
+            typeSpeed = 500; // Пауза перед печатью нового слова
+        }
+
+        // Запускаем следующий "кадр" анимации
+        setTimeout(type, typeSpeed);
+    }
+
+    // Запускаем функцию в первый раз, когда страница загрузится
+    document.addEventListener('DOMContentLoaded', type);
+</script>
 </html>
