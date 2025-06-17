@@ -735,4 +735,24 @@
         });
     });
 </script>
+    <!-- ======================= СКРИПТ ДЛЯ РАСКРЫВАЮЩЕГОСЯ БЛОКА ======================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.explainer-toggle');
+        const content = document.querySelector('.explainer-content');
+
+        if (toggle && content) {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.marginTop = '0px';
+                } else {
+                    content.style.marginTop = '30px';
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    });
+</script>
 </html>
