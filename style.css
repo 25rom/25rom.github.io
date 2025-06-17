@@ -23,7 +23,7 @@ body {
     /* 3. Важное свойство, которое "прибивает" фон к окну браузера, чтобы он не прокручивался вместе с контентом */
     background-attachment: fixed;
     /* 4. Растягиваем картинку, чтобы она покрывала весь экран без искажений */
-    background-size: 150%;  /*cover
+    background-size: cover;  /*cover
     
     display: flex;
     flex-direction: column;
