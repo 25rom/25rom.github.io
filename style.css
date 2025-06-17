@@ -969,3 +969,46 @@ footer {
         min-height: 180px; /* Задаем минимальную высоту для тач-устройств */
     }
 }
+/* =================================================================== */
+/* === СТИЛИ ДЛЯ БЛОКА 1: "БЫСТРЫЕ ВЫГОДЫ" === */
+/* =================================================================== */
+
+.quick-benefits-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto; /* Центрируем весь блок */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Легкий разделитель снизу */
+}
+
+.benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px; /* Задаем ширину для каждого элемента */
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    background-color: #fffaf0; /* Легкий фон, чтобы выделить */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.benefit-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #4A4A4A;
+}
