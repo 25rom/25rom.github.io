@@ -1063,3 +1063,70 @@ footer {
     border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+/* =================================================================== */
+/* === ФИНАЛЬНЫЕ ДИЗАЙНЕРСКИЕ УЛУЧШЕНИЯ === */
+/* =================================================================== */
+
+/* 1. Улучшенный дизайн для блока "4 Типа Практик" */
+.pranayama-types-section {
+    border-top: 1px solid rgba(0, 0, 0, 0.08); /* Добавляем разделитель сверху */
+    padding-top: 60px;
+}
+.type-card:hover {
+    transform: translateY(-8px) scale(1.03); /* Усиливаем анимацию */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12); /* Делаем тень глубже */
+}
+
+
+/* 2. Стили для раскрывающегося блока "Что такое Пранаяма?" */
+.pranayama-explainer-section {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.08); /* Разделитель сверху */
+}
+
+.explainer-toggle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #4A4A4A;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1.5px solid #D7CCC8;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.explainer-toggle:hover {
+    background-color: #fff;
+    border-color: #8D6E63;
+    color: #333;
+}
+
+.explainer-toggle .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.explainer-toggle.active .arrow {
+    transform: rotate(180deg);
+}
+
+.explainer-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+    text-align: left;
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.explainer-content p {
+    margin-bottom: 15px;
+}
+.explainer-content p:last-child {
+    margin-bottom: 0;
+}
