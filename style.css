@@ -17,7 +17,7 @@ body {
     
     /* === ИЗМЕНЕНИЯ ЗДЕСЬ === */
     /* 1. Указываем путь к вашей сгенерированной картинке */
-    background-image: url('https://25rom.github.io/texture-background.png'); 
+    background-image: url('https://25rom.github.io/texture-background.jpeg'); 
     /* 2. Задаем базовый цвет фона, который будет виден, пока картинка грузится */
     background-color: #FFFBF5; 
     /* 3. Важное свойство, которое "прибивает" фон к окну браузера, чтобы он не прокручивался вместе с контентом */
