@@ -1198,3 +1198,36 @@ footer {
 .explainer-content p:last-child {
     margin-bottom: 0;
 }
+/* =================================================================== */
+/* === СТИЛИ ДЛЯ ВОЛНИСТОГО ПОДЧЕРКИВАНИЯ === */
+/* =================================================================== */
+
+/* --- Общий стиль для всех выделенных слов --- */
+.highlight-wavy {
+    position: relative; /* Необходимо для позиционирования, если понадобится */
+    background-repeat: repeat-x; /* Повторяем волну по горизонтали */
+    background-position: bottom; /* Располагаем линию внизу */
+    background-size: 20px 8px; /* Размер одного "звена" волны: ширина 20px, высота 8px */
+    padding-bottom: 5px; /* Добавляем отступ снизу, чтобы линия не прилипала к тексту */
+    
+    /* Маленький трюк, чтобы линия не проходила сквозь буквы, а была под ними.
+       Цвет тени должен совпадать с цветом фона вашей карточки. */
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5), 
+                 -2px 2px 0px rgba(255, 255, 255, 0.5), 
+                 2px -2px 0px rgba(255, 255, 255, 0.5), 
+                 -2px -2px 0px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Цвет и волна для СИНЕГО текста --- */
+.highlight-wavy.color-blue {
+    color: #5B86E5; /* Цвет текста */
+    /* Встроенная SVG-картинка с волной синего цвета */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M 0 5 Q 5 0, 10 5 T 20 5' stroke='%235B86E5' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+}
+
+/* --- Цвет и волна для ОРАНЖЕВОГО текста --- */
+.highlight-wavy.color-orange {
+    color: #f7b733; /* Цвет текста */
+    /* Встроенная SVG-картинка с волной оранжевого цвета */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M 0 5 Q 5 0, 10 5 T 20 5' stroke='%23f7b733' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+}
