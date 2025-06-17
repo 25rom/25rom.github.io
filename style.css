@@ -855,15 +855,16 @@ footer {
 /* === СТИЛИ ДЛЯ БЛОКА "ТИПЫ ПРАНАЯМ" === */
 /* =================================================================== */
 
+/* =================================================================== */
+/* === СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ОБНОВЛЕННЫЕ) === */
+/* =================================================================== */
+
 .pranayama-types-section {
     padding: 60px 20px;
     text-align: center;
-    /* Используем сгенерированную картинку как фон */
-    background-image: url('path/to/your/texture-background.png');
-    background-size: cover;
-    background-position: center;
+    background-color: #FFFBF5; /* Добавим фоновый цвет для отделения от остального контента */
     border-radius: 20px;
-    margin-bottom: 40px;
+    margin: 40px 0; /* Добавляем отступы сверху и снизу */
 }
 
 .pranayama-types-section h2 {
@@ -875,27 +876,22 @@ footer {
 
 .types-grid-container {
     display: grid;
-    /* Создаем асимметричную сетку 2x2 */
+    /* Создаем сетку 2x2 */
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 200px); /* Высота строк */
+    grid-template-rows: repeat(2, 220px); /* Высота строк */
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
 }
 
-/* Располагаем блоки в сетке */
-.type-card.basic { grid-column: 1 / 2; grid-row: 1 / 3; } /* Занимает 2 ячейки по высоте */
-.type-card.activating { grid-column: 2 / 3; grid-row: 1 / 2; }
-.type-card.balancing { grid-column: 2 / 3; grid-row: 2 / 3; }
-.type-card.calming { display: none; } /* Скроем пока четвертый блок, чтобы композиция была 3-х элементной и более динамичной. Можно включить, изменив сетку */
-
-
+/* Стили для ссылок-карточек */
 .type-card {
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    color: white; /* Цвет текста по умолчанию */
     position: relative;
     border-radius: 15px;
-    overflow: hidden; /* Важно, чтобы контент не вылезал за скругленные углы */
+    overflow: hidden;
     padding: 25px;
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Располагаем контент внизу карточки */
@@ -910,7 +906,7 @@ footer {
 
 /* Задаем цвета для каждого типа */
 .type-card.basic { background-color: #808000; } /* Оливковый */
-.type-card.activating { background-color: #FFD700; } /* Солнечно-желтый */
+.type-card.activating { background-color: #FFC107; } /* Солнечно-желтый (изменен для лучшего контраста текста) */
 .type-card.balancing { background-color: #40E0D0; } /* Бирюзовый */
 .type-card.calming { background-color: #B0C4DE; } /* Лавандовый */
 
@@ -918,7 +914,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 600;
     margin: 0;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .type-description {
@@ -940,7 +936,6 @@ footer {
     margin: 0;
 }
 
-
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
     .types-grid-container {
@@ -949,13 +944,6 @@ footer {
         gap: 15px;
     }
     .type-card {
-        min-height: 150px;
-    }
-    /* Возвращаем все блоки в поток на мобильных */
-    .type-card.basic,
-    .type-card.activating,
-    .type-card.balancing {
-        grid-column: auto;
-        grid-row: auto;
+        min-height: 180px; /* Задаем минимальную высоту для тач-устройств */
     }
 }
