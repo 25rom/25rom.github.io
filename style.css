@@ -1499,14 +1499,6 @@ footer {
     max-height: 500px; /* Большая высота, чтобы влез любой текст */
 }
 
-/* Блок с кнопками */
-.partner-actions {
-    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */  БЫЛО ТАК /*justify-content: space-between;
-    padding-top: 20px;
-    display: flex;
-    justify-content: flex-end;   
-    align-items: center;
-    gap: 15px;
 }
     /* =================================================================== */
 /* ===         СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ (ИСПРАВЛЕННЫЕ)          === */
