@@ -963,12 +963,18 @@ footer {
 /* === СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ФИНАЛЬНАЯ ВЕРСИЯ) === */
 /* =================================================================== */
 
+/* =================================================================== */
+/* === СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ВОССТАНОВЛЕННЫЕ) === */
+/* =================================================================== */
+
 .pranayama-types-section {
     padding: 60px 20px;
     text-align: center;
-    background-color: #FFFBF5;
+    max-width: 900px;
+    margin: 40px auto;
+    /* Убираем фон с самой секции, он будет на карточках */
+    background-color: transparent; 
     border-radius: 20px;
-    margin: 40px 0 0 0; /* Убираем нижний отступ, чтобы блок был ближе к тегам */
 }
 
 .pranayama-types-section h2 {
@@ -976,16 +982,15 @@ footer {
     font-weight: 500;
     color: #333;
     margin-bottom: 40px;
+    text-shadow: none; /* Убираем лишнюю тень */
 }
 
-.types-grid-{
+.types-grid-container {
     display: grid;
+    /* Создаем сетку 2x2 на десктопе */
     grid-template-columns: repeat(2, 1fr);
-    /* ИЗМЕНЕНИЕ: Уменьшаем высоту блоков, как вы и хотели */
-    grid-template-rows: repeat(2, 120px); 
+    grid-auto-rows: 140px; /* Задаем фиксированную высоту строк */
     gap: 20px;
-    max-width: 700px;
-    margin: 0 auto;
 }
 
 /* Стили для ссылок-карточек */
@@ -996,7 +1001,6 @@ footer {
     border-radius: 15px;
     overflow: hidden;
     padding: 20px;
-    /* ИЗМЕНЕНИЕ: Заголовок теперь будет по центру карточки */
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -1005,25 +1009,65 @@ footer {
 }
 
 .type-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
-/* === НОВЫЙ ЭФФЕКТ ПОЯВЛЕНИЯ ОПИСАНИЯ === */
-/* Описание будет появляться поверх, а не сдвигать текст */
-.type-card .type-description {
+/* Заголовок внутри карточки */
+.type-card h3 {
+    font-size: 1.5rem; 
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2; 
+    transition: opacity 0.3s ease;
+}
+
+/* ЭФФЕКТ ПОЯВЛЕНИЯ ОПИСАНИЯ ПРИ НАВЕДЕНИИ */
+/* Псевдо-элемент, который содержит текст описания */
+.type-card::before {
+    content: attr(data-description); /* Берем текст из HTML-атрибута data-description */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.55); /* Полупрозрачное затемнение */
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачное затемнение */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: white;
+    white-space: normal; /* Разрешаем перенос текста */
     opacity: 0; /* Скрыто по умолчанию */
     transition: opacity 0.3s ease-in-out;
+    z-index: 1; 
+}
+
+/* При наведении... */
+.type-card:hover::before {
+    opacity: 1; /* ...показываем описание... */
+}
+.type-card:hover h3 {
+    opacity: 0; /* ...и плавно прячем заголовок. */
+}
+
+/* Задаем цвета для каждого типа */
+.type-card.basic { background-color: #8B8B00; }
+.type-card.activating { background-color: #FFC107; }
+.type-card.balancing { background-color: #40E0D0; }
+.type-card.calming { background-color: #B0C4DE; }
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .types-grid-container {
+        grid-template-columns: 1fr; /* Одна колонка */
+        grid-auto-rows: 120px; /* Высота карточек на мобильных */
+        gap: 15px;
+    }
 }
 
 .type-card:hover .type-description {
