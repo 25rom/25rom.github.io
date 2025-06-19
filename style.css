@@ -227,13 +227,26 @@ body {
     justify-content: center; /* Центрируем группу карточек */
 }
 
+/* =================================================================== */
+/* === ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ КАРТОЧЕК ПРАНАЯМ С ФОНОВЫМ ИЗОБРАЖЕНИЕМ === */
+/* =================================================================== */
+
 .pranayama-block {
-    background-color: #ffffff;
+    /* --- ИЗМЕНЕНИЯ В ОСНОВНОМ БЛОКЕ --- */
+    /* Убираем сплошной цвет фона */
+    /* background-color: #ffffff; */ 
+
+    /* 1. Добавляем ваше фоновое изображение по прямой ссылке */
+    background-image: url('https://25rom.github.io/texture-background0.jpeg');
+    
+    /* 2. Настраиваем его отображение */
+    background-size: cover; /* Растягивает картинку, чтобы она полностью покрыла блок */
+    background-position: center center; /* Центрирует картинку */
+    background-repeat: no-repeat; /* Запрещает повторение */
+    
+    /* 3. Остальные стили для позиционирования и анимации */
     border-radius: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding: 50px 20px 40px 20px;
     text-align: center;
     text-decoration: none;
     color: #333;
@@ -243,19 +256,50 @@ body {
     flex-direction: column;
     justify-content: center;
     min-height: 170px;
-    position: relative;
+    position: relative; /* Необходимо для работы псевдо-элемента и дочерних absolute-элементов */
+    overflow: hidden; /* Скрывает все, что выходит за пределы скругленных углов (важно для ::before) */
     z-index: 1;
 }
+
+/* --- ДОБАВЛЕН ПСЕВДО-ЭЛЕМЕНТ ДЛЯ УЛУЧШЕНИЯ ЧИТАЕМОСТИ --- */
+/* Этот слой находится между фоновой картинкой и текстом */
+.pranayama-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Белый полупрозрачный слой. 0.7 - 70% непрозрачности. Можете поставить 0.8, если текст плохо видно. */
+    background-color: rgba(255, 255, 255, 0.7); 
+    z-index: -1; /* Помещаем этот слой ПОД текстом, но НАД фоновой картинкой */
+    transition: background-color 0.3s ease; /* Плавный переход для hover-эффекта */
+}
+
+/* --- ЭФФЕКТ ПРИ НАВЕДЕНИИ --- */
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     z-index: 20;
 }
+
+/* При наведении делаем белый слой чуть более прозрачным, чтобы картинка стала четче */
+.pranayama-block:hover::before {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* --- ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ ВНУТРЕННЕГО КОНТЕНТА --- */
+/* Убеждаемся, что весь текст и иконки находятся НАД фоном */
+
 .pranayama-block h3 {
     font-size: 1.4em;
     font-weight: 500;
     margin: 0;
+    position: relative; /* Добавляем, чтобы z-index сработал */
+    z-index: 2; /* Явно указываем, что заголовок находится выше фона */
 }
+
 .pranayama-top-info {
     position: absolute;
     top: 15px;
@@ -263,7 +307,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 5;
+    z-index: 5; /* Этот z-index уже был, он достаточно высокий, все отлично */
 }
 .pranayama-class-label {
     padding: 4px 10px;
