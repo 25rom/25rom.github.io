@@ -1501,43 +1501,61 @@ footer {
 
 /* Блок с кнопками */
 .partner-actions {
-    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */
+    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */  БЫЛО ТАК /*justify-content: space-between;
     padding-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;   
+    align-items: center;
+    gap: 15px;
+}
+/* =================================================================== */
+/* ===         СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ (ИСПРАВЛЕННЫЕ)          === */
+/* =================================================================== */
+
+/* Блок с кнопками (Прижимаем к правому краю) */
+.partner-actions {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end; /* Кнопки будут справа */
     align-items: center;
     gap: 15px;
 }
 
-/* Кнопка "Читать далее" */
+/* Кнопка "Читать далее" (Второстепенная) */
 .expand-btn {
     background-color: transparent;
     border: 1.5px solid #c9c9c9;
     color: #707070;
     border-radius: 20px;
-    padding: 6px 14px;
+    padding: 8px 18px; /* Сделаем паддинг как у основной кнопки */
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     transition: all 0.2s;
-    flex-shrink: 0; /* Чтобы кнопка не сжималась */
+    flex-shrink: 0; 
 }
 .expand-btn:hover {
     background-color: #f0f0f0;
     border-color: #adadad;
 }
 
-/* Кнопка "Перейти на сайт" */
+/* Кнопка "Перейти на сайт" (Основная, с сохраненным цветом) */
 .partner-link {
+    /* Сохраняем ваш фирменный стиль */
     background-color: #8D6E63;
     color: white;
+    
+    /* Общие стили для обеих кнопок */
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 20px;
     font-weight: 500;
     transition: all 0.2s;
     text-align: center;
-    flex-grow: 1; /* Кнопка займет оставшееся место */
+    border: 1.5px solid transparent; /* Добавляем прозрачную рамку для выравнивания */
+
+    /* flex-grow: 1; <-- УДАЛЕНО! Теперь кнопка не растягивается. */
 }
 .partner-link:hover {
     background-color: #795548;
