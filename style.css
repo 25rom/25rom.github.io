@@ -1429,15 +1429,16 @@ footer {
 /* Сетка для карточек */
 .partner-grid {
     display: grid;
-    /* Адаптивная сетка: от 1 до 3 колонок в зависимости от ширины экрана */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px; /* Увеличиваем расстояние между карточками */
+    /* Адаптивная сетка: 5 колонок в зависимости от ширины экрана */
+    grid-template-columns: repeat(5, 1fr);   
+    gap: 20px;  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px; /* Увеличиваем расстояние между карточками */
 }
 
 /* === СТИЛИ САМОЙ КАРТОЧКИ (ЭФФЕКТ "МАТОВОГО СТЕКЛА") === */
 .partner-card {
     /* 1. Фон */
-    background-color: rgba(255, 255, 255, 0.6); /* Полупрозрачный белый */
+    background-color: rgba(255, 255, 255, 0.0); /* Полупрозрачный белый */
     backdrop-filter: blur(12px); /* Эффект размытия фона */
     -webkit-backdrop-filter: blur(12px);
     
