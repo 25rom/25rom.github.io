@@ -1402,3 +1402,121 @@ footer {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M 0 5 Q 5 0, 10 5 T 20 5' stroke='%23f7b733' stroke-width='2' fill='none'/%3E%3C/svg%3E");
 }
 
+/* =================================================================== */
+/* ===         СТИЛИ ДЛЯ СТРАНИЦЫ ПАРТНЕРОВ ("ДРУЗЬЯ")             === */
+/* =================================================================== */
+
+.partners-page-section {
+    padding: 40px 0;
+}
+
+.partners-page-section h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.category-description {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #777;
+    margin-bottom: 50px;
+}
+
+/* Сетка для карточек */
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Стили самой карточки */
+.partner-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    overflow: hidden; /* Важно, чтобы картинка не вылезала за скругленные углы */
+    display: flex;
+    flex-direction: column;
+}
+
+.partner-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Картинка будет красиво заполнять блок, не искажаясь */
+}
+
+.partner-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Позволяет блоку растягиваться, прижимая кнопки к низу */
+}
+
+.partner-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Контейнер для описания - ключевой элемент для "разворачивания" */
+.partner-description {
+    /* Задаем максимальную высоту (примерно 3-4 строки текста) */
+    max-height: 4.8em; 
+    overflow: hidden; /* Прячем все, что не помещается */
+    position: relative;
+    transition: max-height 0.5s ease-in-out; /* Плавная анимация */
+}
+
+.partner-description p {
+    margin: 0;
+    color: #555;
+}
+
+/* Когда у карточки появляется класс .is-expanded, описание "разворачивается" */
+.partner-card.is-expanded .partner-description {
+    max-height: 500px; /* Большая высота, чтобы влез любой текст */
+}
+
+/* Блок с кнопками */
+.partner-actions {
+    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */
+    padding-top: 20px; /* Отступ от текста */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Кнопка "Читать далее" */
+.expand-btn {
+    background-color: transparent;
+    border: 1.5px solid #D7CCC8;
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #8D6E63;
+    transition: all 0.2s;
+}
+
+.expand-btn:hover {
+    background-color: #F5F5F5;
+    border-color: #BCAAA4;
+}
+
+/* Кнопка "Перейти на сайт" */
+.partner-link {
+    background-color: #8D6E63;
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.partner-link:hover {
+    background-color: #795548;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
