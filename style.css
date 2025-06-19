@@ -1037,13 +1037,13 @@ footer {
 /* === СТИЛИ ДЛЯ БЛОКА "ТИПЫ ПРАНАЯМ" === */
 /* =================================================================== */
 /* =================================================================== */
-/* ===       СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ФИНАЛЬНАЯ ВЕРСИЯ)     === */
+/* ===    СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ)   === */
 /* =================================================================== */
 
 .pranayama-types-section {
     padding: 60px 20px;
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px; /* Немного увеличим, чтобы вытянутые блоки смотрелись лучше */
     margin: 40px auto;
 }
 
@@ -1054,12 +1054,12 @@ footer {
     margin-bottom: 40px;
 }
 
-/* ИСПРАВЛЕНИЕ №1: Правильная сетка. display: grid; сам сделает все ячейки в ряду одинаковой высоты. */
+/* ИСПРАВЛЕНИЕ №1: Сетка 2x2. Убрана фиксированная высота строк. */
 .types-grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2, 120px); <-- УДАЛЕНО */
     gap: 25px;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -1070,80 +1070,61 @@ footer {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    padding: 20px;
-    display: flex; /* Используем flex для центрирования заголовка */
-    flex-direction: column; /* Располагаем элементы вертикально */
-    justify-content: center; 
-    align-items: center;
+    padding: 25px; /* Увеличим отступы */
+    
+    /* ИСПРАВЛЕНИЕ №2: Меняем Flexbox для вертикального расположения */
+    display: flex;
+    flex-direction: column; /* Элементы теперь идут друг под другом */
+    justify-content: flex-start; /* Прижимаем контент к верху */
+    align-items: center; /* Центрируем по горизонтали */
+    
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 180px; /* Задаем минимальную высоту для аккуратного вида */
+    min-height: 220px; /* Задаем минимальную высоту, чтобы все карточки были одинаковыми */
 }
 
 .type-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* Заголовок внутри карточки */
+/* ИСПРАВЛЕНИЕ №3: Заголовок и описание теперь всегда видимы */
 .type-card h3 {
-    font-size: 1.6rem; 
+    font-size: 1.4rem; 
     font-weight: 600;
-    margin: 0;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-    position: relative;
-    z-index: 2;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin: 0 0 15px 0; /* Добавляем отступ снизу */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    /* Убираем анимацию исчезновения */
+    transition: none;
 }
 
-/* ИСПРАВЛЕНИЕ №2: Описание, которое появляется при наведении */
+/* Описание теперь всегда видимо */
 .type-card .type-description {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.65); /* Сделал фон чуть темнее для читаемости */
-    color: white;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    
-    opacity: 0; /* Скрыто по умолчанию */
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
+    /* Убираем абсолютное позиционирование */
+    position: static;
+    background-color: transparent;
+    padding: 0;
+    /* Убираем эффект появления */
+    opacity: 1; 
+    transition: none;
 }
 
 .type-description p {
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    transform: scale(0.95); /* Немного уменьшаем текст вначале */
-    transition: transform 0.3s ease-in-out;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Добавляем тень для читаемости */
 }
 
-/* Эффект при наведении */
-.type-card:hover .type-description {
-    opacity: 1; /* Показываем описание */
-    pointer-events: auto;
-}
-.type-card:hover .type-description p {
-    transform: scale(1); /* Возвращаем текст к нормальному размеру */
-}
-
-/* При наведении заголовок отъезжает вверх и исчезает */
-.type-card:hover h3 {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-/* Цвета для карточек */
-.type-card.basic { background-color: #8B8B00; }
+/* Цвета для каждого типа */
+.type-card.basic { background-color: #808000; }
 .type-card.activating { background-color: #FFC107; }
 .type-card.balancing { background-color: #40E0D0; }
 .type-card.calming { background-color: #B0C4DE; }
+
+/* Правило для скрытия заголовка при наведении теперь не нужно */
+/* .type-card:hover h3 { ... } <-- УДАЛЕНО */
 
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
@@ -1151,11 +1132,7 @@ footer {
         grid-template-columns: 1fr; /* Одна колонка на мобильных */
         gap: 15px;
     }
-    .type-card {
-        min-height: 150px; /* Уменьшаем высоту для мобильных */
-    }
 }
-
 
 /* === НОВЫЙ БЛОК: СТИЛИ ДЛЯ ЗАГОЛОВКА ПЕРЕД ТЕГАМИ === */
 /* Этот код нужно будет добавить, если его еще нет */
