@@ -48,7 +48,7 @@ body {
 /* =================================================================== */
 /* ===                      БЛОК "БЫСТРЫЕ ВЫГОДЫ"                  === */
 /* =================================================================== */
-.quick-benefits-section { display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: 30px; padding: 40px 20px; max-width: 900px; margin: 0 auto; }
+.quick-benefits-section { display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: 30px; padding: 40px 20px; max-width: 900px; margin: 0 auto; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
 .benefit-item { display: flex; flex-direction: column; align-items: center; text-align: center; width: 200px; }
 .benefit-icon { font-size: 3rem; line-height: 1; margin-bottom: 15px; background-color: #fffaf0; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); }
 .benefit-title { font-size: 1.1rem; font-weight: 500; color: #4A4A4A; }
@@ -64,7 +64,7 @@ body {
     position: relative;
     z-index: 15;
     /* ===> ЗДЕСЬ МОЖНО ВСТАВИТЬ ФОНОВУЮ КАРТИНКУ <=== */
-    /* Например: background-image: url('ваша_картинка.jpg'); background-size: cover; */
+    /* Например: background-image: url('https://25rom.github.io/texture-background01.jpeg'); background-size: cover; */
     background-color: rgba(255, 255, 255, 0.7); 
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); 
@@ -73,7 +73,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .intro-text { font-size: 1.15rem; line-height: 1.7; color: #3E4C59; margin-bottom: 35px; }
-.highlight-wavy { position: relative; white-space: nowrap; background-repeat: repeat-x; background-position: bottom; background-size: 20px 8px; padding-bottom: 5px; text-shadow: 2px 2px 0px #fff, -2px 2px 0px #fff, 2px -2px 0px #fff, -2px -2px 0px #fff; }
+.highlight-wavy { position: relative; white-space: nowrap; background-repeat: repeat-x; background-position: bottom; background-size: 20px 8px; padding-bottom: 5px; text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.7), -2px 2px 0px rgba(255, 255, 255, 0.7), 2px -2px 0px rgba(255, 255, 255, 0.7), -2px -2px 0px rgba(255, 255, 255, 0.7); }
 .highlight-wavy.color-blue { color: #5B86E5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M 0 5 Q 5 0, 10 5 T 20 5' stroke='%235B86E5' stroke-width='2' fill='none'/%3E%3C/svg%3E"); }
 .highlight-wavy.color-orange { color: #f7b733; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M 0 5 Q 5 0, 10 5 T 20 5' stroke='%23f7b733' stroke-width='2' fill='none'/%3E%3C/svg%3E"); }
 .key-facts-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
@@ -82,7 +82,7 @@ body {
 /* =================================================================== */
 /* ===              БЛОК "4 ТИПА ПРАКТИК" И КАРТОЧКИ К НИМ            === */
 /* =================================================================== */
-.pranayama-types-section { padding: 60px 20px; text-align: center; max-width: 900px; margin: 40px auto 0 auto; }
+.pranayama-types-section { padding: 60px 20px; text-align: center; max-width: 900px; margin: 40px auto 0 auto; border-top: 1px solid rgba(0, 0, 0, 0.08); }
 .pranayama-types-section h2 { font-size: 2.2rem; font-weight: 500; color: #333; margin-bottom: 40px; }
 .types-grid-container { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 20px; }
 .type-card { text-decoration: none; color: white; position: relative; border-radius: 15px; overflow: hidden; padding: 20px; display: flex; justify-content: center; align-items: center; text-align: center; transition: all 0.3s ease; }
@@ -109,17 +109,20 @@ body {
 .explainer-content p:last-child { margin-bottom: 0; }
 
 /* =================================================================== */
-/* ===                  НАВИГАЦИЯ ПО ТЕГАМ И КАРТОЧКИ              === */
+/* ===                  НАВИГАЦИЯ ПО ТЕГАМ И КАРТОЧКИ ПРАНАЯМ      === */
 /* =================================================================== */
 .tags-prompt-headline { text-align: center; font-size: 1.5rem; font-weight: 500; color: #4A4A4A; margin: 60px auto 40px auto; display: inline-block; background-color: rgba(255, 255, 255, 0.7); padding: 15px 30px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.2); }
 .tags-navigation { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 15px; margin-bottom: 30px; }
-.tag { background-color: var(--tag-color, #E0E0E0); color: #fff; padding: 10px 20px; border: 3px solid transparent; border-radius: 25px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: all 0.2s; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); border: none; }
+.tag { background-color: var(--tag-color, #E0E0E0); color: #fff; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: all 0.2s; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); border: none; }
 .tag:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }
 .tag.active { border: 3px solid #FFFFFF; box-shadow: 0 0 10px var(--tag-color, #777), 0 0 5px rgba(0,0,0,0.3); filter: brightness(1.1); transform: scale(1.03); }
 .tag.reset-filter { background-color: #777; color: white; border-color: transparent; }
 .tag.reset-filter:hover { background-color: #555; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }
 .pranayama-content h2 { text-align: center; font-size: 2em; color: #333; margin-bottom: 30px; font-weight: 400; }
-.pranayama-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; justify-content: center; }
+.pranayama-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+.pranayama-block { background-color: #ffffff; border-radius: 12px; padding: 50px 20px 40px 20px; text-align: center; text-decoration: none; color: #333; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: center; min-height: 170px; position: relative; }
+.pranayama-block:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); z-index: 20; }
+/* ... (здесь должны быть стили для тултипов, но я их убрал для чистоты, их можно добавить обратно) ... */
 
 /* =================================================================== */
 /* ===             ИНФОГРАФИКА С СИЛУЭТОМ (внизу страницы)          === */
