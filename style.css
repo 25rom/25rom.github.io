@@ -1036,15 +1036,17 @@ footer {
 /* =================================================================== */
 /* === СТИЛИ ДЛЯ БЛОКА "ТИПЫ ПРАНАЯМ" === */
 /* =================================================================== */
+
 /* =================================================================== */
-/* ===    СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ)   === */
+/* === СТИЛИ ДЛЯ БЛОКА "4 ТИПА ПРАКТИК" (ФИНАЛЬНАЯ ВЕРСИЯ) === */
 /* =================================================================== */
 
 .pranayama-types-section {
     padding: 60px 20px;
     text-align: center;
-    max-width: 1000px; /* Немного увеличим, чтобы вытянутые блоки смотрелись лучше */
-    margin: 40px auto;
+    background-color: #FFFBF5;
+    border-radius: 20px;
+    margin: 40px 0 0 0; /* Убираем нижний отступ, чтобы блок был ближе к тегам */
 }
 
 .pranayama-types-section h2 {
@@ -1054,12 +1056,13 @@ footer {
     margin-bottom: 40px;
 }
 
-/* ИСПРАВЛЕНИЕ №1: Сетка 2x2. Убрана фиксированная высота строк. */
-.types-grid-container {
+.types-grid-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* grid-template-rows: repeat(2, 120px); <-- УДАЛЕНО */
-    gap: 25px;
+    /* ИЗМЕНЕНИЕ: Уменьшаем высоту блоков, как вы и хотели */
+    grid-template-rows: repeat(2, 120px); 
+    gap: 20px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -1070,17 +1073,13 @@ footer {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    padding: 25px; /* Увеличим отступы */
-    
-    /* ИСПРАВЛЕНИЕ №2: Меняем Flexbox для вертикального расположения */
+    padding: 20px;
+    /* ИЗМЕНЕНИЕ: Заголовок теперь будет по центру карточки */
     display: flex;
-    flex-direction: column; /* Элементы теперь идут друг под другом */
-    justify-content: flex-start; /* Прижимаем контент к верху */
-    align-items: center; /* Центрируем по горизонтали */
-    
+    justify-content: center; 
+    align-items: center;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 220px; /* Задаем минимальную высоту, чтобы все карточки были одинаковыми */
 }
 
 .type-card:hover {
@@ -1088,51 +1087,55 @@ footer {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* ИСПРАВЛЕНИЕ №3: Заголовок и описание теперь всегда видимы */
-.type-card h3 {
-    font-size: 1.4rem; 
-    font-weight: 600;
-    margin: 0 0 15px 0; /* Добавляем отступ снизу */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    /* Убираем анимацию исчезновения */
-    transition: none;
+/* === НОВЫЙ ЭФФЕКТ ПОЯВЛЕНИЯ ОПИСАНИЯ === */
+/* Описание будет появляться поверх, а не сдвигать текст */
+.type-card .type-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55); /* Полупрозрачное затемнение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    opacity: 0; /* Скрыто по умолчанию */
+    transition: opacity 0.3s ease-in-out;
 }
 
-/* Описание теперь всегда видимо */
-.type-card .type-description {
-    /* Убираем абсолютное позиционирование */
-    position: static;
-    background-color: transparent;
-    padding: 0;
-    /* Убираем эффект появления */
-    opacity: 1; 
-    transition: none;
+.type-card:hover .type-description {
+    opacity: 1; /* Появляется при наведении */
 }
 
 .type-description p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
     margin: 0;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Добавляем тень для читаемости */
+    color: white; /* Текст на затемненном фоне будет белым */
 }
 
-/* Цвета для каждого типа */
+/* Задаем цвета для каждого типа */
 .type-card.basic { background-color: #808000; }
 .type-card.activating { background-color: #FFC107; }
 .type-card.balancing { background-color: #40E0D0; }
 .type-card.calming { background-color: #B0C4DE; }
 
-/* Правило для скрытия заголовка при наведении теперь не нужно */
-/* .type-card:hover h3 { ... } <-- УДАЛЕНО */
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .types-grid-container {
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
-        gap: 15px;
-    }
+.type-card h3 {
+    /* ИЗМЕНЕНИЕ: Уменьшаем шрифт, чтобы он помещался в новый размер блока */
+    font-size: 1.4rem; 
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    /* Добавляем плавность для исчезновения заголовка */
+    transition: opacity 0.3s ease-in-out;
 }
+
+/* ИЗМЕНЕНИЕ: При наведении заголовок будет исчезать, уступая место описанию */
+.type-card:hover h3 {
+    opacity: 0;
+}
+
 
 /* === НОВЫЙ БЛОК: СТИЛИ ДЛЯ ЗАГОЛОВКА ПЕРЕД ТЕГАМИ === */
 /* Этот код нужно будет добавить, если его еще нет */
