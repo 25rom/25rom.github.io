@@ -89,7 +89,7 @@
                 </div>
             </section>
 
-            <h2 id="tags-section" class="tags-prompt-headline">КАКОГО СОСТОЯНИЯ ВЫ ХОТИТЕ ДОСТИЧЬ СЕГОДНЯ?</h2>
+            <h2 id="tags-section" class="tags-prompt-headline">✨ КАКОГО СОСТОЯНИЯ ВЫ ХОТИТЕ ДОСТИЧЬ СЕГОДНЯ?</h2>
             
             <nav class="tags-navigation" aria-label="Фильтр техник по тегам">
                 <button class="tag" data-tag="Глубоко_Расслабиться" style="--tag-color: #FFA07A;">Глубоко Расслабиться</button>
@@ -98,16 +98,17 @@
                 <button class="tag" data-tag="Снять_Стресс" style="--tag-color: #009688;">Снять Стресс</button>
                 <button class="tag reset-filter" data-tag="все">Показать все</button>
             </nav>
-            
-            <div class="pranayama-grid" id="pranayamaGrid">
-                <!-- Карточки пранаям будут вставляться сюда из JSON с помощью JS -->
+
+            <div class="pranayama-content">
+                 <h2>Выбери карточку ❤️</h2>
+                <div class="pranayama-grid" id="pranayamaGrid">
+                    <!-- Карточки будут вставляться сюда из JSON/JS -->
+                </div>
             </div>
 
             <section class="silhouette-infographic-section">
                 <div class="infographic-container">
-                    <div class="interactive-marker" style="top: 30%; left: 30%;"></div>
-                    <div class="interactive-marker" style="top: 53%; left: 70%;"></div>
-                    <div class="interactive-marker" style="top: 73.5%; left: 35%;"></div>
+                    <!-- Маркеры инфографики -->
                 </div>
             </section>
         </main>
@@ -119,21 +120,22 @@
             <p>© Мама Пранаяма, 2025</p>
         </footer>
     </div>
+
     <script>
-        // JS для печатающегося текста
+        // Скрипт для печатающегося текста
         const typingElement = document.querySelector('.typing-effect');
-        if (typingElement) {
-            const words = ["УПРАВЛЕНИЯ БАЛАНСОМ", "ЗАРЯДА ЭНЕРГИЕЙ","СОЗДАНИЯ НАСТРОЕНИЯ"];
+        if(typingElement) {
+            const words = ["УПРАВЛЕНИЯ БАЛАНСОМ", "ЗАРЯДА ЭНЕРГИЕЙ", "СОЗДАНИЯ НАСТРОЕНИЯ"];
             const colors = ["#F2C94C", "#5A9C78", "#4A89A3"];
             let wordIndex = 0, letterIndex = 0, isDeleting = false;
             function type() {
                 const currentWord = words[wordIndex];
                 typingElement.style.color = colors[wordIndex];
                 let displayText = isDeleting ? currentWord.substring(0, letterIndex - 1) : currentWord.substring(0, letterIndex + 1);
-                typingElement.textContent = displayText || '\u00A0'; // Используем неразрывный пробел
+                typingElement.innerHTML = displayText || ' ';
                 letterIndex += isDeleting ? -1 : 1;
                 let typeSpeed = isDeleting ? 100 : 200;
-                if (!isDeleting && letterIndex === currentWord.length) {
+                if (!isDeleting && letterIndex === currentWord.length + 1) {
                     typeSpeed = 2000;
                     isDeleting = true;
                 } else if (isDeleting && letterIndex === 0) {
@@ -143,17 +145,22 @@
                 }
                 setTimeout(type, typeSpeed);
             }
-            type();
+            document.addEventListener('DOMContentLoaded', type);
         }
 
-        // JS для раскрывающегося блока
+        // Скрипт для раскрывающегося блока
         const toggle = document.querySelector('.explainer-toggle');
         const content = document.querySelector('.explainer-content');
         if (toggle && content) {
             toggle.addEventListener('click', function() {
                 this.classList.toggle('active');
-                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-                content.style.marginTop = content.style.maxHeight ? '30px' : '0px';
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    content.style.marginTop = '0px';
+                } else {
+                    content.style.marginTop = '30px';
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
             });
         }
     </script>
