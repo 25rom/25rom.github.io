@@ -1512,35 +1512,39 @@ footer {
 /* ===         СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ (ИСПРАВЛЕННЫЕ)          === */
 /* =================================================================== */
 
-/* Блок с кнопками (Прижимаем к правому краю) */
+/* =================================================================== */
+/* ===       СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ ПАРТНЕРА (ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ)     === */
+/* =================================================================== */
+
+/* Блок с кнопками */
 .partner-actions {
-    margin-top: auto;
+    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */
     padding-top: 20px;
     display: flex;
-    justify-content: flex-end; /* Кнопки будут справа */
+    /* ИСПРАВЛЕНИЕ №1: Выравниваем по правому краю */
+    justify-content: flex-end; 
     align-items: center;
-    gap: 15px;
+    gap: 10px; /* Уменьшим расстояние между кнопками */
 }
 
 /* Кнопка "Читать далее" (Второстепенная) */
 .expand-btn {
     background-color: transparent;
-    border: 1.5px solid #c9c9c9;
-    color: #707070;
+    border: 1.5px solid #d1d1d1;
+    color: #818181;
     border-radius: 20px;
-    padding: 8px 18px; /* Сделаем паддинг как у основной кнопки */
+    padding: 7px 16px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     transition: all 0.2s;
-    flex-shrink: 0; 
 }
 .expand-btn:hover {
-    background-color: #f0f0f0;
-    border-color: #adadad;
+    background-color: #f5f5f5;
+    border-color: #b9b9b9;
 }
 
-/* Кнопка "Перейти на сайт" (Основная, с сохраненным цветом) */
+/* Кнопка "Перейти на сайт" (Основная) */
 .partner-link {
     /* Сохраняем ваш фирменный стиль */
     background-color: #8D6E63;
@@ -1553,10 +1557,13 @@ footer {
     font-weight: 500;
     transition: all 0.2s;
     text-align: center;
-    border: 1.5px solid transparent; /* Добавляем прозрачную рамку для выравнивания */
-
-    /* flex-grow: 1; <-- УДАЛЕНО! Теперь кнопка не растягивается. */
+    
+    /* ИСПРАВЛЕНИЕ №2: Убираем любое растягивание */
+    flex-grow: 0; /* Запрещаем растягиваться */
+    flex-shrink: 0; /* Запрещаем сжиматься */
+    white-space: nowrap; /* Запрещаем перенос текста */
 }
+
 .partner-link:hover {
     background-color: #795548;
     transform: translateY(-1px);
