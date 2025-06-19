@@ -1508,23 +1508,25 @@ footer {
     align-items: center;
     gap: 15px;
 }
-/* =================================================================== */
+    /* =================================================================== */
 /* ===         СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ (ИСПРАВЛЕННЫЕ)          === */
 /* =================================================================== */
-
+    
+/* Блок с кнопками */
 /* =================================================================== */
-/* ===       СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ ПАРТНЕРА (ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ)     === */
+/* ===         СТИЛИ ДЛЯ КНОПОК В КАРТОЧКЕ (ФИНАЛЬНАЯ ВЕРСИЯ)       === */
 /* =================================================================== */
 
 /* Блок с кнопками */
 .partner-actions {
-    margin-top: auto; /* Прижимает блок с кнопками к низу карточки */
-    padding-top: 20px;
+    /* ИСПРАВЛЕНИЕ №1: Увеличиваем отступ, чтобы "отлепить" кнопки от текста */
+    margin-top: auto;
+    padding-top: 25px; 
+    
     display: flex;
-    /* ИСПРАВЛЕНИЕ №1: Выравниваем по правому краю */
-    justify-content: flex-end; 
+    justify-content: flex-end; /* Прижимаем кнопки к правому краю */
     align-items: center;
-    gap: 10px; /* Уменьшим расстояние между кнопками */
+    gap: 10px;
 }
 
 /* Кнопка "Читать далее" (Второстепенная) */
@@ -1533,12 +1535,16 @@ footer {
     border: 1.5px solid #d1d1d1;
     color: #818181;
     border-radius: 20px;
-    padding: 7px 16px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
     transition: all 0.2s;
+
+    /* ИСПРАВЛЕНИЕ №2: Делаем кнопки меньше и аккуратнее */
+    padding: 6px 16px;
+    font-size: 0.9em;
+    font-weight: 500;
 }
+
 .expand-btn:hover {
     background-color: #f5f5f5;
     border-color: #b9b9b9;
@@ -1546,26 +1552,25 @@ footer {
 
 /* Кнопка "Перейти на сайт" (Основная) */
 .partner-link {
-    /* Сохраняем ваш фирменный стиль */
-    background-color: #8D6E63;
+    /* Цвета, как вы и хотели */
+    background-color: #795548; /* Темнее по умолчанию */
     color: white;
     
-    /* Общие стили для обеих кнопок */
     text-decoration: none;
-    padding: 8px 18px;
     border-radius: 20px;
-    font-weight: 500;
-    transition: all 0.2s;
     text-align: center;
-    
-    /* ИСПРАВЛЕНИЕ №2: Убираем любое растягивание */
-    flex-grow: 0; /* Запрещаем растягиваться */
-    flex-shrink: 0; /* Запрещаем сжиматься */
-    white-space: nowrap; /* Запрещаем перенос текста */
+    transition: all 0.2s;
+    border: 1.5px solid transparent;
+    white-space: nowrap;
+
+    /* ИСПРАВЛЕНИЕ №2: Делаем кнопки меньше и аккуратнее */
+    padding: 6px 16px;
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .partner-link:hover {
-    background-color: #795548;
+    background-color: #8D6E63; /* Светлее при наведении */
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
