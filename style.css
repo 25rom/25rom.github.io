@@ -1403,73 +1403,92 @@ footer {
 }
 
 /* =================================================================== */
-/* ===         СТИЛИ ДЛЯ СТРАНИЦЫ ПАРТНЕРОВ ("ДРУЗЬЯ")             === */
+/* ===         СТИЛИ ДЛЯ СТРАНИЦЫ ПАРТНЕРОВ (НОВЫЙ ДИЗАЙН)         === */
 /* =================================================================== */
 
 .partners-page-section {
     padding: 40px 0;
+    max-width: 1100px; /* Ограничиваем ширину, чтобы не прилипало к краям */
+    margin: 0 auto; /* Центрируем всю секцию */
 }
 
 .partners-page-section h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Увеличим заголовок */
     text-align: center;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .category-description {
     font-size: 1.1rem;
     text-align: center;
     color: #777;
-    margin-bottom: 50px;
+    margin-bottom: 60px; /* Увеличиваем отступ до карточек */
 }
 
 /* Сетка для карточек */
 .partner-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    /* Адаптивная сетка: от 1 до 3 колонок в зависимости от ширины экрана */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px; /* Увеличиваем расстояние между карточками */
 }
 
-/* Стили самой карточки */
+/* === СТИЛИ САМОЙ КАРТОЧКИ (ЭФФЕКТ "МАТОВОГО СТЕКЛА") === */
 .partner-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    overflow: hidden; /* Важно, чтобы картинка не вылезала за скругленные углы */
+    /* 1. Фон */
+    background-color: rgba(255, 255, 255, 0.6); /* Полупрозрачный белый */
+    backdrop-filter: blur(12px); /* Эффект размытия фона */
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* 2. Внешний вид */
+    border-radius: 16px; /* Более плавное скругление */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Едва заметная рамка */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    
+    /* 3. Прочее */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-10px); /* Приподнимаем карточку при наведении */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .partner-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover; /* Картинка будет красиво заполнять блок, не искажаясь */
+    object-fit: cover;
 }
 
 .partner-info {
-    padding: 20px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Позволяет блоку растягиваться, прижимая кнопки к низу */
+    flex-grow: 1;
 }
 
 .partner-info h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Увеличиваем имя для акцента */
     margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
 }
 
 /* Контейнер для описания - ключевой элемент для "разворачивания" */
 .partner-description {
-    /* Задаем максимальную высоту (примерно 3-4 строки текста) */
-    max-height: 4.8em; 
-    overflow: hidden; /* Прячем все, что не помещается */
+    max-height: 4.8em; /* Видимы примерно 3 строки текста */
+    overflow: hidden;
     position: relative;
-    transition: max-height 0.5s ease-in-out; /* Плавная анимация */
+    transition: max-height 0.5s ease-in-out;
 }
-
 .partner-description p {
     margin: 0;
     color: #555;
+    line-height: 1.7; /* Увеличиваем межстрочный интервал */
 }
 
 /* Когда у карточки появляется класс .is-expanded, описание "разворачивается" */
@@ -1480,28 +1499,29 @@ footer {
 /* Блок с кнопками */
 .partner-actions {
     margin-top: auto; /* Прижимает блок с кнопками к низу карточки */
-    padding-top: 20px; /* Отступ от текста */
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
 /* Кнопка "Читать далее" */
 .expand-btn {
     background-color: transparent;
-    border: 1.5px solid #D7CCC8;
+    border: 1.5px solid #c9c9c9;
+    color: #707070;
     border-radius: 20px;
     padding: 6px 14px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    color: #8D6E63;
     transition: all 0.2s;
+    flex-shrink: 0; /* Чтобы кнопка не сжималась */
 }
-
 .expand-btn:hover {
-    background-color: #F5F5F5;
-    border-color: #BCAAA4;
+    background-color: #f0f0f0;
+    border-color: #adadad;
 }
 
 /* Кнопка "Перейти на сайт" */
@@ -1513,8 +1533,9 @@ footer {
     border-radius: 20px;
     font-weight: 500;
     transition: all 0.2s;
+    text-align: center;
+    flex-grow: 1; /* Кнопка займет оставшееся место */
 }
-
 .partner-link:hover {
     background-color: #795548;
     transform: translateY(-1px);
