@@ -1433,6 +1433,7 @@ footer {
 
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 35px; /* Увеличиваем расстояние между карточками */
+    align-items: start; 
        /* grid-template-columns: repeat(5, 1fr);    gap: 20px;  
 }
 
