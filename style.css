@@ -724,17 +724,16 @@ footer {
 
 
 /* =================================================================== */
-/* === ИСПРАВЛЕННЫЙ И ОБНОВЛЕННЫЙ CSS ДЛЯ ИНФОГРАФИКИ И ЗАГОЛОВКА === */
+/* ===       ИНФОГРАФИКА С СИЛУЭТОМ (ИСПРАВЛЕННЫЕ ТУЛТИПЫ)        === */
 /* =================================================================== */
 
-/* --- Стили для секции с инфографикой --- */
 .silhouette-infographic-section {
     text-align: center;
-    padding: 0 20px 60px 20px; 
-    margin-top: 20px; 
+    padding: 60px 20px;
+    margin-top: 40px;
 }
 
-.infographic-{
+.infographic-container {
     position: relative;
     max-width: 500px;
     margin: 0 auto;
@@ -749,6 +748,11 @@ footer {
 .interactive-marker {
     position: absolute;
     transform: translate(-50%, -50%);
+    z-index: 10; /* Поднимаем маркеры выше */
+}
+
+.interactive-marker:hover {
+    z-index: 20; /* При наведении маркер становится еще выше */
 }
 
 .marker-dot {
@@ -760,6 +764,80 @@ footer {
     box-shadow: 0 0 0 5px rgba(255, 122, 89, 0.3);
     cursor: pointer;
     transition: transform 0.3s ease;
+}
+
+/* ОБЩИЕ СТИЛИ ДЛЯ ТУЛТИПА */
+.tooltip-content {
+    position: absolute;
+    width: 260px;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Важно, чтобы не мешать другим :hover */
+}
+
+/* СТРЕЛОЧКА */
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    border-width: 8px;
+    border-style: solid;
+}
+
+/* Модификатор: открывается ВПРАВО */
+.tooltip-opens-right .tooltip-content {
+    top: 50%;
+    left: 140%;
+    transform: translate(10px, -50%);
+}
+.tooltip-opens-right .tooltip-content::after {
+    top: 50%; right: 100%;
+    transform: translateY(-50%);
+    border-color: transparent rgba(255, 255, 255, 0.85) transparent transparent;
+}
+
+/* Модификатор: открывается ВЛЕВО */
+.tooltip-opens-left .tooltip-content {
+    top: 50%;
+    right: 140%;
+    transform: translate(-10px, -50%);
+}
+.tooltip-opens-left .tooltip-content::after {
+    top: 50%; left: 100%;
+    transform: translateY(-50%);
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.85);
+}
+
+/* Текст внутри тултипа */
+.tooltip-content h4 {
+    margin-top: 0; margin-bottom: 10px; padding-bottom: 8px;
+    color: #2c2c2c;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.tooltip-content p {
+    font-size: 0.95rem;
+    color: #3f3f3f;
+    line-height: 1.5;
+    margin: 0;
+    white-space: normal;
+}
+
+/* Показываем тултип при наведении на маркер */
+.interactive-marker:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+    pointer-events: auto;
 }
 
 /* =================================================================== */
