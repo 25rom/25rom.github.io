@@ -318,7 +318,7 @@ body {
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    z-index: 20;
+    z-index: 22;
 }
 
 /* При наведении делаем белый слой чуть более прозрачным, чтобы картинка стала четче */
