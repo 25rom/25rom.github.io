@@ -1430,9 +1430,10 @@ footer {
 .partner-grid {
     display: grid;
     /* Адаптивная сетка: 5 колонок в зависимости от ширины экрана */
-    grid-template-columns: repeat(5, 1fr);   
-    gap: 20px;  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px; /* Увеличиваем расстояние между карточками */
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px; /* Увеличиваем расстояние между карточками */
+       /* grid-template-columns: repeat(5, 1fr);    gap: 20px;  
 }
 
 /* === СТИЛИ САМОЙ КАРТОЧКИ (ЭФФЕКТ "МАТОВОГО СТЕКЛА") === */
