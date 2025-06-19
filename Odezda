@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одежда - Друзья Проекта</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Ссылка на ваш основной файл стилей -->
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <!-- Ваша стандартная шапка сайта -->
+            <div class="top-nav-bar">
+                 <div class="nav-group-left"><a href="friends.html" class="nav-button active">НАШИ ДРУЗЬЯ</a><a href="101.html" class="nav-button panel-101">101</a></div>
+                 <h1 class="site-title"><a class="site-title-link" href="index.html"><span class="title-part">ДЫХАНИЕ</span><span class="title-separator"> • </span><span class="title-part">УМ</span><span class="title-separator"> • </span><span class="title-part">ЭМОЦИИ</span><span class="title-separator"> • </span><span class="title-part">ТЕЛО</span></a></h1>
+                 <div class="nav-group-right"><a href="#" target="_blank" rel="noopener noreferrer" class="nav-button panel-values">ЦЕННОСТИ</a><a href="projects.html" class="nav-button">НАШИ ПРОЕКТЫ</a></div>
+            </div>
+        </header>
+
+        <main>
+            <section class="partners-page-section">
+                <h1>Одежда</h1>
+                <p class="category-description">Эко-одежда для повседневной носки, практик и быта</p>
+                
+                <div class="partner-grid">
+                    <!-- Карточка Партнера 1 (с длинным текстом для примера) -->
+                    <div class="partner-card">
+                        <img src="https://via.placeholder.com/300x200.png?text=Фото+Инструктора" alt="Фотография Елены Волковой">
+                        <div class="partner-info">
+                            <h3>Елена Волкова</h3>
+                            <div class="partner-description">
+                                <p>Елена — сертифицированный инструктор по хатха-йоге с 10-летним опытом. Ее классы направлены на глубокую проработку тела и успокоение ума. Она верит, что йога — это путь к себе. Описание очень длинное, чтобы показать, как работает кнопка 'Читать далее'. Этот текст должен быть скрыт по умолчанию и появляться только по клику на кнопку, плавно разворачивая карточку.</p>
+                            </div>
+                            <div class="partner-actions">
+                                <button class="expand-btn">Читать далее</button>
+                                <a href="#" target="_blank" class="partner-link">Перейти на сайт</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка Партнера 2 (с коротким текстом) -->
+                    <div class="partner-card">
+                        <img src="https://via.placeholder.com/300x200.png?text=Фото+Инструктора" alt="Фотография Ивана Петрова">
+                        <div class="partner-info">
+                            <h3>Иван Петров</h3>
+                            <div class="partner-description">
+                                <p>Иван специализируется на виньяса-флоу йоге. Его динамичные практики помогут вам зарядиться энергией.</p>
+                            </div>
+                             <div class="partner-actions">
+                                <button class="expand-btn">Читать далее</button>
+                                <a href="#" target="_blank" class="partner-link">Перейти на сайт</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="site-footer">     
+            <p>© Мама Пранаяма, 2025</p>
+        </footer>
+    </div>
+
+    <!-- Изолированный скрипт только для этой страницы -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const allCards = document.querySelectorAll('.partner-card');
+
+            allCards.forEach(card => {
+                const description = card.querySelector('.partner-description');
+                const btn = card.querySelector('.expand-btn');
+
+                // Проверяем, есть ли кнопка и описание
+                if (!description || !btn) return;
+
+                // Сравниваем реальную высоту контента с видимой высотой блока
+                if (description.scrollHeight > description.clientHeight) {
+                    // Если текст не помещается, оставляем кнопку видимой
+                    btn.style.display = 'inline-block';
+                } else {
+                    // Если текст помещается полностью, прячем кнопку
+                    btn.style.display = 'none';
+                }
+
+                // Добавляем обработчик клика на кнопку
+                btn.addEventListener('click', () => {
+                    // Добавляем/убираем класс, который "разворачивает" карточку
+                    card.classList.toggle('is-expanded');
+
+                    // Меняем текст на кнопке
+                    if (card.classList.contains('is-expanded')) {
+                        btn.textContent = 'Свернуть';
+                    } else {
+                        btn.textContent = 'Читать далее';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
