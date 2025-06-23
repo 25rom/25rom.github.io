@@ -289,12 +289,13 @@ body {
     text-decoration: none;
     color: #333;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 170px;
     position: relative; /* Необходимо для работы псевдо-элемента и дочерних absolute-элементов */
+    top: 0;
     overflow: hidden; /* Скрывает все, что выходит за пределы скругленных углов (важно для ::before) */
     z-index: 1;
 }
@@ -316,7 +317,7 @@ body {
 
 /* --- ЭФФЕКТ ПРИ НАВЕДЕНИИ --- */
 .pranayama-block:hover {
-    transform: translateY(-5px);
+    top: -5px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     z-index: 9999;
 }
