@@ -1566,3 +1566,111 @@ footer {
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+/* --- ОБЩИЕ СТИЛИ И ПЕРЕМЕННЫЕ --- */
+:root {
+    /* Цвета из ваших скриншотов */
+    --color-base: #8E8A3D;
+    --color-activating: #FFB74D;
+    --color-balancing: #4DD0E1;
+    --color-calming: #AAB7D1;
+    
+    --bg-page: #F8F5F2; /* Общий фон страниц, как в прошлых примерах */
+    --bg-card: #FFFFFF;
+    --text-primary: #3D352F;
+    --text-secondary: #6e665f;
+    --border-color: #EAE0D5;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 2rem 1.5rem;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+/* --- Стили для заголовка страницы --- */
+.page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Адаптивный размер шрифта */
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+/* --- Темизация заголовков в зависимости от класса на body --- */
+.theme-base .page-title { color: var(--color-base); }
+.theme-activating .page-title { color: var(--color-activating); }
+.theme-balancing .page-title { color: var(--color-balancing); }
+.theme-calming .page-title { color: var(--color-calming); }
+
+/* --- Сетка для карточек --- */
+.practice-grid {
+    display: grid;
+    /* Адаптивная сетка: от 1 до 3 колонок в зависимости от ширины экрана */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Стиль карточки практики --- */
+.practice-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    color: inherit;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект "приподнимания" при наведении */
+.practice-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.practice-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.practice-card hr {
+    width: 100%;
+    border: 0;
+    height: 2px;
+    margin: 1.5rem 0;
+}
+
+/* Темизация разделителя */
+.theme-base .practice-card hr { background-color: var(--color-base); }
+.theme-activating .practice-card hr { background-color: var(--color-activating); }
+.theme-balancing .practice-card hr { background-color: var(--color-balancing); }
+.theme-calming .practice-card hr { background-color: var(--color-calming); }
+
+
+.practice-card p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    flex-grow: 1; /* Чтобы карточки одной высоты имели текст внизу */
+}
+
+/* --- Шрифты (добавьте в <head> каждой HTML страницы) --- */
+/* 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito:wght@400&display=swap" rel="stylesheet">
+*/
