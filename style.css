@@ -318,7 +318,7 @@ body {
 .pranayama-block:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    z-index: 20;
+    z-index: 9999;
 }
 
 /* При наведении делаем белый слой чуть более прозрачным, чтобы картинка стала четче */
@@ -335,7 +335,7 @@ body {
     font-weight: 500;
     margin: 0;
     position: relative; /* Добавляем, чтобы z-index сработал */
-    z-index: 2; /* Явно указываем, что заголовок находится выше фона */
+    z-index: 9999; /* Явно указываем, что заголовок находится выше фона */
 }
 
 .pranayama-top-info {
@@ -345,7 +345,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 5; /* Этот z-index уже был, он достаточно высокий, все отлично */
+    z-index: 9999; /* Этот z-index уже был, он достаточно высокий, все отлично */
 }
 .pranayama-class-label {
     padding: 4px 10px;
@@ -371,7 +371,7 @@ body {
 .level-tooltip-text {
     visibility: hidden; opacity: 0; width: 260px; background-color: #444;
     color: #fff; text-align: left; border-radius: 6px; padding: 10px 15px;
-    position: absolute; z-index: 25;
+    position: absolute; z-index: 9999;
     bottom: 140%; left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -385,7 +385,7 @@ body {
     top: 15px;
     right: 15px;
     cursor: pointer;
-    z-index: 5;
+    z-index: 9999;
 }
 .tooltip-icon {
     display: inline-block; width: 22px; height: 22px; border-radius: 50%;
@@ -402,7 +402,7 @@ body {
     text-align: left;
     border-radius: 8px;
     padding: 15px;
-    position: absolute; z-index: 22;
+    position: absolute; z-index: 9999;
     bottom: 130%;
     right: 0;
     transition: opacity 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -599,7 +599,7 @@ footer {
     position: absolute;
     bottom: 15px;      
     right: 15px;       
-    z-index: 10; /* Чуть выше, чем другие элементы карточки, но ниже тултипа */
+    z-index: 9999; /* Чуть выше, чем другие элементы карточки, но ниже тултипа */
     cursor: default; 
 }
 
@@ -637,7 +637,7 @@ footer {
 
     /* --- ПОЗИЦИОНИРОВАНИЕ (ВАЖНО!) --- */
     position: absolute; 
-    z-index: 22;       /* Выше чем иконка и другие элементы */
+    z-index: 9999;       /* Выше чем иконка и другие элементы */
     bottom: 115%;      /* Расположение НАД родительским .chakra-info-(т.е. над иконкой "👁") 
                            Подбирай значение (110%-130%), чтобы было комфортно и стрелочка смотрела куда надо */
     right: -5px;       /* Сдвигаем немного вправо относительно правого края иконки, чтобы выровнять по аналогии с .tooltip-text (который right:0 от своего контейнера)
@@ -748,7 +748,7 @@ footer {
 .interactive-marker {
     position: absolute;
     transform: translate(-50%, -50%);
-    z-index: 10; /* Поднимаем маркеры выше */
+    z-index: 20; /* Поднимаем маркеры выше */
 }
 
 .interactive-marker:hover {
