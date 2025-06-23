@@ -1057,8 +1057,8 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* ИЗМЕНЕНИЕ: Уменьшаем высоту блоков, как вы и хотели */
-    grid-auto-rows: repeat(2, 170px); 
-    gap: 23px;
+    grid-auto-rows: repeat(2, 200px); 
+    gap: 22px;
     max-width: 900px;
     margin: 0 auto;
 }
