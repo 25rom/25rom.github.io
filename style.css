@@ -1154,7 +1154,7 @@ footer {
     font-size: 1.5rem;
     font-weight: 500; /* Сделаем чуть жирнее */
     color: #4A4A4A;
-    margin: 60px auto 40px auto; /* Увеличим отступы */
+    margin: 30px auto 40px auto; /* Увеличим отступы */
     
     /* Превращаем в "карточку" */
     display: inline-block; /* Чтобы фон облегал текст */
@@ -1327,6 +1327,7 @@ footer {
 
 /* 2. Стили для раскрывающегося блока "Что такое Пранаяма?" */
 .pranayama-explainer-section {
+    margin-top: -5rem; 
     max-width: 800px;
     margin: 0 auto 40px auto;
     padding: 40px 20px;
@@ -1335,12 +1336,12 @@ footer {
 }
 
 .explainer-toggle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: #4A4A4A;
     cursor: pointer;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: 1.5px solid #D7CCC8;
     border-radius: 25px;
     transition: all 0.3s ease;
