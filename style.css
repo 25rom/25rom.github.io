@@ -1917,11 +1917,11 @@ main {
 }
 
 /* --- Делаем дочерние блоки гибкими --- */
-.info-wrapper .about-section {
+.info-wrapper .pranayama-explainer-section {
   flex: 1; /* Блок "Что это такое" будет занимать 1 часть доступного пространства */
 }
 
-.info-wrapper .infographic-container {
+.info-wrapper .silhouette-infographic-section {
   flex: 1; /* Блок с инфографикой будет занимать 1 часть доступного пространства */
 }
 
