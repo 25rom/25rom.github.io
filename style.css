@@ -1934,3 +1934,133 @@ main {
   }
 }
 /* ==КОНЕЦ БЛОКА  Стили для объединенного блока Инфо + Описание == */
+
+/* --- Общие стили и фон для Техник--- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            background-color: #f4f1ee; /* Фоновый цвет на случай, если картинка не загрузится */
+            position: relative; /* Необходимо для позиционирования псевдо-элемента с фоном */
+        }
+
+        /* Трюк для создания неподвижного фона, который не мешает z-index */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://25rom.github.io/texture-background0.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            z-index: -1; /* Помещаем фон за весь контент */
+            opacity: 0.9; /* Можно сделать фон чуть менее ярким */
+        }
+        
+        /* --- Главный контейнер для всего контента --- */
+        .page-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative; /* Чтобы контент был над псевдо-элементом */
+            z-index: 1;
+        }
+
+        /* --- Контейнер для вкладок --- */
+        .tabs-container {
+            width: 100%;
+        }
+        
+        /* Навигация по вкладкам (кнопки) */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-button {
+            padding: 12px 28px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.6); /* Полупрозрачный фон */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 50px; /* Овальная форма */
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Стиль для активной вкладки */
+        .tab-button.active {
+            background-color: #795548; /* Коричневый, как на вашем сайте */
+            color: white;
+            border-color: #795548;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- Контейнер для содержимого вкладок --- */
+        .tab-content-container {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Содержимое каждой вкладки */
+        .tab-content {
+            display: none; /* По умолчанию все вкладки скрыты */
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Показываем только активную вкладку */
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Стили для текста внутри вкладок --- */
+        .tab-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .tab-content p, .tab-content li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .tab-content strong {
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+        
+        .tab-content ul {
+            padding-left: 20px;
+        }
+        /* --- КОНЕЦ Общие стили и фон для Техник--- */
