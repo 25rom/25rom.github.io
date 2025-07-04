@@ -2009,17 +2009,7 @@ main {
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
         }
-        /* Добавьте это правило в ваш style.css для центрирования */
-.card-header, .card-body {
-    text-align: center;
-}
-
-/* И убедитесь, что списки тоже выравниваются по центру */
-.focus-list {
-    display: inline-block; /* Позволяет списку центрироваться */
-    text-align: left; /* Текст внутри списка остается выровненным по левому краю */
-    padding: 0;
-}
+    
         .card-header h3 { margin: 0; font-family: var(--font-secondary); font-size: 18px; font-weight: 600; }
         .card-icon { font-size: 24px; }
         .card-body p, .card-body li { font-size: 16px; line-height: 1.7; color: var(--secondary-text-color); text-align: left; }
