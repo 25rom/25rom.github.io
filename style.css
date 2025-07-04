@@ -2064,3 +2064,169 @@ main {
             padding-left: 20px;
         }
         /* --- КОНЕЦ Общие стили и фон для Техник--- */
+
+
+/* SOMETHING ELSE */
+
+/* --- Стили для нового карточного дизайна (Темная Тема) --- */
+
+/* Цветовая палитра и шрифты с вашего сайта */
+:root {
+    --bg-color: #1C1C1E;
+    --card-bg-color: #2C2C2E;
+    --primary-text-color: #E5E5E7;
+    --secondary-text-color: #a7a7a9;
+    --accent-color: #D49A5A;
+    --border-color: #3A3A3C;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+/* Переопределяем фон контейнера вкладок для однородности */
+.tab-content-container {
+    background-color: transparent; /* Убираем фон, если он был */
+    padding-top: 20px;
+}
+
+/* Стили для карточек */
+.info-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-text-color);
+}
+
+.card-icon {
+    font-size: 24px;
+}
+
+.card-body p, .card-body li {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--secondary-text-color);
+}
+.card-body p strong, .card-body li strong {
+    color: var(--primary-text-color);
+    font-weight: 500;
+}
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Сетка для карточек ("Подготовка") */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+/* Убираем нижний отступ у карточек в сетке */
+.card-grid .info-card {
+    margin-bottom: 0;
+}
+
+/* Стили для пошаговой инструкции ("Техника") */
+.technique-intro {
+    border-left: 4px solid var(--accent-color);
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 50%;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.step-content h4 {
+    margin: 0 0 8px 0;
+    font-family: var(--font-secondary);
+    font-size: 17px;
+    color: var(--primary-text-color);
+}
+.step-content p {
+    margin: 0;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+}
+.step-content strong {
+    color: var(--accent-color);
+}
+
+
+/* Стили для списков с советами ("Детали и Советы") */
+.focus-list {
+    list-style: none;
+    padding: 0;
+}
+
+.focus-list li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+}
+.focus-list li:last-child {
+    margin-bottom: 0;
+}
+
+.focus-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* SOMETHING ELSE */
