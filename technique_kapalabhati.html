@@ -1,4 +1,187 @@
-<!-- СКОПИРУЙТЕ И ЗАМЕНИТЕ СУЩЕСТВУЮЩИЙ БЛОК .tab-content-container -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <style>
+        .info-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-text-color);
+}
+
+.card-icon {
+    font-size: 24px;
+}
+
+.card-body p, .card-body li {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--secondary-text-color);
+}
+.card-body p strong, .card-body li strong {
+    color: var(--primary-text-color);
+    font-weight: 500;
+}
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Сетка для карточек ("Подготовка") */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+/* Убираем нижний отступ у карточек в сетке */
+.card-grid .info-card {
+    margin-bottom: 0;
+}
+
+/* Стили для пошаговой инструкции ("Техника") */
+.technique-intro {
+    border-left: 4px solid var(--accent-color);
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border-radius: 50%;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.step-content h4 {
+    margin: 0 0 8px 0;
+    font-family: var(--font-secondary);
+    font-size: 17px;
+    color: var(--primary-text-color);
+}
+.step-content p {
+    margin: 0;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+}
+.step-content strong {
+    color: var(--accent-color);
+}
+
+
+/* Стили для списков с советами ("Детали и Советы") */
+.focus-list {
+    list-style: none;
+    padding: 0;
+}
+
+.focus-list li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+}
+.focus-list li:last-child {
+    margin-bottom: 0;
+}
+
+.focus-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница с Вкладками</title>
+    <!-- Подключаем шрифты, как на вашем сайте -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="container">
+        <header class="site-header">
+            <div class="top-nav-bar">
+                <div class="nav-group-left">
+                    <a href="friends.html" class="nav-button">НАШИ ДРУЗЬЯ</a>
+                    <a href="101.html" class="nav-button panel-101">101</a>
+                </div>
+                <h1 class="site-title">
+    <!-- Меняем href на #tags-section. Все стили сохранятся! -->
+    <a class="site-title-link" href="#tags-section"> 
+      <span class="title-part">ДЫХАНИЕ</span><span class="title-separator"> • </span>
+      <span class="title-part">УМ</span><span class="title-separator"> • </span>
+      <span class="title-part">ЭМОЦИИ</span><span class="title-separator"> • </span>
+      <span class="title-part">ТЕЛО</span>
+    </a>
+</h1>
+                <div class="nav-group-right">
+                    <a href="https://www.notion.so/private25/1ce0787de35d4fd7b3238b3dd1a90fca?pvs=4" target="_blank" rel="noopener noreferrer" class="nav-button panel-values">ЦЕННОСТИ</a>
+                    <a href="projects.html" class="nav-button">НАШИ ПРОЕКТЫ</a>
+                </div>
+            </div>
+
+    <div class="page-container">
+        <div class="tabs-container">
+            <!-- БЛОК 1: КНОПКИ-ВКЛАДКИ -->
+            <div class="tabs-nav">
+                <button class="tab-button active" data-tab-target="#preparation">Подготовка</button>
+                <button class="tab-button" data-tab-target="#technique">Техника</button>
+                <button class="tab-button" data-tab-target="#details">Детали и Советы</button>
+            </div>
+
 <div class="tab-content-container">
     
     <!-- ПАНЕЛЬ 1: ПОДГОТОВКА (в виде карточек) -->
