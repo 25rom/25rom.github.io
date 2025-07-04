@@ -298,5 +298,28 @@
             </div>
         </div>
     </div>
-
 </div>
+<script>
+    // Простой JavaScript для переключения вкладок
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.tabTarget);
+
+            // 1. Убираем класс 'active' у всех кнопок и панелей
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            // 2. Добавляем класс 'active' к нажатой кнопке и ее контенту
+            tab.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+            }
+        });
+    });
+</script>
+<body>
+</html>
+    
