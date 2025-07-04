@@ -139,6 +139,11 @@
         .card-grid .info-card {
             margin-bottom: 0;
         }
+
+        /* Новое правило для растягивания карточки на всю ширину сетки */
+.card-full-width {
+    grid-column: 1 / -1; /* Растянуть от 1-й до последней колонки */
+}
         /* УМЕНЬШЕНИЕ ШРИФТА ДЛЯ ПЕРВОЙ ВКЛАДКИ */
         #preparation .card-body p, #preparation .card-body li {
             font-size: 15px;
@@ -284,7 +289,7 @@
                                 </div>
                             </div>
                             <!-- НОВАЯ ДЕТАЛЬНАЯ КАРТОЧКА БАНДХ -->
-                            <div class="info-card">
+                            <div class="info-card card-full-width">
                                 <div class="card-header">
                                      <span class="card-icon">🔒</span>
                                     <h3>Бандхи</h3>
