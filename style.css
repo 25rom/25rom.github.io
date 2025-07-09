@@ -2060,4 +2060,64 @@ main {
             content: '✓'; position: absolute; left: 0; top: 4px;
             color: var(--accent-color); font-weight: bold; font-size: 18px;
         }
+
+/* --- Стили для блока безопасности --- */
+.safety-block {
+    border: 2px solid #e74c3c; /* Красная обводка */
+    border-radius: 12px; /* Скругление углов, как у других элементов */
+    margin: 20px 0; /* Внешние отступы сверху и снизу */
+    padding: 5px 20px; /* Внутренние отступы */
+    background-color: #fbeeeC; /* Очень светлый, приятный фон */
+    transition: all 0.3s ease;
+}
+
+.safety-block[open] {
+    padding-bottom: 20px; /* Увеличиваем нижний отступ в раскрытом состоянии */
+}
+
+.safety-header {
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #c0392b; /* Приятный красный цвет для текста, сочетается с обводкой */
+    text-align: center;
+    cursor: pointer; /* Показывает, что элемент кликабельный */
+    list-style: none; /* Убирает стандартный маркер-треугольник */
+    outline: none; /* Убирает синюю обводку при фокусе */
+}
+
+/* Убираем маркер для разных браузеров */
+.safety-header::-webkit-details-marker {
+    display: none;
+}
+
+.safety-content {
+    margin-top: 15px; /* Отступ между заголовком и содержанием */
+}
+
+.safety-content h4 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+.safety-content ul {
+    list-style-type: '• '; /* Используем кастомный маркер для единообразия */
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.safety-content li {
+    padding-left: 5px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.safety-content hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
  /*КОНГЕЦ СТИЛИ ДЛЯ ТЕХНИК */
