@@ -2103,15 +2103,26 @@ main {
 }
 
 .safety-content ul {
-    list-style-type: '• '; /* Используем кастомный маркер для единообразия */
-    padding-left: 20px;
+    list-style: none; /* Убираем стандартные маркеры */
+    padding-left: 0;  /* Убираем отступ слева у всего списка */
     margin-bottom: 15px;
 }
 
 .safety-content li {
-    padding-left: 5px;
-    margin-bottom: 8px;
+    position: relative;   /* Необходимо для позиционирования псевдо-элемента */
+    padding-left: 25px;   /* Создаем место слева для нашей иконки-галочки */
+    margin-bottom: 10px;  /* Увеличим отступ для лучшей читаемости */
     line-height: 1.5;
+}
+
+.safety-content li::before {
+    content: '✓';           /* Наш новый маркер-галочка */
+    position: absolute;     /* Абсолютное позиционирование относительно li */
+    left: 0;                /* Прижимаем маркер к левому краю (внутри padding) */
+    top: 2px;               /* Небольшая коррекция положения по вертикали */
+    color: #c08e44;         /* Теплый, коричневато-золотой цвет, как на скриншоте */
+    font-weight: bold;      /* Делаем галочку более заметной */
+    font-size: 1.1em;
 }
 
 .safety-content hr {
