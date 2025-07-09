@@ -2093,6 +2093,7 @@ main {
 
 .safety-content {
     margin-top: 15px; /* Отступ между заголовком и содержанием */
+    text-align: left;
 }
 
 .safety-content h4 {
