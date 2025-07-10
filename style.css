@@ -2010,7 +2010,7 @@ main {
             padding-bottom: 10px;
         }
     
-        .card-header h3 { margin: 0; font-family: var(--font-secondary); font-size: 18px; font-weight: 600; }
+        .card-header h3 { margin: 0 0 8px 0;; font-family: var(--font-secondary); font-size: 18px; font-weight: 600; }
         .card-icon { font-size: 24px; }
         .card-body p, .card-body li { font-size: 16px; line-height: 1.7; color: var(--secondary-text-color); text-align: left; }
         .card-body strong { color: var(--primary-text-color); font-weight: 500; }
@@ -2041,8 +2041,14 @@ main {
         .step-content {
     flex-grow: 1;
 }   
-        .step-content h4 { margin: 0 0 8px 0; font-family: var(--font-secondary); font-size: 17px; }
-        .step-content p { margin: 0; line-height: 1.6; }
+        .step-content h4 { margin: 0 0 10px 0; font-family: var(--font-secondary); font-size: 17px; }
+        .step-content p { margin: 0 0 10px 0; line-height: 1.6; }
+
+/* === СТИЛЬ ДЛЯ РАЗДЕЛИТЕЛЯ === */
+.step-content hr {
+    margin: 15px 0; /* Отступ 15px сверху и снизу */
+    border: none;
+    border-top: 1px solid var(--border-color);
         
         /* НОВЫЙ СТИЛЬ ДЛЯ ЗАГОЛОВКОВ В "ПРОДОЛЖИТЕЛЬНОСТИ" */
         .duration-heading {
