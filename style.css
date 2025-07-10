@@ -2038,17 +2038,11 @@ main {
             background-color: #8D7B68; color: #fff; border-radius: 50%;
             font-family: var(--font-secondary); font-size: 20px; font-weight: 600;
         }
-        .step-content {
-    flex-grow: 1;
+
 }   
         .step-content h4 { margin: 0 0 8px 0; font-family: var(--font-secondary); font-size: 17px; }
         .step-content p { margin: 0; line-height: 1.6; }
 
-/* === СТИЛЬ ДЛЯ РАЗДЕЛИТЕЛЯ === */
-.step-content hr {
-    margin: 15px 0; /* Отступ 15px сверху и снизу */
-    border: none;
-    border-top: 1px solid var(--border-color);
         
         /* НОВЫЙ СТИЛЬ ДЛЯ ЗАГОЛОВКОВ В "ПРОДОЛЖИТЕЛЬНОСТИ" */
         .duration-heading {
