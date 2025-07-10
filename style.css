@@ -2041,7 +2041,12 @@ main {
 
 }   
         .step-content h4 { margin: 0 0 8px 0; font-family: var(--font-secondary); font-size: 17px; }
-        .step-content p { margin: 0; line-height: 1.6; }
+        .step-content p { margin: 0 0 4px 0; line-height: 1.6; }
+        /* Отступ для заголовка шага после разделительной линии */
+        #technique hr + p,
+        #technique hr + h4 {
+            margin-top: 12px; /* Создает нужный отступ сверху */
+        }
 
         
         /* НОВЫЙ СТИЛЬ ДЛЯ ЗАГОЛОВКОВ В "ПРОДОЛЖИТЕЛЬНОСТИ" */
