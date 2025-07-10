@@ -2051,7 +2051,11 @@ main {
     border-top: 1px solid #eaddcf; /* Делаем линию такой же, как другие бордеры */
 }
 
-        
+    /* Выравнивание текста во вкладке "Техника" по левому краю */
+.step-content h4,
+.step-content p {
+    text-align: left;
+}
         /* НОВЫЙ СТИЛЬ ДЛЯ ЗАГОЛОВКОВ В "ПРОДОЛЖИТЕЛЬНОСТИ" */
         .duration-heading {
             display: block;
