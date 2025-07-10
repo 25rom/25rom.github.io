@@ -2040,7 +2040,7 @@ main {
         }
         .step-content {
     flex-grow: 1;
-}  /* ориентирует контент Ьехники по левому краю
+}   
         .step-content h4 { margin: 0 0 8px 0; font-family: var(--font-secondary); font-size: 17px; }
         .step-content p { margin: 0; line-height: 1.6; }
         
