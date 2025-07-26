@@ -2198,10 +2198,12 @@ main {
 }
 
 
-/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" --- */
+/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" (Зигзаг + Новый цвет) --- */
 .how-it-works-section {
     padding: 60px 0;
     text-align: center;
+    /* ДОБАВЛЕНО: Предотвращаем горизонтальный скролл, который может появиться из-за смещения блоков */
+    overflow-x: hidden; 
 }
 
 .how-it-works-section h2 {
@@ -2212,20 +2214,25 @@ main {
 }
 
 .steps-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Пространство между шагами */
+    /* ИЗМЕНЕНО: Убираем flex, так как будем позиционировать каждый элемент отдельно */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* gap: 20px; */
+    
+    /* ДОБАВЛЕНО: Устанавливаем максимальную ширину для всей композиции */
+    max-width: 900px;
+    margin: 0 auto; /* Центрируем контейнер */
     position: relative;
 }
 
-/* Линия-стрелка, соединяющая шаги */
+/* Линия-стрелка, соединяющая шаги. Теперь она точно по центру. */
 .steps-container::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: 50px; /* Начало линии */
-    bottom: 50px; /* Конец линии */
+    top: 20px; /* Начало линии */
+    bottom: 20px; /* Конец линии */
     width: 2px;
     background-image: linear-gradient(to bottom, #FFC300 33%, rgba(255,255,255,0) 0%);
     background-position: right;
@@ -2239,20 +2246,32 @@ main {
 .step-item {
     display: flex;
     align-items: center;
-    max-width: 700px;
-    width: 100%;
+    /* ИЗМЕНЕНО: Ширина теперь составляет чуть меньше половины контейнера */
+    width: 50%; 
+    max-width: 420px; /* Ограничиваем максимальную ширину карточки */
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 25px; /* Немного увеличим паддинг */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
     position: relative;
     z-index: 2; /* Чтобы были поверх линии */
+    margin-bottom: 30px; /* Отступ между блоками */
 }
 
-/* Чередование сторон для динамики */
+/* КЛЮЧЕВОЕ ИЗМЕНЕНИЕ ДЛЯ ЗИГЗАГА (НЕЧЕТНЫЕ ЭЛЕМЕНТЫ) */
+.step-item:nth-child(odd) {
+    /* Располагаем слева от центральной линии */
+    left: 0;
+    margin-right: auto; /* Прижимаем к левому краю */
+}
+
+/* КЛЮЧЕВОЕ ИЗМЕНЕНИЕ ДЛЯ ЗИГЗАГА (ЧЕТНЫЕ ЭЛЕМЕНТЫ) */
 .step-item:nth-child(even) {
+    /* Располагаем справа от центральной линии */
+    left: 50%;
     flex-direction: row-reverse; /* Меняем порядок для каждого второго элемента */
 }
+
 
 .step-media {
     flex: 0 0 150px; /* Фиксированный размер для картинки/иконки */
@@ -2272,7 +2291,12 @@ main {
 /* Для мобильных устройств располагаем все в одну колонку */
 @media (max-width: 768px) {
     .step-item, .step-item:nth-child(even) {
-        flex-direction: column;
+        /* Возвращаем все в одну колонку по центру */
+        width: 90%;
+        max-width: 420px;
+        left: 0; /* Сбрасываем смещение */
+        margin: 0 auto 20px auto; /* Центрируем и добавляем нижний отступ */
+        flex-direction: column; /* Всегда колонка */
         text-align: center;
     }
     .step-text {
@@ -2280,6 +2304,8 @@ main {
     }
     .step-media {
         margin-bottom: 15px;
+        margin-left: 0; /* Сбрасываем отступы */
+        margin-right: 0;
     }
     .steps-container::before {
         display: none; /* Скрываем линию на мобильных */
@@ -2288,15 +2314,18 @@ main {
 
 
 .step-text h3 {
-    font-size: 1.5em; /* Делаем тезисы крупнее */
+    font-size: 1.5em; 
     font-weight: 600;
-    color: #2196F3; /* Цвет акцента, можно поменять */
+    /* ИЗМЕНЕНО: Новый, милый сердцу, терракотовый цвет */
+    color: #E57373; /* Это приятный, не кричащий красно-оранжевый. */
+    /* Альтернатива: #FF8A65 (более оранжевый) или #F06292 (более розовый) */
     margin-bottom: 10px;
 }
 
 .step-text p {
     font-size: 1.1em;
     line-height: 1.6;
+    color: #555; /* Сделаем текст чуть темнее для лучшей читаемости */
 }
 
 /* --- Стили для секции "ДЛЯ КОГО ЭТО" --- */
