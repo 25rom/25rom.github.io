@@ -2309,6 +2309,38 @@ main {
         text-align: center;
     }
 }
+/* --- Стили для ЗИГЗАГА внутри Аккордеона --- */
+
+/* КЛЮЧЕВОЕ ПРАВИЛО ДЛЯ ЗИГЗАГА */
+/* Выбираем каждый второй (четный) элемент аккордеона */
+.accordion-item:nth-child(even) .content-inner {
+    /* Меняем направление flex-контейнера на обратное */
+    flex-direction: row-reverse;
+}
+
+/* И для его картинки меняем отступ на противоположный */
+.accordion-item:nth-child(even) .accordion-image {
+    margin-right: 0;
+    margin-left: 30px;
+}
+
+/* И для его текста меняем выравнивание */
+.accordion-item:nth-child(even) .accordion-content p {
+    text-align: right;
+}
+
+/* На мобильных устройствах отключаем зигзаг для удобства */
+@media(max-width: 600px) {
+    .accordion-item:nth-child(even) .content-inner {
+        flex-direction: column; /* Возвращаем все в колонку */
+    }
+    .accordion-item:nth-child(even) .accordion-image {
+        margin-left: 0; /* Сбрасываем отступы */
+    }
+    .accordion-item:nth-child(even) .accordion-content p {
+        text-align: center; /* Возвращаем центрирование */
+    }
+}
 
 /* --- Стили для секции "ДЛЯ КОГО ЭТО" --- */
 .for-whom-section {
