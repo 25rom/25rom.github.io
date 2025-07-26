@@ -2198,134 +2198,129 @@ main {
 }
 
 
-/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" (Зигзаг + Новый цвет) --- */
+/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" (Версия с правками) --- */
 .how-it-works-section {
-    padding: 60px 0;
+    padding: 60px 20px; /* Добавляем отступы по бокам для воздуха */
     text-align: center;
-    /* ДОБАВЛЕНО: Предотвращаем горизонтальный скролл, который может появиться из-за смещения блоков */
     overflow-x: hidden; 
 }
 
 .how-it-works-section h2 {
     font-size: 2.2em;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 60px; /* Увеличим отступ снизу */
     color: #333;
 }
 
 .steps-container {
-    /* ИЗМЕНЕНО: Убираем flex, так как будем позиционировать каждый элемент отдельно */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* gap: 20px; */
-    
-    /* ДОБАВЛЕНО: Устанавливаем максимальную ширину для всей композиции */
-    max-width: 900px;
-    margin: 0 auto; /* Центрируем контейнер */
+    max-width: 1000px; /* ИЗМЕНЕНО: Делаем весь контейнер шире для более длинных блоков */
+    margin: 0 auto;
     position: relative;
 }
 
-/* Линия-стрелка, соединяющая шаги. Теперь она точно по центру. */
 .steps-container::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: 20px; /* Начало линии */
-    bottom: 20px; /* Конец линии */
+    top: 30px; 
+    bottom: 30px; 
     width: 2px;
     background-image: linear-gradient(to bottom, #FFC300 33%, rgba(255,255,255,0) 0%);
     background-position: right;
-    background-size: 2px 15px; /* Размер пунктира */
+    background-size: 2px 15px; 
     background-repeat: repeat-y;
     transform: translateX(-50%);
     z-index: 1;
 }
 
-
 .step-item {
     display: flex;
     align-items: center;
-    /* ИЗМЕНЕНО: Ширина теперь составляет чуть меньше половины контейнера */
-    width: 50%; 
-    max-width: 420px; /* Ограничиваем максимальную ширину карточки */
-    background-color: white;
+    width: 55%; /* ИЗМЕНЕНО: Делаем карточку чуть шире половины контейнера */
+    max-width: 520px; 
+    /* ПРАВКА 4: Фон делаем прозрачным */
+    background-color: transparent; 
     border-radius: 15px;
-    padding: 25px; /* Немного увеличим паддинг */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    padding: 20px;
+    /* Убираем тень, т.к. на прозрачном фоне она не нужна */
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.07); */
     position: relative;
-    z-index: 2; /* Чтобы были поверх линии */
-    margin-bottom: 30px; /* Отступ между блоками */
+    z-index: 2; 
+    margin-bottom: -20px; /* ИЗМЕНЕНО: Делаем отрицательный отступ, чтобы блоки "наезжали" друг на друга, создавая более плотную лестницу */
 }
 
-/* КЛЮЧЕВОЕ ИЗМЕНЕНИЕ ДЛЯ ЗИГЗАГА (НЕЧЕТНЫЕ ЭЛЕМЕНТЫ) */
+
 .step-item:nth-child(odd) {
-    /* Располагаем слева от центральной линии */
-    left: 0;
-    margin-right: auto; /* Прижимаем к левому краю */
+    left: -5%; /* ИЗМЕНЕНО: Сдвигаем левые блоки чуть левее, чтобы они пересекали центральную линию */
+    margin-right: auto; 
 }
 
-/* КЛЮЧЕВОЕ ИЗМЕНЕНИЕ ДЛЯ ЗИГЗАГА (ЧЕТНЫЕ ЭЛЕМЕНТЫ) */
 .step-item:nth-child(even) {
-    /* Располагаем справа от центральной линии */
-    left: 50%;
-    flex-direction: row-reverse; /* Меняем порядок для каждого второго элемента */
+    left: 50%; 
+    flex-direction: row-reverse; 
 }
-
 
 .step-media {
-    flex: 0 0 150px; /* Фиксированный размер для картинки/иконки */
+    flex: 0 0 180px; /* ИЗМЕНЕНО: Делаем область для иконки немного больше */
     margin: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .step-media img {
     max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* ПРАВКА 3: Добавляем плавный переход для увеличения */
+    transition: transform 0.3s ease; 
+}
+
+/* ПРАВКА 3: Увеличиваем иконку при наведении */
+.step-item:hover .step-media img {
+    transform: scale(1.1);
 }
 
 .step-text {
     text-align: left;
 }
 
-/* Для мобильных устройств располагаем все в одну колонку */
+/* Для мобильных устройств все так же выстраиваем в одну колонку */
 @media (max-width: 768px) {
     .step-item, .step-item:nth-child(even) {
-        /* Возвращаем все в одну колонку по центру */
         width: 90%;
         max-width: 420px;
-        left: 0; /* Сбрасываем смещение */
-        margin: 0 auto 20px auto; /* Центрируем и добавляем нижний отступ */
-        flex-direction: column; /* Всегда колонка */
+        left: 0;
+        margin: 0 auto 20px auto; 
+        flex-direction: column; 
         text-align: center;
+        background-color: rgba(255, 255, 255, 0.7); /* На мобильных можно вернуть легкий фон для читаемости */
+        padding: 20px;
     }
     .step-text {
         text-align: center;
     }
     .step-media {
         margin-bottom: 15px;
-        margin-left: 0; /* Сбрасываем отступы */
-        margin-right: 0;
     }
     .steps-container::before {
-        display: none; /* Скрываем линию на мобильных */
+        display: none; 
     }
 }
-
 
 .step-text h3 {
     font-size: 1.5em; 
     font-weight: 600;
-    /* ИЗМЕНЕНО: Новый, милый сердцу, терракотовый цвет */
-    color: #E57373; /* Это приятный, не кричащий красно-оранжевый. */
-    /* Альтернатива: #FF8A65 (более оранжевый) или #F06292 (более розовый) */
-    margin-bottom: 10px;
+    color: #E57373; 
+    margin-bottom: 15px; /* Увеличим отступ для воздуха */
+    /* ПРАВКА 2: Центрируем заголовок шага */
+    text-align: center; 
 }
 
 .step-text p {
     font-size: 1.1em;
     line-height: 1.6;
-    color: #555; /* Сделаем текст чуть темнее для лучшей читаемости */
+    color: #444; /* Чуть темнее текст для лучшей читаемости на фоне */
+    /* ПРАВКА 1: Текст теперь будет занимать всю ширину и не падать в столбик, т.к. сам блок стал шире */
 }
 
 /* --- Стили для секции "ДЛЯ КОГО ЭТО" --- */
