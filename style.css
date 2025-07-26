@@ -2163,3 +2163,138 @@ main {
     align-items: center; /* Это выравнивает по вертикали, скорее всего уже есть */
     justify-content: center; /* <<-- ВОТ КЛЮЧЕВАЯ СТРОКА */
 }
+
+/* --- Стили для перемещенного блока "ЧТО ЭТО ТАКОЕ" --- */
+.pranayama-explainer-section.standalone {
+    margin: 40px auto; /* Добавляем отступы сверху и снизу */
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    max-width: 800px; /* Ограничиваем ширину, чтобы он не растягивался на весь экран */
+}
+
+
+/* --- Стили для нового блока "ПОЧЕМУ ЭТО РАБОТАЕТ" --- */
+.why-it-works-section {
+    flex-basis: 50%; /* Занимает половину контейнера info-wrapper */
+    padding-right: 40px; /* Отступ от инфографики */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.why-it-works-section h2 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.why-it-works-section p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" --- */
+.how-it-works-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.how-it-works-section h2 {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Пространство между шагами */
+    position: relative;
+}
+
+/* Линия-стрелка, соединяющая шаги */
+.steps-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50px; /* Начало линии */
+    bottom: 50px; /* Конец линии */
+    width: 2px;
+    background-image: linear-gradient(to bottom, #FFC300 33%, rgba(255,255,255,0) 0%);
+    background-position: right;
+    background-size: 2px 15px; /* Размер пунктира */
+    background-repeat: repeat-y;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+.step-item {
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 2; /* Чтобы были поверх линии */
+}
+
+/* Чередование сторон для динамики */
+.step-item:nth-child(even) {
+    flex-direction: row-reverse; /* Меняем порядок для каждого второго элемента */
+}
+
+.step-media {
+    flex: 0 0 150px; /* Фиксированный размер для картинки/иконки */
+    margin: 0 25px;
+}
+
+.step-media img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.step-text {
+    text-align: left;
+}
+
+/* Для мобильных устройств располагаем все в одну колонку */
+@media (max-width: 768px) {
+    .step-item, .step-item:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+    }
+    .step-text {
+        text-align: center;
+    }
+    .step-media {
+        margin-bottom: 15px;
+    }
+    .steps-container::before {
+        display: none; /* Скрываем линию на мобильных */
+    }
+}
+
+
+.step-text h3 {
+    font-size: 1.5em; /* Делаем тезисы крупнее */
+    font-weight: 600;
+    color: #2196F3; /* Цвет акцента, можно поменять */
+    margin-bottom: 10px;
+}
+
+.step-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
