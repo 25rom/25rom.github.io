@@ -2197,130 +2197,109 @@ main {
     color: #555;
 }
 
-
-/* --- Стили для нового блока "КАК ЭТО РАБОТАЕТ" (Версия с правками) --- */
-.how-it-works-section {
-    padding: 60px 20px; /* Добавляем отступы по бокам для воздуха */
+/* --- Стили для Аккордеона "КАК ЭТО РАБОТАЕТ" --- */
+.how-it-works-accordion-section {
+    padding: 60px 20px;
     text-align: center;
-    overflow-x: hidden; 
 }
 
-.how-it-works-section h2 {
+.how-it-works-accordion-section h2 {
     font-size: 2.2em;
     font-weight: 600;
-    margin-bottom: 60px; /* Увеличим отступ снизу */
+    margin-bottom: 40px;
     color: #333;
 }
 
-.steps-container {
-    max-width: 1000px; /* ИЗМЕНЕНО: Делаем весь контейнер шире для более длинных блоков */
+.accordion-container {
+    max-width: 800px;
     margin: 0 auto;
-    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden; /* Важно для скругления углов */
 }
 
-.steps-container::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 30px; 
-    bottom: 30px; 
-    width: 2px;
-    background-image: linear-gradient(to bottom, #FFC300 33%, rgba(255,255,255,0) 0%);
-    background-position: right;
-    background-size: 2px 15px; 
-    background-repeat: repeat-y;
-    transform: translateX(-50%);
-    z-index: 1;
+.accordion-item:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
 }
 
-.step-item {
+.accordion-header {
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: left;
+    color: #444;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f9f9f9;
+}
+
+.accordion-icon {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #E57373; /* Наш терракотовый цвет для иконки */
+    transition: transform 0.4s ease;
+}
+
+/* Стили для активного состояния */
+.accordion-item.active .accordion-header {
+    background-color: #f5f5f5;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg); /* Превращает + в × */
+}
+
+/* Контейнер для контента (изначально скрыт) */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    background-color: #fafafa;
+}
+
+.content-inner {
     display: flex;
     align-items: center;
-    width: 55%; /* ИЗМЕНЕНО: Делаем карточку чуть шире половины контейнера */
-    max-width: 520px; 
-    /* ПРАВКА 4: Фон делаем прозрачным */
-    background-color: transparent; 
-    border-radius: 15px;
-    padding: 20px;
-    /* Убираем тень, т.к. на прозрачном фоне она не нужна */
-    /* box-shadow: 0 4px 20px rgba(0,0,0,0.07); */
-    position: relative;
-    z-index: 2; 
-    margin-bottom: -20px; /* ИЗМЕНЕНО: Делаем отрицательный отступ, чтобы блоки "наезжали" друг на друга, создавая более плотную лестницу */
+    padding: 30px;
 }
 
-
-.step-item:nth-child(odd) {
-    left: -5%; /* ИЗМЕНЕНО: Сдвигаем левые блоки чуть левее, чтобы они пересекали центральную линию */
-    margin-right: auto; 
-}
-
-.step-item:nth-child(even) {
-    left: 50%; 
-    flex-direction: row-reverse; 
-}
-
-.step-media {
-    flex: 0 0 180px; /* ИЗМЕНЕНО: Делаем область для иконки немного больше */
-    margin: 0 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.step-media img {
-    max-width: 100%;
+.accordion-image {
+    flex: 0 0 150px; /* Фиксированная ширина иконки */
+    margin-right: 30px;
     border-radius: 8px;
-    /* ПРАВКА 3: Добавляем плавный переход для увеличения */
-    transition: transform 0.3s ease; 
 }
 
-/* ПРАВКА 3: Увеличиваем иконку при наведении */
-.step-item:hover .step-media img {
-    transform: scale(1.1);
-}
-
-.step-text {
+.accordion-content p {
+    margin: 0;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
     text-align: left;
 }
 
-/* Для мобильных устройств все так же выстраиваем в одну колонку */
-@media (max-width: 768px) {
-    .step-item, .step-item:nth-child(even) {
-        width: 90%;
-        max-width: 420px;
-        left: 0;
-        margin: 0 auto 20px auto; 
-        flex-direction: column; 
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0.7); /* На мобильных можно вернуть легкий фон для читаемости */
-        padding: 20px;
-    }
-    .step-text {
+/* Адаптивность для мобильных */
+@media(max-width: 600px) {
+    .content-inner {
+        flex-direction: column;
         text-align: center;
     }
-    .step-media {
-        margin-bottom: 15px;
+    .accordion-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 120px;
     }
-    .steps-container::before {
-        display: none; 
+    .accordion-content p {
+        text-align: center;
     }
-}
-
-.step-text h3 {
-    font-size: 1.5em; 
-    font-weight: 600;
-    color: #E57373; 
-    margin-bottom: 15px; /* Увеличим отступ для воздуха */
-    /* ПРАВКА 2: Центрируем заголовок шага */
-    text-align: center; 
-}
-
-.step-text p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #444; /* Чуть темнее текст для лучшей читаемости на фоне */
-    /* ПРАВКА 1: Текст теперь будет занимать всю ширину и не падать в столбик, т.к. сам блок стал шире */
 }
 
 /* --- Стили для секции "ДЛЯ КОГО ЭТО" --- */
