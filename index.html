@@ -127,74 +127,85 @@
 </div>
 <!-- ======================= КОНЕЦ НОВОГО БЛОКА ======================= -->
 
-
-<!-- ======================= НОВЫЙ БЛОК: "КАК ЭТО РАБОТАЕТ" ======================= -->
-<section class="how-it-works-section">
+<!-- ======================= БЛОК "КАК ЭТО РАБОТАЕТ" (АККОРДЕОН) ======================= -->
+<section class="how-it-works-accordion-section">
     <h2>Как это работает</h2>
-    <div class="steps-container">
+    <div class="accordion-container">
 
         <!-- Шаг 1 -->
-        <div class="step-item">
-            <div class="step-media">
-                 <!-- ОСТАВЛЕНО МЕСТО ДЛЯ ВАШЕГО СКРИНШОТА -->
-                 <img src="./images/placeholder-1.png" alt="Выбор цели по тегу">
-            </div>
-            <div class="step-text">
-                <h3>1. Выберите цель</h3>
-                <p>Почувствовали негатив? Нужен покой? Хотите получить мощный энергетический буст —> Кликайте тег и выбирайте карточку</p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title">1. Выберите цель</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <img src="./images/placeholder-1.png" alt="Выбор цели по тегу" class="accordion-image">
+                    <p>Почувствовали негатив? Нужен покой? Хотите получить мощный энергетический буст —> Кликайте тег и выбирайте карточку.</p>
+                </div>
             </div>
         </div>
 
         <!-- Шаг 2 -->
-        <div class="step-item">
-            <div class="step-media">
-                <!-- ОСТАВЛЕНО МЕСТО ДЛЯ ВАШЕГО СКРИНШОТА -->
-                <img src="./images/placeholder-2.png" alt="Инструкция на карточке">
-            </div>
-            <div class="step-text">
-                <h3>2. Следуйте инструкции</h3>
-                <p>На каждой карточке простое и понятное описание техники. Никаких сложных терминов</p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title">2. Следуйте инструкции</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <img src="./images/placeholder-2.png" alt="Инструкция на карточке" class="accordion-image">
+                    <p>На каждой карточке простое и понятное описание техники. Никаких сложных терминов.</p>
+                </div>
             </div>
         </div>
 
         <!-- Шаг 3 -->
-        <div class="step-item">
-            <div class="step-media">
-                <!-- ОСТАВЛЕНО МЕСТО ДЛЯ ИКОНКИ/КАРТИНКИ -->
-                <img src="icon-timer.svg" alt="Иконка таймера">
-            </div>
-            <div class="step-text">
-                <h3>3. Практикуйте 5-10 минут</h3>
-                <p>Уделите себе всего несколько минут в любое время дня</p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title">3. Практикуйте 5-10 минут</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                 <div class="content-inner">
+                    <img src="./images/icon-timer.svg" alt="Иконка таймера" class="accordion-image">
+                    <p>Уделите себе всего несколько минут в любое время дня.</p>
+                </div>
             </div>
         </div>
 
         <!-- Шаг 4 -->
-        <div class="step-item">
-            <div class="step-media">
-                <!-- ОСТАВЛЕНО МЕСТО ДЛЯ ИКОНКИ/КАРТИНКИ -->
-                <img src="icon-result.svg" alt="Иконка результата">
-            </div>
-            <div class="step-text">
-                <h3>4. Почувствуйте результат</h3>
-                <p>Ощутите мгновенное изменение своего состояния</p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title">4. Почувствуйте результат</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <img src="./images/icon-result.svg" alt="Иконка результата" class="accordion-image">
+                    <p>Ощутите мгновенное изменение своего состояния.</p>
+                </div>
             </div>
         </div>
 
         <!-- Шаг 5 -->
-        <div class="step-item">
-            <div class="step-media">
-                <!-- ОСТАВЛЕНО МЕСТО ДЛЯ ИКОНКИ/КАРТИНКИ -->
-                <img src="icon-calendar.svg" alt="Иконка календаря">
-            </div>
-            <div class="step-text">
-                <h3>5. Практикуйте регулярно</h3>
-                <p>Чтобы повлиять на качество жизни</p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span class="accordion-title">5. Практикуйте регулярно</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <img src="./images/icon-calendar.svg" alt="Иконка календаря" class="accordion-image">
+                    <p>Чтобы повлиять на качество жизни.</p>
+                </div>
             </div>
         </div>
 
     </div>
 </section>
+<!-- ======================= КОНЕЦ БЛОКА ======================= -->
+
 <!-- ======================= КОНЕЦ НОВОГО БЛОКА ======================= -->
 
 <!-- ======================= СЕКЦИЯ "ДЛЯ КОГО ЭТО" ======================= -->
@@ -761,6 +772,7 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 <!-- ======================= ИСПРАВЛЕННЫЙ JAVASCRIPT-КОД ======================= -->
 <script>
     const typingElement = document.querySelector('.typing-effect');
@@ -865,4 +877,43 @@
         }
     });
 </script>
+
+    <!-- СКРИПТ ДЛЯ АККОРДЕОНА -->
+    <script>
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+
+            header.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+
+                // Закрываем все открытые элементы, если нужно чтобы открыт был только один
+                accordionItems.forEach(i => i.classList.remove('active'));
+                
+                // Если элемент не был открыт, открываем его
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Дополнительная логика для плавного открытия/закрытия
+        // Мы будем менять max-height вместо display: none
+        const allContent = document.querySelectorAll('.accordion-content');
+        allContent.forEach(content => {
+            // Обертка для доступа к родительскому элементу
+            const parentItem = content.closest('.accordion-item');
+            const header = parentItem.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                 if (parentItem.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                 } else {
+                    content.style.maxHeight = '0';
+                 }
+            });
+        });
+    </script>
+</body>
 </html>
