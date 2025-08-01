@@ -2553,3 +2553,32 @@ main {
     color: #b0c4b1; /* Еще более светлый оттенок */
     top: -3px;
 }
+
+/*
+ * --- ЦВЕТА ДЛЯ АКТИВНЫХ ВКЛАДОК СТРАНИЦЫ "ТЕХНИКА" (CSS-only решение) ---
+ * Используем атрибут data-tab-target для уникальности без изменения HTML.
+*/
+
+/* Польза -> Бирюзовый */
+.tab-button.active[data-tab-target="#benefits"] {
+    background-color: #a7d8de;
+    color: #2c5a62;
+}
+
+/* Подготовка -> Морковный */
+.tab-button.active[data-tab-target="#preparation"] {
+    background-color: #f8c08b;
+    color: #7d4d13;
+}
+
+/* Техника -> Зеленый */
+.tab-button.active[data-tab-target="#technique"] {
+    background-color: #b7e4c7;
+    color: #336140;
+}
+
+/* Советы -> Кремовый серый */
+.tab-button.active[data-tab-target="#details"] {
+    background-color: #e3e1d9;
+    color: #5c5a52;
+}
