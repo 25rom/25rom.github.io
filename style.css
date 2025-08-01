@@ -2408,4 +2408,107 @@ main {
     color: #666;
 }
 
+/* --- СТИЛИ ДЛЯ СИСТЕМЫ ВКЛАДОК 101 --- */
+/* Базовые стили для кнопок и их контейнера оставлены как были */
+.tabs-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap; 
+}
 
+.tab-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fff;
+    color: #555;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Цвета для активных вкладок (ОСТАВЛЕНЫ КАК ТЫ ХОТЕЛ) */
+.tab-button.active.tab-breath { background-color: #a7d8de; color: #2c5a62; } /* Бирюзовый */
+.tab-button.active.tab-pose { background-color: #f8c08b; color: #7d4d13; } /* Морковный */
+.tab-button.active.tab-mudra { background-color: #f5e6d3; color: #7b6651; } /* Лен */
+.tab-button.active.tab-bandhi { background-color: #b7e4c7; color: #336140; } /* Зеленый */
+.tab-button.active.tab-recs { background-color: #e3e1d9; color: #5c5a52; } /* Кремовый серый */
+
+
+/* --- СТИЛИ ДЛЯ КОНТЕНТА ВНУТРИ ВКЛАДОК (С ИЗМЕНЕНИЯМИ) --- */
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Немного увеличил гэп */
+}
+
+/* Карточка */
+.info-card {
+    background-color: #fff;
+    border-radius: 15px; /* Более мягкие углы */
+    padding: 25px;       /* Увеличил внутренние отступы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Заголовок карточки с разделителем */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px; /* Увеличил отступ */
+    padding-bottom: 15px;/* Увеличил отступ */
+    border-bottom: 1px solid #f0f0f0; /* Сохраняем разделитель */
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-icon {
+    font-size: 24px;
+    opacity: 0.8;
+}
+
+/* Основной текст в карточке (ИЗМЕНЕНО) */
+.card-body p {
+    margin: 0; /* Убрал старый маргин */
+    line-height: 1.7; /* Увеличил интервал для читаемости */
+    margin-bottom: 1em; /* Добавил отступ между параграфами */
+    text-align: left;
+}
+
+.card-body p:last-child {
+    margin-bottom: 0; /* Убрал отступ у последнего параграфа */
+}
+
+/* Выделение подзаголовков (ИЗМЕНЕНО) */
+.card-body strong {
+     color: #4a5c54; /* Цвет как ты и хотел */
+     font-weight: 600; /* Сделал жирнее для акцента */
+}
