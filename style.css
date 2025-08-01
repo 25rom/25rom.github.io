@@ -2443,7 +2443,7 @@ main {
 .tab-button.active.tab-recs { background-color: #e3e1d9; color: #5c5a52; } /* Кремовый серый */
 
 
-/* --- СТИЛИ ДЛЯ КОНТЕНТА ВНУТРИ ВКЛАДОК (С ИЗМЕНЕНИЯМИ) --- */
+/* --- СТИЛИ ДЛЯ КОНТЕНТА ВНУТРИ ВКЛАДОК --- */
 
 .tab-content {
     display: none;
@@ -2462,14 +2462,14 @@ main {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px; /* Немного увеличил гэп */
+    gap: 25px; 
 }
 
 /* Карточка */
 .info-card {
     background-color: #fff;
-    border-radius: 15px; /* Более мягкие углы */
-    padding: 25px;       /* Увеличил внутренние отступы */
+    border-radius: 15px; 
+    padding: 25px;       
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
@@ -2478,9 +2478,9 @@ main {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 20px; /* Увеличил отступ */
-    padding-bottom: 15px;/* Увеличил отступ */
-    border-bottom: 1px solid #f0f0f0; /* Сохраняем разделитель */
+    margin-bottom: 20px; 
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0; 
 }
 
 .card-header h3 {
@@ -2495,20 +2495,61 @@ main {
     opacity: 0.8;
 }
 
-/* Основной текст в карточке (ИЗМЕНЕНО) */
+/* Основной текст в карточке */
 .card-body p {
-    margin: 0; /* Убрал старый маргин */
-    line-height: 1.7; /* Увеличил интервал для читаемости */
-    margin-bottom: 1em; /* Добавил отступ между параграфами */
+    margin: 0; 
+    line-height: 1.7; 
+    margin-bottom: 1em; 
     text-align: left;
 }
 
 .card-body p:last-child {
-    margin-bottom: 0; /* Убрал отступ у последнего параграфа */
+    margin-bottom: 0; 
 }
 
-/* Выделение подзаголовков (ИЗМЕНЕНО) */
+/* Выделение подзаголовков */
 .card-body strong {
-     color: #4a5c54; /* Цвет как ты и хотел */
-     font-weight: 600; /* Сделал жирнее для акцента */
+     color: #4a5c54; 
+     font-weight: 600; 
+}
+
+
+/* --- СТИЛИ ДЛЯ СПИСКОВ (ДОБАВЛЕНО) --- */
+
+/* Стили для основного списка */
+.card-body ul {
+    list-style: none; /* Убираем стандартные точки */
+    padding-left: 0;  /* Убираем стандартный отступ */
+    margin-top: 1em;  /* Отступ сверху от параграфа "Суть:" */
+}
+
+/* Стили для каждого пункта списка */
+.card-body li {
+    padding-left: 1.4em; /* Создаем место для кастомной точки */
+    margin-bottom: 1em;  /* Расстояние между пунктами */
+    position: relative;  /* Необходимо для позиционирования точки */
+}
+
+/* Создаем кастомную точку-маркер для основного списка */
+.card-body > ul > li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: #8da399; /* Мягкий цвет, как у сепараторов в шапке */
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Стили для вложенных списков (например, в "Энергетике") */
+.card-body ul ul {
+    margin-top: 0.7em;  /* Отступ сверху */
+    margin-left: 0.5em; /* Дополнительный отступ слева для иерархии */
+}
+
+/* Маркер-тире для вложенных списков */
+.card-body ul ul li::before {
+    content: '–'; /* Используем тире вместо точки */
+    color: #b0c4b1; /* Еще более светлый оттенок */
+    top: -3px;
 }
