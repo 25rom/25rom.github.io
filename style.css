@@ -2463,6 +2463,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px; 
+    align-items: start; /* ВОТ РЕШЕНИЕ: Запрещает карточкам растягиваться по высоте */
 }
 
 /* Карточка */
