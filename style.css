@@ -2582,3 +2582,26 @@ main {
     background-color: #e3e1d9;
     color: #5c5a52;
 }
+
+/*
+ * --- СТИЛИ ДЛЯ РАСКРЫВАЮЩИХСЯ КАРТОЧЕК ---
+*/
+
+/* Делаем заголовок карточки кликабельным на вид */
+.card-header {
+    cursor: pointer;
+}
+
+/* Убираем стандартный маркер-треугольник */
+.card-header::-webkit-details-marker {
+  display: none;
+}
+
+.card-header::marker {
+  display: none;
+}
+
+/* Убираем стандартную синюю рамку при фокусе */
+.card-header:focus {
+    outline: none;
+}
