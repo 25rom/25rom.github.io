@@ -2611,7 +2611,7 @@ main {
 
 .partner-card img {
   /* Это свойство нужно, чтобы изображение не искажалось и заполняло блок */
-  object-fit: contain; 
+  object-fit: cover; 
   
   /* А это — чтобы была видна верхняя часть изображения (лицо) */
   object-position: top; 
