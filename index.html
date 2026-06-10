@@ -93,10 +93,10 @@ section{padding:52px 0}
 /* промо */
 .promo{background:linear-gradient(140deg,var(--accent-soft),var(--surface));border-radius:var(--r-lg);padding:46px 34px;text-align:center}
 .promo-h{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,2.4vw,27px);color:var(--ink);max-width:600px;margin:0 auto 32px;line-height:1.32}
-.promo-trio{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;max-width:640px;margin:0 auto 28px}
-.po{display:flex;flex-direction:column;align-items:center;gap:11px;width:140px}
+.promo-trio{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;max-width:700px;margin:0 auto 28px}
+.po{display:flex;flex-direction:column;align-items:center;gap:11px;width:156px}
 .po-ic{width:62px;height:62px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--accent);box-shadow:0 8px 20px rgba(59,48,38,.08)}
-.po b{font-size:15px;color:var(--ink);font-weight:600}
+.po b{font-size:13.5px;color:var(--ink);font-weight:600}
 .promo-feats{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;border-top:1px solid rgba(140,94,48,.16);padding-top:24px;max-width:660px;margin:0 auto}
 .promo-feats span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2)}
 .promo-feats .i{color:var(--sage)}
@@ -109,6 +109,16 @@ section{padding:52px 0}
 .type h3 .dotc{width:9px;height:9px;border-radius:50%;background:var(--c)}
 .type p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
 footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;letter-spacing:0.04em;border-top:1px solid var(--line);margin-top:24px}
+.sdiv{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--accent);margin-bottom:14px}
+.sdiv svg{opacity:.9}
+.sdiv::before,.sdiv::after{content:"";width:46px;height:1px;background:var(--line)}
+.foot{display:flex;flex-direction:column;align-items:center;gap:16px}
+.fbrand{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--accent);letter-spacing:.05em}
+.contacts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.contact{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;text-decoration:none;color:var(--ink-2);font-size:13.5px;transition:.18s}
+.contact:hover{border-color:var(--accent);color:var(--accent-ink)}
+.contact svg{color:var(--accent)}
+.fcopy{font-size:12.5px;color:var(--ink-3)}
 @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.topbar{justify-content:center}section{padding:40px 0}.ring{width:300px;height:300px}.rung{width:100%!important;margin-left:0!important;padding:18px 20px;border-radius:22px}}
 </style>
 </head>
@@ -132,6 +142,11 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
 <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 12.5h6M9 16h4"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
 <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5z"/></symbol>
+<symbol id="i-calm" viewBox="0 0 24 24"><path d="M12 13c-2.5 0-4.5-2-4.5-4.5C7.5 6 12 3 12 3s4.5 3 4.5 5.5C16.5 11 14.5 13 12 13z"/><path d="M4 14c2 2 5 3 8 3s6-1 8-3"/><path d="M5 18c2 1.6 4.5 2.4 7 2.4S17 19.6 19 18"/></symbol>
+<symbol id="i-flow" viewBox="0 0 24 24"><path d="M3 9c2-2.2 4-2.2 6 0s4 2.2 6 0 4-2.2 6 0"/><path d="M3 15c2-2.2 4-2.2 6 0s4 2.2 6 0 4-2.2 6 0"/></symbol>
+<symbol id="i-sky" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><path d="M11 17h7a3 3 0 0 0 0-6 4 4 0 0 0-7.7-1.2"/><path d="M4 17h2"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.5 4.3 2.9 11.4c-.9.3-.9 1.6.1 1.9l4.6 1.4 1.8 5.3c.3.8 1.3 1 1.9.3l2.5-2.6 4.7 3.5c.7.5 1.7.1 1.9-.7l3.2-15c.2-1-.7-1.8-1.6-1.5z"/><path d="M7.6 14.7 17 8.2l-7 7.1"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
 </defs></svg>
 
 <header>
@@ -171,7 +186,7 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
 
   <section>
     <div class="wrap">
-      <p class="eyebrow">Для кого</p>
+      <div class="sdiv"><svg class="i" width="26" height="26"><use href="#i-calm"/></svg></div>
       <h2 class="h2">Идеально, если вы</h2>
       <div class="grid g2">
         <div class="tile"><div class="ic"><svg class="i" width="26" height="26"><use href="#i-briefcase"/></svg></div><h3>Работаете в офисе</h3><p>Восстановить концентрацию и снять напряжение с глаз и спины за 7 минут прямо на рабочем месте.</p></div>
@@ -184,19 +199,7 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
 
   <section>
     <div class="wrap">
-      <p class="eyebrow">Показания</p>
-      <h2 class="h2">Что даёт регулярная практика</h2>
-      <div class="grid g3">
-        <div class="ind" style="--d:#534AB7"><div class="indh"><span class="inddot"></span>Ум и эмоции</div><ul><li>Снижает уровень стресса и тревожности</li><li>Повышает концентрацию и ясность ума</li><li>Стабилизирует настроение и сон</li></ul></div>
-        <div class="ind" style="--d:#C0584E"><div class="indh"><span class="inddot"></span>Тело</div><ul><li>Укрепляет дыхательную систему</li><li>Поддерживает нервную и сердечно-сосудистую системы</li><li>Улучшает пищеварение и детоксикацию</li></ul></div>
-        <div class="ind" style="--d:#D98A45"><div class="indh"><span class="inddot"></span>Энергия</div><ul><li>Больше жизненной силы и бодрости</li><li>Балансирует энергетическую систему</li><li>Подготавливает к медитации</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Как это работает</p>
+      <div class="sdiv"><svg class="i" width="26" height="26"><use href="#i-flow"/></svg></div>
       <h2 class="h2">Четыре простых шага</h2>
       <div class="tl">
         <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-target"/></svg></span><h3>Выберите цель</h3><p>Почувствовали негатив, хотите покоя или мощный заряд энергии? Нажмите тег (или сразу два) и выберите карточку.</p></div>
@@ -204,9 +207,10 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
         <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-clock"/></svg></span><h3>Практикуйте 7–15 минут</h3><p>Уделите себе несколько минут в любое время дня.</p></div>
         <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-smile"/></svg></span><h3>Осознавайте результат</h3><p>Ощутите мгновенное изменение состояния; замечайте, что поменялось в течение дня после практики.</p></div>
       </div>
+      <div style="text-align:center"><a class="btn btn-lg" href="practice.html"><svg class="i" width="20" height="20"><use href="#i-wind"/></svg>Начать практику</a></div>
     </div>
   </section>
-<a class="btn btn-lg" href="practice.html"><svg class="i" width="20" height="20"><use href="#i-wind"/></svg>Начать практику</a>
+
   <section>
     <div class="wrap">
       <div class="promo">
@@ -230,20 +234,20 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
 
   <section>
     <div class="wrap">
-      <p class="eyebrow">Почему это работает</p>
+      <div class="sdiv"><svg class="i" width="26" height="26"><use href="#i-wind"/></svg></div>
       <h2 class="h2">Польза и радость с первого занятия</h2>
       <p class="info-lead">Дыхание напрямую связано с вегетативной нервной системой. Замедляя или ускоряя его, можно сознательно влиять на своё состояние — успокаиваться или становиться бодрее. Пранаяма — древняя практика, эффективность которой подтверждена веками.</p>
       <div class="grid g3">
-        <div class="tile"><div class="ic" style="background:rgba(83,74,183,0.10);color:#534AB7"><svg class="i" width="26" height="26"><use href="#i-sparkles"/></svg></div><h3>Ум и самопознание</h3><p>Освобождает ум, обостряет интеллект и готовит к медитации, открывая путь к истинному «я».</p></div>
-        <div class="tile"><div class="ic" style="background:rgba(192,88,78,0.10);color:#C0584E"><svg class="i" width="26" height="26"><use href="#i-heart"/></svg></div><h3>Тело и физиология</h3><p>Улучшает работу лёгких, сердца и кровеносной системы, укрепляя тело и повышая витальность.</p></div>
-        <div class="tile"><div class="ic" style="background:rgba(217,138,69,0.12);color:#D98A45"><svg class="i" width="26" height="26"><use href="#i-flame"/></svg></div><h3>Энергия и очищение</h3><p>Очищает энергетические каналы, стимулирует внутренние органы и нервную систему, даря спокойствие и благополучие.</p></div>
+        <div class="tile"><div class="ic" style="background:rgba(83,74,183,0.10);color:#534AB7"><svg class="i" width="26" height="26"><use href="#i-sparkles"/></svg></div><h3>Ум и самопознание</h3><p>Мягко снижает стресс и тревожность, проясняет ум и помогает удерживать концентрацию, а настроение и сон становятся ровнее.</p></div>
+        <div class="tile"><div class="ic" style="background:rgba(192,88,78,0.10);color:#C0584E"><svg class="i" width="26" height="26"><use href="#i-heart"/></svg></div><h3>Тело и физиология</h3><p>Укрепляет дыхательную систему и поддерживает работу нервной и сердечно-сосудистой систем, помогая пищеварению и естественному очищению.</p></div>
+        <div class="tile"><div class="ic" style="background:rgba(217,138,69,0.12);color:#D98A45"><svg class="i" width="26" height="26"><use href="#i-flame"/></svg></div><h3>Энергия и очищение</h3><p>Прибавляет жизненной силы и бодрости, балансирует энергетическую систему и очищает каналы, мягко подготавливая к медитации.</p></div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <p class="eyebrow">Карта практик</p>
+      <div class="sdiv"><svg class="i" width="26" height="26"><use href="#i-sky"/></svg></div>
       <h2 class="h2">4 типа практик для разных целей</h2>
       <div class="grid g2">
         <a class="type" href="wiki.html#tipy-bazovye" style="--c:var(--cat-base)"><h3><span class="dotc"></span>Базовые</h3><p>Основа, с которой начинается путь в пранаяму. Учат осознанному дыханию и создают фундамент для более сложных практик.</p></a>
@@ -256,7 +260,14 @@ footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;l
   </section>
 </main>
 
-<footer><div class="wrap">Мама-Пранаяма · Дыхание • Ум • Эмоции • Тело</div></footer>
+<footer><div class="wrap foot">
+  <div class="fbrand">Мама-Пранаяма</div>
+  <div class="contacts">
+    <a class="contact" href="https://t.me/neuro25" target="_blank" rel="noopener"><svg class="i" width="18" height="18"><use href="#i-tg"/></svg>Telegram · @neuro25</a>
+    <a class="contact" href="mailto:rom.neustroev@icloud.com"><svg class="i" width="18" height="18"><use href="#i-mail"/></svg>rom.neustroev@icloud.com</a>
+  </div>
+  <div class="fcopy">Дыхание • Ум • Эмоции • Тело</div>
+</div></footer>
 
 <script>
 const phrases=["восстановить баланс","зарядиться энергией","создать настроение"];
