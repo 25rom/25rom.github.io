@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Практика — Мама-Пранаяма</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFAF4; --surface:#F6F0E5; --card:#FFFDF8; --oak:#EFE5D4; --line:#EEE6D7;
+  --accent:#B5824E; --accent-soft:#F1E5D2; --accent-ink:#8C5E30; --sage:#8FA083;
+  --ink:#3B3026; --ink-2:#6F5F4D; --ink-3:#A4937B;
+  --danger:#B85C4E; --danger-bg:#F7EBE4; --danger-line:#E9CABC; --danger-ink:#A1503F;
+  --info:#5F94A0; --info-soft:#E6EEF0;
+  --r-lg:22px; --shadow:0 14px 36px rgba(59,48,38,0.07);
+  --maxw:1080px;
+  --font-display:"Fraunces",Georgia,serif; --font-body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(60% 50% at 80% 4%,rgba(217,180,120,0.15),transparent 70%),radial-gradient(55% 45% at 8% 16%,rgba(143,160,131,0.10),transparent 70%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+svg.i{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle}
+a{color:inherit}
+
+header{padding:22px 0 6px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--accent);text-decoration:none;letter-spacing:.05em;white-space:nowrap}
+.brand .bd{color:var(--cat-active)}
+.pills{display:flex;gap:10px}
+.pill{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:9px 18px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.pill:hover,.pill.active{color:var(--accent-ink);border-color:var(--accent);background:var(--card)}
+
+.phead{text-align:center;padding:30px 0 8px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.eyebrow::after{content:"";display:block;width:26px;height:1px;background:var(--accent);opacity:.5;margin:10px auto 0}
+.phead h1{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,3.4vw,36px);color:var(--ink);margin-bottom:8px}
+.phead p{color:var(--ink-2);max-width:620px;margin:0 auto;font-size:15.5px}
+
+.tagcloud{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;max-width:860px;margin:24px auto 6px}
+.tag{font-size:13px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:all .18s;user-select:none}
+.tag:hover{border-color:var(--accent);color:var(--accent-ink)}
+.tag.on{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.filterbar{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 4px;color:var(--ink-3);font-size:13px}
+.clearbtn{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.clearbtn:hover{color:var(--accent-ink)}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding:26px 0 50px}
+.pcard{background:var(--card);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;box-shadow:0 1px 0 rgba(59,48,38,.03);transition:transform .2s,box-shadow .2s;border-top:3px solid var(--c);display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.pcard .pc-body{padding:20px 22px;display:flex;flex-direction:column;height:100%}
+.pcard h3{font-family:var(--font-display);font-weight:600;font-size:22px;color:#2A211A;letter-spacing:.01em;line-height:1.2}
+.pcard .tr{font-size:13px;color:var(--ink-3);margin-bottom:10px}
+.metarow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.mpill{font-size:11.5px;padding:3px 10px;border-radius:999px;background:var(--oak);color:var(--ink-2)}
+.mpill.cat{color:#fff;background:var(--c)}
+.chakrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.ch{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ink-2)}
+.ch i{width:8px;height:8px;border-radius:50%}
+.pcard .sb{font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;flex-grow:1}
+.rchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.rchip{font-size:11.5px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink)}
+.opencta{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--accent-ink);font-weight:500;margin-top:auto}
+
+.reslabel{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.has-tip{position:relative;cursor:help;outline:none}
+.has-tip .tip{position:absolute;bottom:138%;left:50%;transform:translateX(-50%) translateY(5px);background:var(--ink);color:var(--paper);font-size:12px;line-height:1.45;padding:9px 12px;border-radius:11px;width:215px;text-align:center;opacity:0;visibility:hidden;transition:.18s;z-index:8;box-shadow:0 10px 24px rgba(40,32,24,.28);text-transform:none;letter-spacing:0;font-weight:400;font-family:var(--font-body)}
+.has-tip .tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
+.has-tip:hover .tip,.has-tip:focus .tip,.has-tip.open .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.mpill.lvl{display:inline-flex;align-items:center;gap:5px;background:var(--accent-soft);color:var(--accent-ink)}
+.empty{text-align:center;color:var(--ink-3);padding:50px 0;font-size:15px;grid-column:1/-1}
+
+/* МОДАЛКА — полная карточка */
+.overlay{position:fixed;inset:0;background:rgba(40,32,24,.45);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;z-index:50;padding:30px 16px;overflow-y:auto;perspective:1600px}
+.overlay.show{display:flex}
+.modal{background:var(--paper);border-radius:var(--r-lg);max-width:520px;width:100%;box-shadow:0 30px 70px rgba(40,32,24,.35);position:relative;overflow:hidden;transition:transform .19s ease;backface-visibility:hidden}
+.modal .topcolor{height:5px;background:var(--c)}
+.modal-in{padding:26px 28px 30px}
+.closeb{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-2);z-index:2}
+.closeb:hover{color:var(--accent-ink);border-color:var(--accent)}
+.m-name{font-family:var(--font-display);font-weight:600;font-size:23px;color:var(--ink)}
+.m-tr{font-size:14px;color:var(--ink-3);margin-top:2px}
+.m-meta{font-size:13.5px;font-style:italic;color:var(--ink-2);margin:10px 0 0;border-left:2px solid var(--accent);padding-left:12px;line-height:1.5}
+.sec{border-top:1px solid var(--line);padding-top:16px;margin-top:18px}
+.lbl{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
+.m-chips{display:flex;gap:6px;flex-wrap:wrap}
+.m-chip{font-size:12.5px;padding:4px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink)}
+.m-sb{font-size:14.5px;color:var(--ink);line-height:1.6;margin-bottom:10px}
+
+.safebox{border:1px solid var(--danger-line);background:var(--danger-bg);border-radius:14px;overflow:hidden;margin-top:18px}
+.safehead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;cursor:pointer;color:var(--danger-ink);font-size:13.5px;font-weight:500}
+.safebody{display:none;padding:0 16px 14px}
+.safebody.show{display:block}
+.safebody h5{font-size:12px;font-weight:600;color:var(--danger-ink);margin:6px 0 6px}
+.safebody ul{margin:0 0 8px;padding-left:18px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+
+.seg{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.segb{flex:1;min-width:90px;padding:8px 10px;font-size:12.5px;border:1px solid var(--line);background:transparent;border-radius:12px;cursor:pointer;color:var(--ink-2);transition:all .18s}
+.segb.on{background:var(--info-soft);border-color:var(--info);color:var(--info)}
+.counts{display:flex;gap:7px;margin-bottom:10px}
+.cbox{flex:1;background:var(--surface);border-radius:12px;padding:9px 8px;text-align:center}
+.cbox .cl{font-size:11px;color:var(--ink-3)}
+.cbox .cv{font-size:18px;font-weight:600;color:var(--ink);font-family:var(--font-display)}
+.ritm{display:flex;gap:4px;height:7px;margin-bottom:8px}
+.ritm div{border-radius:4px;opacity:.55}
+.flowrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;font-weight:500;margin-bottom:10px;color:var(--ink)}
+.flowrow .sep{color:var(--ink-3)}
+.vnote{font-size:12.5px;color:var(--ink-3);line-height:1.5;margin-bottom:8px}
+.vmeta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.vtag{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--surface);color:var(--ink-2)}
+.cyc{font-size:12px;color:var(--ink-3)}
+
+/* ПЕЙСЕР */
+.pacer{display:flex;flex-direction:column;align-items:center;gap:9px;padding:10px 0 4px}
+.pcircle-wrap{position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center}
+.pcircle{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 50% 38%,var(--accent-soft),var(--accent));box-shadow:0 8px 20px rgba(181,130,78,.3);transition:transform linear;transform:scale(.55)}
+.pphase{font-family:var(--font-display);font-size:18px;font-weight:600;color:#241C14;min-height:24px;letter-spacing:.02em;text-transform:uppercase}
+.pbtn{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:var(--accent-ink);background:var(--accent-soft);border:none;border-radius:999px;padding:9px 20px;cursor:pointer}
+.pbtn:hover{background:var(--oak)}
+.prep{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.prep b{color:var(--ink);font-weight:600}
+.video{width:100%;aspect-ratio:16/9;background:var(--surface);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-top:8px}
+.video .pl{width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.btnwide{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;font-weight:600;color:var(--paper);background:var(--accent);border:none;border-radius:999px;padding:14px;font-size:15px;cursor:pointer;text-decoration:none;font-family:var(--font-body)}
+.btnwide:hover{filter:brightness(1.04)}
+
+.face-back{display:none}
+.bkface{padding:24px 26px 28px}
+.bktag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.bkname{font-family:var(--font-display);font-weight:600;font-size:22px;color:#2A211A}
+.bkhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.flipb{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--accent-ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;font-family:var(--font-body);white-space:nowrap}
+.flipb:hover{border-color:var(--accent)}
+.brow{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}
+.brow:last-of-type{border-bottom:none}
+.bric{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.brh{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.brt{font-size:14px;color:var(--ink);line-height:1.55}
+.poses{display:flex;gap:10px;margin-top:6px}
+.pose{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;color:var(--ink-3);opacity:.4}
+.pose.on{opacity:1;color:var(--ink-2)}
+.pose .pic{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.pose.on .pic{background:var(--accent-soft);border-color:var(--accent-soft)}
+.posenote{font-size:12.5px;color:var(--ink-2);margin-top:10px;line-height:1.5}
+.posenote a{color:var(--accent-ink)}
+.bpills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.bpill{display:inline-flex;align-items:center;gap:7px;font-size:13px;border-radius:999px;padding:7px 14px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:.15s;user-select:none}
+.bpill:hover{border-color:var(--accent)}
+.bpill.on{border-color:var(--accent);background:var(--accent-soft)}
+.bpill .cdot{width:9px;height:9px;border-radius:50%}
+.descbox{font-size:13px;color:var(--ink-2);line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-top:9px;display:none}
+.descbox.show{display:block}
+.dur{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.dcell{flex:1;min-width:118px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.dcell .dl{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.dcell .dv{font-size:13px;color:var(--ink);font-weight:500}
+.btips{margin:6px 0 0;padding-left:18px}
+.btips li{font-size:13px;color:var(--ink-2);line-height:1.55;margin-bottom:7px}
+.flipbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:20px;font-weight:600;color:var(--paper);background:var(--accent);border:none;border-radius:999px;padding:14px;font-size:15px;cursor:pointer;font-family:var(--font-body)}
+.flipbtn.ghostflip{background:var(--accent-soft);color:var(--accent-ink)}
+.bklink{font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--accent-ink);margin-left:8px;text-decoration:underline;text-underline-offset:2px}
+.detbtn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;color:var(--accent-ink);background:transparent;border:1px dashed var(--line);border-radius:999px;padding:6px 13px;cursor:pointer;font-family:var(--font-body)}
+.detbtn:hover{border-color:var(--accent)}
+.detbtn.on svg{transform:rotate(180deg)}
+.detbox{display:none;margin-top:9px;font-size:13.5px;color:var(--ink-2);line-height:1.6;background:var(--surface);border-radius:12px;padding:12px 14px}
+.detbox.show{display:block}
+.techlink{display:inline-block;margin-top:12px;font-size:13px;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.sharerow{text-align:center;margin-top:10px}
+.sharebtn{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;font-family:var(--font-body)}
+.sharebtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+footer{text-align:center;padding:40px 0 50px;color:var(--ink-3);font-size:13px;border-top:1px solid var(--line);margin-top:10px}
+@media(max-width:640px){.topbar{justify-content:center}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 21c0-9 5-15 15-15 0 9-5 15-15 15z"/><path d="M5 21 17 9"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19L12 4z"/><path d="M12 10v4"/><path d="M12 17h.01"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 4l1.6 4.5L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.5z"/></symbol>
+<symbol id="i-flip" viewBox="0 0 24 24"><path d="M9 5 4 10l5 5"/><path d="M4 10h11a5 5 0 0 1 0 10h-1"/></symbol>
+<symbol id="i-place" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.3"/></symbol>
+<symbol id="i-pose-lotus" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="2.3"/><path d="M7 19c1-5 2.5-7 5-7s4 2 5 7z"/></symbol>
+<symbol id="i-pose-chair" viewBox="0 0 24 24"><circle cx="11" cy="5.5" r="2.2"/><path d="M11 8v6h-4"/><path d="M11 14h5v6"/><path d="M16 14v-3"/></symbol>
+<symbol id="i-pose-lying" viewBox="0 0 24 24"><circle cx="5" cy="13" r="2.2"/><path d="M7 14h12a2 2 0 0 1 0 4H7z"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V6a1.3 1.3 0 0 1 2.6 0v5"/><path d="M10.6 11V5a1.3 1.3 0 0 1 2.6 0v6"/><path d="M13.2 11.5V6.5a1.3 1.3 0 0 1 2.6 0V13"/><path d="M15.8 9.5a1.3 1.3 0 0 1 2.4 1c-.4 4-2 7-5.4 7-2.5 0-3.6-1-5-3l-2-3a1.4 1.4 0 0 1 2.3-1.5L7.8 12"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><path d="M8 11V8a4 4 0 0 1 8 0v3"/><rect x="6" y="11" width="12" height="8" rx="2"/></symbol>
+<symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 9a8 8 0 0 1 14-4l2 2"/><path d="M20 15a8 8 0 0 1-14 4l-2-2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-lvl-leaf" viewBox="0 0 24 24"><path d="M6 19c0-8 5-13 13-13 0 8-5 13-13 13z"/><path d="M6 19 16 9"/></symbol>
+<symbol id="i-lvl-branch" viewBox="0 0 24 24"><path d="M5 20c5-2 8-6 10-11"/><path d="M15 9c.5-2.5 2.3-3.7 4.5-3.7C19.5 7.8 17.7 9 15 9z"/><path d="M9.5 14.5c-2.2 0-3.7-1.6-3.7-3.8C8 10.7 9.5 12.3 9.5 14.5z"/></symbol>
+<symbol id="i-lvl-bush" viewBox="0 0 24 24"><path d="M12 21v-4"/><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/><path d="M6.5 14.5C4.8 14.3 4 12.8 4 11c1.8 0 3 1 3.2 2.6"/><path d="M17.5 14.5c1.7-.2 2.5-1.7 2.5-3.5-1.8 0-3 1-3.2 2.6"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8 15.7 7.2M8.3 13.2l7.4 3.6"/></symbol>
+</defs></svg>
+
+<header><div class="wrap"><div class="topbar">
+  <a class="brand" href="index.html" aria-label="На главную"><span>ДЫХАНИЕ <span class="bd">•</span> УМ <span class="bd">•</span> ЭМОЦИИ <span class="bd">•</span> ТЕЛО</span></a>
+  <nav class="pills">
+    <a class="pill active" href="practice.html">Практика</a>
+    <a class="pill" href="wiki.html">База знаний</a>
+    <a class="pill" href="why.html">Почему</a>
+    <a class="pill" href="friends.html">Наши друзья</a>
+  </nav>
+</div></div></header>
+
+<main>
+  <div class="phead wrap">
+    <p class="eyebrow">Практика</p>
+    <h1>Какого состояния вы хотите достичь сегодня?</h1>
+    <p>Нажмите тег, который отзывается прямо сейчас, а мы подберём подходящие практики. Можно выбрать сразу несколько.</p>
+  </div>
+  <div class="wrap">
+    <div class="tagcloud" id="tagcloud"></div>
+    <div class="filterbar"><span id="count"></span><span class="clearbtn" id="clear" style="display:none">сбросить</span></div>
+    <div class="pgrid" id="grid"></div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+
+<footer><div class="wrap">Мама-Пранаяма · Дыхание • Ум • Эмоции • Тело</div></footer>
+
+<script>
+const PRACTICES = [{"id": "nadi-shodhana", "name": "Нади Шодхана", "translation": "Дыхание, очищающее каналы", "category": "Балансирующие", "subcategory": "", "level": "Начальный", "time": "5–20 мин", "chakras": ["Аджня"], "tags": ["garmonizirovatsya", "uravnovesitsya", "proyasnit-um", "snyat-stress"], "shortBenefit": "Уравновешивает нервную систему и проясняет ум — хорошо перед сном или работой.", "resultChips": ["Баланс полушарий", "Глубокое спокойствие", "Запас энергии"], "safety": {"contraindications": ["Базовый вариант (без задержек) — практически без противопоказаний", "Для вариантов с задержками: осторожно при высоком/низком давлении, болезнях сердца, серьёзных болезнях лёгких, беременности — под руководством инструктора", "При сильной заложенности носа или ОРЗ с температурой — воздержаться или мягко без задержек", "Задержки осваивать постепенно: сначала Антар Кумбхака, затем Бахир Кумбхака"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Осваивайте постепенно — начиная без задержек или с короткими", "Прислушивайтесь к телу: при дискомфорте упростите или прекратите"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле).", "variants": [{"name": "Тип 1 · Анулома-Вилома", "effect": "балансирует", "recommended": true, "phases": [{"label": "Вдох", "count": 4}, {"label": "Выдох", "count": 4}], "cycles": "5–10", "note": "Без задержек, пропорция 1:1. Полный цикл — обе стороны: вдох левой → выдох правой → вдох правой → выдох левой. Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · Классическая", "effect": "успокаивает", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Задержка", "count": 8}, {"label": "Выдох", "count": 8}], "cycles": "3–5", "note": "Задержка после вдоха (Антар Кумбхака). Пропорция от 1:1:2 до 1:4:2 (пример 1:2:2). Детали — во вкладке «Подробнее»."}, {"name": "Тип 3 · Продвинутый", "effect": "глубокий контроль", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Зад. вдох", "count": 16}, {"label": "Выдох", "count": 8}, {"label": "Зад. выдох", "count": 8}], "cycles": "для опытных", "note": "Две задержки (Антар и Бахир Кумбхака). Пропорция до 1:4:2:4 (пример 1:4:2:2). Только для опытных. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Сбалансируйте энергию, успокойте ум и обретите глубокое внутреннее равновесие.", "previewResults": ["Глубокое спокойствие", "Равновесие", "Ясный ум"]}, {"id": "vibhagia", "name": "Вибхагия", "translation": "Полное йоговское дыхание", "category": "Базовые", "subcategory": "Успокаивающая", "level": "Начальный", "time": "3–10 мин", "chakras": ["Манипура", "Анахата", "Вишуддха"], "tags": ["krepko-spat", "garmonizirovatsya", "proyavit-golos", "snyat-stress", "emocionalnaya-stabilnost", "polnota-dyhaniya", "proyasnit-um"], "shortBenefit": "Естественное глубокое дыхание всем объёмом лёгких: снимает напряжение, насыщает кислородом и успокаивает ум.", "resultChips": ["Снимает напряжение", "Насыщает кислородом", "Успокаивает ум"], "safety": {"contraindications": ["Практически нет — это естественный способ дыхания", "С осторожностью при острых заболеваниях лёгких или сердца: выполнять очень мягко, без задержек и напряжения", "Беременным избегать сильного втягивания живота и задержек, практиковать мягко"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Не создавайте излишнего давления в голове или груди", "При головокружении (от гипервентиляции в начале) сделайте паузу и дышите нормально"]}, "preparation": "Для освоения — лёжа (Шавасана). Освоив — сидя с прямой спиной (Падмасана, Сиддхасана), стоя или при медленной ходьбе.", "variants": [{"name": "Волновое дыхание", "effect": "успокаивает", "phases": [{"label": "Вдох", "count": 0}, {"label": "Пауза", "count": 0}, {"label": "Выдох", "count": 0}], "cycles": "по самочувствию", "note": "Без жёсткого счёта: вдох волной снизу вверх (живот → грудь → ключицы), короткая пауза, выдох обратной волной."}], "video": "", "metaphor": "Освободите полное дыхание для глубокого расслабления, прилива сил и связи с собой.", "previewResults": ["Глубокое спокойствие", "Меньше напряжения", "Прилив сил"]}, {"id": "udjayi", "name": "Удджайя", "translation": "Дыхание победителя", "category": "Базовые", "subcategory": "", "level": "Начальный", "time": "3–10 мин", "chakras": ["Вишуддха"], "tags": ["proyavit-golos", "emocionalnaya-stabilnost", "skoncentrirovatsya", "polnota-dyhaniya", "proyasnit-um"], "shortBenefit": "Успокаивающее и согревающее дыхание с мягким горловым звуком — даёт фокус, спокойствие и внутреннюю силу.", "resultChips": ["Фокус", "Спокойствие", "Внутренняя сила"], "safety": {"contraindications": ["При повышенном давлении или болезнях сердца — без задержек и под руководством инструктора", "При дискомфорте, головокружении, давлении в голове или ушах — немедленно прекратить или смягчить"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Не перенапрягайте горло — звук должен быть мягким", "Прислушивайтесь к телу: при дискомфорте упростите или прекратите практику"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана), стоя или при медленной ходьбе.", "variants": [{"name": "Тип 1", "effect": "фокус, согревает", "recommended": true, "phases": [{"label": "Вдох", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох", "count": 0}], "cycles": "5–10", "note": "Вдох и выдох через обе ноздри с мягким шипящим звуком (лёгкое сжатие голосовой щели). Детали — во вкладке «Подробнее»."}, {"name": "Тип 2", "effect": "расслабляет", "recommended": false, "phases": [{"label": "Вдох", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох", "count": 0}], "cycles": "3–5", "note": "Вдох через обе ноздри как в Типе 1; выдох только через левую ноздрю (правая прижата пальцем). Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Найдите фокус, тепло и внутреннюю силу через мягкий океанский шёпот вашего дыхания.", "previewResults": ["Покой и сила", "Меньше стресса", "Ясный ум"]}, {"id": "surya-bhedana", "name": "Сурья Бхедана", "translation": "Солнечное дыхание", "category": "Активизирующие", "subcategory": "", "level": "Начальный", "time": "3–10 мин", "chakras": ["Манипура"], "tags": ["uverennost", "zaryaditsya-energiey", "produktivnost"], "shortBenefit": "Солнечное дыхание (вдох справа, выдох слева): заряжает энергией, повышает тонус и готовность к действию, снимает сонливость.", "resultChips": ["Тонус", "Решительность", "Энергия"], "safety": {"contraindications": ["Высокое давление (гипертония), болезни сердца", "Повышенная кислотность, язва желудка или ДПК в обострении", "Лихорадка, острые воспалительные процессы", "Сильное возбуждение, гнев, тревожность — может усилить", "Гиперфункция щитовидной железы", "Эпилепсия"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Не выполняйте перед сном — практика стимулирующая", "При перегреве, беспокойстве или дискомфорте прекратите"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле). Большой палец закрывает правую ноздрю, безымянный и мизинец — левую.", "variants": [{"name": "Тип 1 · базовый", "effect": "тонизирует", "recommended": true, "phases": [{"label": "Вдох", "count": 4}, {"label": "Выдох", "count": 4}], "cycles": "8–12", "note": "Вдох через правую ноздрю, выдох через левую, равные фазы (1:1). Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · с задержкой", "effect": "согревает, стимулирует", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Задержка", "count": 8}, {"label": "Выдох", "count": 8}], "cycles": "5–7", "note": "Вдох справа, задержка (возможны бандхи), выдох слева; пропорция от 1:1:2 до 1:4:2. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Зарядитесь теплом, бодростью и решимостью, активизировав свой солнечный потенциал.", "previewResults": ["Заряд энергии", "Внутреннее тепло", "Решительность"]}, {"id": "bhastrika", "name": "Бхастрика", "translation": "Дыхание кузнечных мехов", "category": "Активизирующие", "subcategory": "", "level": "Средний–Продвинутый", "time": "2–5 мин", "chakras": ["Свадхиштхана", "Муладхара", "Манипура"], "tags": ["uverennost", "zaryaditsya-energiey", "produktivnost"], "shortBenefit": "Мощные ритмичные вдохи-выдохи через обе ноздри, как кузнечные меха: мгновенно бодрит, повышает концентрацию и согревает.", "resultChips": ["Прилив бодрости", "Внутреннее тепло", "Ясный ум"], "safety": {"contraindications": ["Высокое артериальное или внутричерепное давление", "Болезни сердца (ИБС, недавний инфаркт, пороки, аритмии)", "Беременность, менструация", "Острые воспаления (особенно живот и голова), лихорадка; недавние операции на брюшной/грудной полости", "Эпилепсия, опухоли мозга", "Глаукома, отслоение сетчатки", "Лёгочные кровотечения, активный туберкулёз; язва в обострении, грыжи"], "cautions": [], "generalRecommendations": ["Не на полный желудок (2–3 ч после лёгкой еды, 3–4 ч после плотной)", "Избегайте внешних раздражителей", "Без опыта и инструктора — не дольше 5–7 минут", "При головокружении, тошноте, боли в ушах, сильном сердцебиении — сразу прекратить"]}, "preparation": "Сидя с прямой спиной. Расслабьте плечи и лицо, сделайте несколько спокойных вдохов-выдохов перед началом.", "variants": [{"name": "Тип 1 · задержка на вдохе", "effect": "взрывная активация", "recommended": true, "phases": [{"label": "Активная фаза", "count": 0}, {"label": "Вдох", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох", "count": 0}], "cycles": "10–15 в активной фазе", "note": "Активная фаза: 10–15 быстрых мощных циклов через обе ноздри; затем глубокий вдох, комфортная задержка (возможны бандхи), полный выдох. Восстановитесь перед следующим кругом. Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · чередование ноздрей", "effect": "активация + баланс", "recommended": false, "phases": [{"label": "Активная фаза", "count": 0}, {"label": "Вдох правой", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох левой", "count": 0}, {"label": "Вдох левой", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох правой", "count": 0}], "cycles": "10–15 в активной фазе", "note": "Активная фаза как в Типе 1; завершение с чередованием ноздрей: вдох правой → задержка → выдох левой → вдох левой → задержка → выдох правой. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Взорвите свою энергию, согрейте тело и пробудите ум за считанные минуты.", "previewResults": ["Прилив энергии", "Внутреннее тепло", "Ясность ума"]}, {"id": "kapalabhati", "name": "Капалабхати", "translation": "Сияющий череп", "category": "Активизирующие", "subcategory": "", "level": "Средний", "time": "2–5 мин", "chakras": ["Манипура", "Аджня"], "tags": ["proyasnit-um", "zaryaditsya-energiey", "produktivnost"], "shortBenefit": "Серия резких активных выдохов с пассивными вдохами через обе ноздри: проясняет мысли, очищает дыхательные пути и бодрит.", "resultChips": ["Ясный ум", "Прилив бодрости", "Чистое дыхание", "Тонус"], "safety": {"contraindications": ["Высокое артериальное или внутричерепное давление", "Болезни сердца (ИБС, недавний инфаркт, пороки, аритмии)", "Беременность, менструация", "Острые воспаления (особенно живот и голова), лихорадка; недавние операции на брюшной/грудной полости", "Эпилепсия, опухоли мозга", "Глаукома, отслоение сетчатки", "Лёгочные кровотечения, активный туберкулёз; язва в обострении, грыжи"], "cautions": [], "generalRecommendations": ["Не на полный желудок (2–3 ч после лёгкой еды, 3–4 ч после плотной)", "Избегайте внешних раздражителей", "Без опыта и инструктора — не дольше 7–10 минут", "При головокружении, тошноте, боли в ушах, сильном сердцебиении — сразу прекратить"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана или на стуле). Расслабьте плечи и лицо, несколько спокойных вдохов-выдохов перед началом.", "variants": [{"name": "Базовый", "effect": "очищает, бодрит", "recommended": true, "phases": [{"label": "Активная фаза (выдохи)", "count": 0}, {"label": "Вдох", "count": 0}, {"label": "Задержка", "count": 0}, {"label": "Выдох", "count": 0}], "cycles": "подходами, по самочувствию", "note": "Активная фаза: серия мощных резких выдохов (живот активно сокращается), вдох пассивный, голова и корпус неподвижны. Завершение: глубокий вдох → задержка (Антар Кумбхака) → полный выдох → опционально задержка с тремя бандхами. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Ощутите мгновенную лёгкость, прилив бодрости и кристальную чистоту мыслей.", "previewResults": ["Ясный ум", "Лёгкость", "Бодрость"]}, {"id": "sama-vritti", "name": "Сама Вритти", "translation": "Равное дыхание", "category": "Балансирующие", "subcategory": "", "level": "Начальный", "time": "5–10 мин", "chakras": ["Анахата"], "tags": ["rasslabitsya", "uravnovesitsya", "emocionalnaya-stabilnost", "skoncentrirovatsya", "proyasnit-um"], "shortBenefit": "Ритмичное сбалансированное дыхание: снижает тревожность, улучшает фокус и успокаивает ум.", "resultChips": ["Саморегуляция", "Осознанность", "Контроль дыхания"], "safety": {"contraindications": ["Базовый вариант (без задержек) — практически без противопоказаний", "Для вариантов с задержками: осторожно при высоком/низком давлении, болезнях сердца, серьёзных болезнях лёгких, беременности — под руководством инструктора", "При сильной заложенности носа или ОРЗ с температурой — воздержаться или мягко без задержек", "Задержки осваивать постепенно: сначала Антар Кумбхака, затем Бахир Кумбхака"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Осваивайте постепенно — начиная без задержек или с короткими", "Прислушивайтесь к телу: при дискомфорте упростите или прекратите"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле).", "variants": [{"name": "Тип 1 · без задержки", "effect": "балансирует", "recommended": true, "phases": [{"label": "Вдох", "count": 4}, {"label": "Выдох", "count": 4}], "cycles": "по самочувствию", "note": "Равные вдох и выдох (1:1). Можно выбрать другой счёт (5–6), главное — сохранять равенство. Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · квадратное дыхание", "effect": "концентрация", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Задержка", "count": 4}, {"label": "Выдох", "count": 4}, {"label": "Задержка", "count": 4}], "cycles": "5–7", "note": "Равные фазы с задержками (1:1:1:1, «коробочное» дыхание). На задержках — Джаландхара и Мула бандхи. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Обретите эмоциональную стабильность, концентрацию и гармонию через ритм равного дыхания.", "previewResults": ["Спокойствие", "Ясный ум", "Внутренняя гармония"]}, {"id": "vishama-vritti", "name": "Вишама Вритти", "translation": "Неравное дыхание", "category": "Балансирующие", "subcategory": "", "level": "Начальный", "time": "10–20 мин", "chakras": ["Манипура", "Анахата", "Аджня"], "tags": ["rasslabitsya", "snyat-stress", "zaryaditsya-energiey", "nastroit-sebya", "proyasnit-um", "skoncentrirovatsya"], "shortBenefit": "Осознанное управление длительностью фаз дыхания: помогает успокоиться или взбодриться и развивает контроль дыхания.", "resultChips": ["Саморегуляция", "Осознанность", "Контроль дыхания"], "safety": {"contraindications": ["Высокое/нестабильное давление", "Серьёзные болезни сердца и лёгких", "Беременность", "Глаукома, повышенное внутричерепное давление", "Недавние операции", "Психические расстройства (без наблюдения специалиста)"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Осваивайте постепенно — начиная без задержек или с короткими", "Сложные задержки начинающим — только под руководством"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле). Перед началом — 3–5 циклов равного дыхания (вдох 4, выдох 4).", "variants": [{"name": "Тип 1 · успокаивает", "effect": "успокаивает", "recommended": true, "phases": [{"label": "Вдох", "count": 4}, {"label": "Выдох", "count": 8}], "cycles": "5–10", "note": "Выдох длиннее вдоха (1:2) — режим отдыха и восстановления. Освоив, можно менять длительность (3:6), сохраняя пропорцию. Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · стимулирует", "effect": "стимулирует", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Задержка", "count": 4}, {"label": "Выдох", "count": 8}], "cycles": "5–7", "note": "Задержка на пике вдоха. Пропорция от 1:1:2 до 1:4:2; увеличивайте только задержку. Детали — во вкладке «Подробнее»."}, {"name": "Тип 3 · пробуждает", "effect": "пиковая концентрация", "recommended": false, "phases": [{"label": "Вдох", "count": 4}, {"label": "Зад. вдох", "count": 16}, {"label": "Выдох", "count": 8}, {"label": "Зад. выдох", "count": 8}], "cycles": "3–5", "note": "Две задержки (1:4:2:2), продвинутая техника. Цель — плавность и контроль без напряжения. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Освойте сознательное изменение ритмов дыхания для успокоения или активации ума и тела.", "previewResults": ["Контроль дыхания", "Спокойствие", "Бодрость"]}, {"id": "chandra-bhedana", "name": "Чандра Бхедана", "translation": "Лунное дыхание", "category": "Успокаивающие", "subcategory": "", "level": "Начальный", "time": "3–10 мин", "chakras": ["Свадхиштхана"], "tags": ["krepko-spat", "osvezhitsya", "rasslabitsya", "snyat-stress", "proyasnit-um"], "shortBenefit": "Лунное дыхание (вдох слева, выдох справа): снижает стресс, помогает при бессоннице и настраивает на медитацию.", "resultChips": ["Прохлада ума", "Интуиция", "Меньше раздражения", "Лучший сон"], "safety": {"contraindications": ["Низкое давление (гипотония)", "Слабое «пищеварительное» Агни, вялое пищеварение — может усугубить", "Простуда с ознобом", "Депрессия, апатия, вялость, сонливость — может усилить", "Общая слабость, упадок сил", "Гипофункция щитовидной железы"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Можно вечером или перед сном — практика успокаивающая", "При чрезмерном охлаждении, вялости, головокружении — прекратить", "Начинайте с небольшого числа циклов, постепенно увеличивая"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле).", "variants": [{"name": "Базовый", "effect": "успокаивает, охлаждает", "recommended": true, "phases": [{"label": "Вдох левой", "count": 0}, {"label": "Задержка (опц.)", "count": 0}, {"label": "Выдох правой", "count": 0}], "cycles": "8–12", "note": "Мягкий неспешный ритм. Вдох через левую ноздрю → опциональная комфортная задержка (можно Джаландхара и Мула бандхи) → выдох через правую. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Обретите прохладу, умиротворение и глубокое расслабление под покровом лунной энергии.", "previewResults": ["Глубокий покой", "Прохлада", "Меньше раздражения"]}, {"id": "brahmari", "name": "Брамари", "translation": "Дыхание жужжащей пчелы", "category": "Успокаивающие", "subcategory": "", "level": "Начальный", "time": "3–7 мин", "chakras": ["Вишуддха", "Аджня"], "tags": ["krepko-spat", "rasslabitsya", "snyat-stress", "proyasnit-um"], "shortBenefit": "Внутренняя вибрация мягкого звука «Мммм…» на выдохе: успокаивает ум, помогает при бессоннице, снимает тревогу.", "resultChips": ["Умиротворение", "Меньше тревоги", "Лучший сон"], "safety": {"contraindications": ["Острые ушные инфекции или воспаления", "Очень низкое давление — с осторожностью или после консультации", "Острые воспаления или повышенная температура"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "При дискомфорте, головокружении, нехватке воздуха — сразу прекратить и отдохнуть", "Не форсируйте дыхание или звук"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле). Расслабьте плечи, лицо и челюсть, закройте глаза, сделайте 2–3 спокойных вдоха-выдоха.", "variants": [{"name": "Тип 1 · без мудры", "effect": "успокаивает", "recommended": true, "phases": [{"label": "Вдох (нос)", "count": 0}, {"label": "Выдох (звук «Мммм»)", "count": 0}], "cycles": "5–10", "note": "Вдох через нос; на выдохе мягкий непрерывный звук «Мммм…», ровный, из горла; вибрация ощущается в голове и вдоль позвоночника. Детали — во вкладке «Подробнее»."}, {"name": "Тип 2 · с мудрой", "effect": "успокаивает глубже", "recommended": false, "phases": [{"label": "Вдох (нос)", "count": 0}, {"label": "Выдох (звук «Мммм»)", "count": 0}], "cycles": "5–10", "note": "То же, но с применением мудры (например, Шанмукхи — пальцы мягко прикрывают уши/лицо) для усиления внутренней вибрации. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Растворите стресс, тревогу и напряжение в исцеляющем звуке внутреннего покоя.", "previewResults": ["Глубокое спокойствие", "Безмятежность", "Меньше тревоги"]}, {"id": "sitali", "name": "Ситали", "translation": "Охлаждающее дыхание", "category": "Успокаивающие", "subcategory": "Охлаждающая", "level": "Начальный", "time": "3–10 мин", "chakras": ["Свадхиштхана", "Вишуддха"], "tags": ["osvezhitsya", "proyavit-golos"], "shortBenefit": "Вдох через свёрнутый трубочкой язык, выдох через нос: охлаждает, помогает при изжоге, утоляет жажду и помогает управлять сексуальной энергией.", "resultChips": ["Охлаждение", "Меньше изжоги", "Внутренняя прохлада"], "safety": {"contraindications": ["Низкое давление (гипотония)", "Хронический запор", "Астма, бронхит, респираторные болезни с избытком слизи", "Простуда, грипп"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Не можете свернуть язык — не через силу, используйте Ситкари", "Избегайте холодной, сырой, ветреной или пыльной среды и потока кондиционера", "При дискомфорте в зубах или горле — прекратить", "Склонным к зябкости и сухости — практиковать недолго: сильное охлаждение может ослабить пищеварение"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле). Свернуть язык трубочкой; если не получается — практикуйте Ситкари.", "variants": [{"name": "Базовый", "effect": "охлаждает", "recommended": true, "phases": [{"label": "Вдох (язык)", "count": 0}, {"label": "Задержка (опц.)", "count": 0}, {"label": "Выдох (нос)", "count": 0}], "cycles": "5–10", "note": "Медленный вдох через «трубочку» языка с лёгким свистящим звуком → опциональная комфортная задержка (можно бандхи) → полный выдох через обе ноздри. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Подарите себе волну прохлады, успокойте «внутренний огонь» и обретите комфорт.", "previewResults": ["Мгновенная прохлада", "Меньше жара", "Свежесть"]}, {"id": "sitkari", "name": "Ситкари", "translation": "Шипящее дыхание", "category": "Успокаивающие", "subcategory": "Охлаждающая", "level": "Начальный", "time": "3–10 мин", "chakras": ["Свадхиштхана", "Вишуддха"], "tags": ["osvezhitsya", "proyavit-golos"], "shortBenefit": "Вдох через сомкнутые зубы со звуком «сиии», выдох через нос: охлаждает, снижает внутренний жар, утоляет жажду и помогает управлять сексуальной энергией.", "resultChips": ["Охлаждение", "Свежесть тела", "Меньше голода"], "safety": {"contraindications": ["Низкое давление (гипотония)", "Хронический запор", "Астма, бронхит, избыток слизи (Капха) — может усугубить", "Простуда, грипп, болезни носоглотки", "Чувствительные зубы, слабая эмаль, болезни дёсен"], "cautions": [], "generalRecommendations": ["Не практикуйте на полный желудок", "Избегайте холода, сырости, ветра, пыли и потока кондиционера", "При дискомфорте в зубах или горле — прекратить", "Склонным к зябкости и сухости — практиковать недолго"]}, "preparation": "Сидя с прямой спиной (Падмасана, Сиддхасана, Сукхасана, Ваджрасана, Вирасана или на стуле).", "variants": [{"name": "Базовый", "effect": "охлаждает", "recommended": true, "phases": [{"label": "Вдох (зубы)", "count": 0}, {"label": "Задержка (опц.)", "count": 0}, {"label": "Выдох (нос)", "count": 0}], "cycles": "5–10", "note": "Вдох через щели сомкнутых зубов с шипящим звуком «сииии» → опциональная комфортная задержка (можно бандхи) → полный выдох через нос. Детали — во вкладке «Подробнее»."}], "video": "", "metaphor": "Мгновенно охладите тело и ум, утолите жажду и снимите внутренний жар.", "previewResults": ["Прохлада тела", "Меньше жара", "Свежесть"]}];
+const TAGS = [{"key": "rasslabitsya", "label": "Глубоко расслабиться"}, {"key": "skoncentrirovatsya", "label": "Сконцентрироваться"}, {"key": "nastroit-sebya", "label": "Настроить себя"}, {"key": "garmonizirovatsya", "label": "Гармонизироваться"}, {"key": "snyat-stress", "label": "Снять стресс"}, {"key": "zaryaditsya-energiey", "label": "Зарядиться энергией"}, {"key": "produktivnost", "label": "Поднять продуктивность"}, {"key": "uverennost", "label": "Укрепить уверенность"}, {"key": "krepko-spat", "label": "Крепко спать"}, {"key": "proyasnit-um", "label": "Прояснить ум"}, {"key": "proyavit-golos", "label": "Проявить голос"}, {"key": "osvezhitsya", "label": "Освежиться"}, {"key": "uravnovesitsya", "label": "Уравновеситься"}, {"key": "emocionalnaya-stabilnost", "label": "Эмоционально стабилизироваться"}, {"key": "polnota-dyhaniya", "label": "Ощутить полноту дыхания"}];
+const PREP = {"vibhagia": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": true, "note": "Осваивайте лёжа, затем переходите в сидячую позу."}, "mudras": [{"name": "Руки на животе и груди", "desc": "Для освоения: правую ладонь на живот, левую на грудь — чтобы чувствовать, как дыхание наполняет тело снизу вверх."}, {"name": "Джняна мудра", "desc": "После освоения: руки свободно на коленях. Джняна мудра — кончики большого и указательного пальцев в кольцо, ладонь вниз."}], "bandhas": [{"k": "mula", "desc": "Можно мягко удерживать всю практику для контроля и направления праны вверх. Начинайте с 10–20% усилия."}, {"k": "uddiyana", "desc": "Лёгкая, для контроля диафрагмы; естественно возникает в конце выдоха."}, {"k": "jalandhara", "desc": "Применяется при выполнении задержки на вдохе."}], "duration": {"start": "5–10 циклов · 3–5 мин", "regular": "постепенно до 10–15 мин", "frequency": ""}, "tips": ["Стремитесь к тому, чтобы вдох и выдох были как мягкая волна по телу: глубина и плавность важнее скорости.", "Избегайте напряжения в плечах, шее и лице — дыхание должно оставаться комфортным.", "Начинайте осваивать лёжа: так легче почувствовать работу диафрагмы и грудной клетки."]}, "udjayi": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": "Можно сидя, стоя или при медленной ходьбе."}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях или бёдрах. Джняна мудра — кольцо из большого и указательного пальцев ладонью вниз (спокойствие); Чин мудра — то же ладонью вверх (осознанность)."}], "bandhas": [{"k": "jalandhara", "desc": "Естественно формируется при лёгком наклоне подбородка; помогает контролировать голосовую щель и звук."}, {"k": "uddiyana", "desc": "Лёгкая, мягко поддерживается на протяжении всей практики."}, {"k": "mula", "desc": "Можно мягко удерживать для усиления эффекта."}], "duration": {"start": "5–10 циклов · 2–5 мин", "regular": "10–20 циклов, 2–3 подхода по 7", "frequency": "Несколько раз в день; часто во время асан"}, "tips": ["Сужайте голосовую щель мягко: звук должен быть ровным, как шум волн, без хрипа и напряжения в горле.", "Если звук не выходит, подышите с открытым ртом со звуком «ХА», затем закройте рот и повторите то же через нос.", "На вдохе не выпячивайте живот сильно — акцент на расширении грудной клетки; обратите внимание на возникающее тепло."]}, "surya-bhedana": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Насикагра мудра", "desc": "«Жест кончика носа». На правой руке указательный и средний пальцы выпрямлены у межбровья; большой палец закрывает правую ноздрю, безымянный и мизинец — левую. Левая рука на колене в Джняна или Чин мудре."}, {"name": "Вишну мудра", "desc": "Альтернатива: указательный и средний пальцы правой руки согнуты к основанию большого; большим закрывают правую ноздрю, безымянным и мизинцем — левую."}], "bandhas": [{"k": "jalandhara", "desc": "Всегда во время задержки на вдохе."}, {"k": "mula", "desc": "Можно удерживать на вдохе и всегда во время задержки."}, {"k": "uddiyana", "desc": "Мягко применяется в конце выдоха."}], "duration": {"start": "5–10 циклов", "regular": "до 10–15 циклов · 5–10 мин", "frequency": "После 10+ мин — уравновешивающая практика (Нади Шодхана)"}, "tips": ["Представляйте, как с каждым вдохом через правую ноздрю вы вбираете тепло и свет; ощущайте согревающий эффект.", "Дыхание должно быть бесшумным и ровным, без напряжения; не форсируйте задержки.", "Если практикуете дольше 10 минут, завершите уравновешивающей пранаямой — например, Нади Шодханой."]}, "chandra-bhedana": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Насикагра мудра", "desc": "«Жест кончика носа». Правая рука у лица: большой палец закрывает правую ноздрю, безымянный и мизинец — левую; вдох идёт через левую ноздрю. Левая рука на колене в Джняна или Чин мудре."}, {"name": "Вишну мудра", "desc": "Альтернатива: указательный и средний пальцы правой руки согнуты к основанию большого; пальцами поочерёдно закрывают ноздри."}], "bandhas": [{"k": "jalandhara", "desc": "Всегда во время задержки на вдохе."}, {"k": "mula", "desc": "Можно удерживать на вдохе и всегда во время задержки."}, {"k": "uddiyana", "desc": "Мягко применяется в конце выдоха."}], "duration": {"start": "5–10 циклов", "regular": "до 10–15 циклов · 5–10 мин", "frequency": "После 10+ мин — уравновешивающая практика (Нади Шодхана)"}, "tips": ["Представляйте, как с каждым вдохом через левую ноздрю вы вбираете прохладу и лунный свет; ощущайте охлаждающий эффект.", "Держите дыхание бесшумным и ровным, не форсируйте задержки — комфорт превыше всего.", "После долгой практики уравновесьте себя нейтральной пранаямой, например Нади Шодханой."]}, "kapalabhati": {"place": "Тихое, хорошо проветриваемое помещение без внешних раздражителей.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях. Джняна мудра — кольцо из большого и указательного пальцев ладонью вниз; Чин мудра — то же ладонью вверх."}, {"name": "Ладони крест-накрест", "desc": "Ладони крест-накрест на коленях — устойчивое, собранное положение для концентрации."}], "bandhas": [{"k": "jalandhara", "desc": "Удерживается во время обеих задержек дыхания (на вдохе и на выдохе)."}, {"k": "mula", "desc": "Удерживается во время обеих задержек дыхания."}, {"k": "uddiyana", "desc": "Только во время задержки после выдоха (Бахир Кумбхака)."}], "duration": {"start": "1–3 подхода по 10–20 выдохов", "regular": "до 50+ выдохов · 5–7 мин, с перерывами", "frequency": "Ежедневно утром; не перед сном"}, "tips": ["Работает только живот: лицо и плечи остаются расслабленными, спина прямой.", "Держите ровный ритм активных выдохов; вдох происходит сам собой.", "При головокружении сразу остановитесь и отдохните; наблюдайте лёгкость, ясность и тепло."]}, "bhastrika": {"place": "Тихое, хорошо проветриваемое помещение без внешних раздражителей.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях. Джняна мудра — кольцо из большого и указательного пальцев ладонью вниз; Чин мудра — то же ладонью вверх."}, {"name": "Ладони крест-накрест", "desc": "Ладони крест-накрест на коленях — устойчивое положение для собранности."}], "bandhas": [{"k": "jalandhara", "desc": "Всегда во время задержки на вдохе; может мягко поддерживаться в активной фазе."}, {"k": "mula", "desc": "Всегда во время задержки на вдохе; может мягко поддерживаться в активной фазе."}, {"k": "uddiyana", "desc": "Только при задержке после полного выдоха (Бахир Кумбхака), если практикуется этот вариант."}], "duration": {"start": "1–2 цикла по 10–15 дыханий", "regular": "3–5 подходов по 20–30 дыханий, с перерывами", "frequency": "Не более 5–7 мин без опыта или инструктора"}, "tips": ["Активные вдох и выдох равны по силе и длительности; начинайте медленно и постепенно ускоряйтесь.", "Дыхание мощное, но без напряжения лица, шеи и плеч; спина прямая.", "Делайте перерывы между подходами; при головокружении сразу прекратите. Зевота после практики — признак расслабления."]}, "brahmari": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Ладони на коленях", "desc": "Самое простое положение: ладони лежат на коленях. Вверх — открытость, вниз — заземление."}, {"name": "Шанмукхи мудра", "desc": "Классический вариант: большими пальцами мягко прикройте уши, указательными коснитесь век, средними — крыльев носа, безымянными — над верхней губой, мизинцами — под нижней (без давления). Упрощённый вариант: большими пальцами закройте уши, остальные пальцы свободно положите на голову."}], "bandhas": [{"k": "mula", "desc": "Можно мягко удерживать в течение всей практики, чтобы направлять энергию вверх. Начинайте с 10–20% усилия."}, {"k": "jalandhara", "desc": "Может возникать естественно во время жужжания — специально её не акцентируйте."}], "duration": {"start": "5–7 циклов · 3–5 мин", "regular": "10–15 циклов · 5–10 мин", "frequency": "1–2 раза в день"}, "tips": ["Фокусируйтесь на вибрации звука: чувствуйте, как она расходится от губ к лицу и макушке, а затем вдоль позвоночника.", "Постепенно удлиняйте жужжащий выдох — например, вдох на 4 счёта, а выдох на 6–8.", "Не напрягайте горло, челюсть и лицо; после практики посидите в тишине, наблюдая вибрации внутри."]}, "sama-vritti": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях или бёдрах, в Джняна или Чин мудре либо просто ладонями вниз."}], "bandhas": [{"k": "jalandhara", "desc": "Мягкая, во время обеих задержек (в «квадратном дыхании»)."}, {"k": "mula", "desc": "Всегда во время обеих задержек."}, {"k": "uddiyana", "desc": "Лёгкая, только во время задержки на выдохе."}], "duration": {"start": "5–10 мин", "regular": "10–20 мин", "frequency": "1–2 раза в день"}, "tips": ["Держите дыхание мягким, тихим и непрерывным, без рывков.", "Найдите комфортную длину счёта, которую держите без напряжения; комфорт важнее цифры.", "Если ум отвлекается, спокойно возвращайте внимание к дыханию и счёту."]}, "vishama-vritti": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях в Джняна или Чин мудре."}], "bandhas": [{"k": "jalandhara", "desc": "Всегда во время задержки на вдохе и на выдохе."}, {"k": "mula", "desc": "Всегда во время обеих задержек."}, {"k": "uddiyana", "desc": "Только во время задержки на выдохе."}], "duration": {"start": "5–10 циклов · 5–7 мин", "regular": "постепенно до 10–15 мин", "frequency": ""}, "tips": ["Сосредоточьтесь на потоке воздуха, мысленном счёте и бандхах при задержках; со временем счёт станет интуитивным.", "Начинайте с простых пропорций и коротких задержек, увеличивая их постепенно и без напряжения.", "На вдохе живот и грудь расширяются; на выдохе грудь сжимается, а живот подтягивается (особенно при Уддияна бандхе на задержке выдоха).", "Освоение бандх критично для безопасной практики; длинные задержки и бандхи осваивайте под руководством.", "Никогда не форсируйте задержки: удушье или сильный дискомфорт — сигнал упростить или прекратить."]}, "nadi-shodhana": {"place": "Любое тихое место, где можно сосредоточиться.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Насикагра / Вишну мудра", "desc": "Правая рука у лица в Насикагра или Вишну мудре: пальцами поочерёдно закрывают ноздри. Левая рука на колене в Джняна или Чин мудре."}], "bandhas": [{"k": "jalandhara", "desc": "Удерживается во время задержки на вдохе (Антар Кумбхака) и на выдохе (Бахир Кумбхака)."}, {"k": "mula", "desc": "Может удерживаться во время обеих задержек."}, {"k": "uddiyana", "desc": "Применяется только во время задержки на выдохе (Бахир Кумбхака)."}], "duration": {"start": "5–10 циклов · 5–10 мин", "regular": "до 10–20 циклов · 10–20 мин, 1–2 раза в день", "frequency": "1–3 подхода, отдых 1–2 мин между ними"}, "tips": ["Сосредоточьтесь на потоке воздуха, мысленном счёте и бандхах при задержках; со временем счёт станет интуитивным.", "Дыхание должно быть мягким, тихим, тонким и непрерывным, без рывков.", "Не форсируйте дыхание и задержки — комфорт и постепенность важнее всего.", "Низ живота слегка подтянут; на выдохе грудная клетка сжимается, а живот подтягивается (особенно с Уддияна бандхой).", "Представляйте, как с каждым выдохом уходит напряжение, а с каждым вдохом вы наполняетесь спокойствием."]}, "sitkari": {"place": "Тихое место, не холодное и не пыльное; избегайте сквозняков и потока кондиционера.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях или бёдрах, в Джняна или Чин мудре."}], "bandhas": [{"k": "jalandhara", "desc": "Можно применять во время задержки на вдохе — для усиления эффекта и контроля праны."}, {"k": "mula", "desc": "Можно удерживать во время задержки на вдохе."}], "duration": {"start": "5–10 циклов", "regular": "до 10–15 циклов · 5–7 мин", "frequency": "В жару — чаще или дольше, по ощущениям"}, "tips": ["Звук «сиии» на вдохе должен быть мягким и непрерывным, не резким.", "Сосредоточьтесь на прохладе во рту, горле и дальше в теле; не напрягайте челюсти и язык.", "При чувствительных зубах выполняйте очень аккуратно или выберите Ситали."]}, "sitali": {"place": "Тихое место, не холодное и не пыльное; избегайте сквозняков и потока кондиционера.", "pose": {"sit": true, "chair": true, "lying": false, "note": ""}, "mudras": [{"name": "Джняна / Чин мудра", "desc": "Руки на коленях или бёдрах, в Джняна или Чин мудре."}], "bandhas": [{"k": "jalandhara", "desc": "Можно применять во время задержки на вдохе — для усиления эффекта и контроля праны."}, {"k": "mula", "desc": "Можно удерживать во время задержки на вдохе."}], "duration": {"start": "5–10 циклов", "regular": "до 10–15 циклов · 5–10 мин", "frequency": "В жару — чаще или дольше, по ощущениям"}, "tips": ["Сосредоточьтесь на прохладе и влажности на языке, во рту и горле, расходящейся по телу.", "Не напрягайте язык, сворачивая его; перед практикой убедитесь, что язык чистый.", "Если свернуть язык не получается — это генетическая особенность; прекрасной альтернативой будет Ситкари."]}};
+const BANDHA={mula:{n:"Мула бандха",c:"корневой замок",col:"#C0584E"},uddiyana:{n:"Уддияна бандха",c:"брюшной замок",col:"#D9A441"},jalandhara:{n:"Джаландхара бандха",c:"горловой замок",col:"#5F94A0"}};
+const CATC={"Базовые":"#7E8B45","Активизирующие":"#D98A45","Балансирующие":"#5F94A0","Успокаивающие":"#9484A8"};
+const CHAK={"Муладхара":"#D64545","Свадхиштхана":"#E08A3C","Манипура":"#E0B84C","Анахата":"#5BA86B","Вишуддха":"#4FA3D1","Аджня":"#534AB7","Сахасрара":"#8E6FCF"};
+const TAGLBL={}; TAGS.forEach(t=>TAGLBL[t.key]=t.label);
+let selected=new Set();
+
+function catColor(c){return CATC[c]||"var(--accent)";}
+function lvlTip(level){const l=(level||'').toLowerCase();
+  if(l.includes('продвин')) return 'Для опытных практиков или под руководством инструктора';
+  if(l.includes('средн')) return 'Требует освоения базовых навыков или большей внимательности';
+  return 'Доступно каждому, отличный старт';}
+function lvlIcon(level){const l=(level||'').toLowerCase(); if(l.includes('продвин')) return 'i-lvl-bush'; if(l.includes('средн')) return 'i-lvl-branch'; return 'i-lvl-leaf';}
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function escA(s){return esc(s).replace(/"/g,"&quot;");}
+
+function renderTags(){
+  const tc=document.getElementById('tagcloud');
+  tc.innerHTML=TAGS.map(t=>`<span class="tag${selected.has(t.key)?' on':''}" data-k="${t.key}">${t.label}</span>`).join('');
+  tc.querySelectorAll('.tag').forEach(el=>el.onclick=()=>{
+    const k=el.dataset.k; selected.has(k)?selected.delete(k):selected.add(k); renderTags(); renderGrid();
+var _h=location.hash.slice(1); if(_h&&PRACTICES.some(function(x){return x.id===_h;})) openModal(_h);
+  });
+}
+function matches(p){ if(selected.size===0) return true; return [...selected].every(k=>(p.tags||[]).includes(k)); }
+
+function renderGrid(){
+  const list=PRACTICES.filter(matches);
+  const g=document.getElementById('grid');
+  const cnt=document.getElementById('count'), clr=document.getElementById('clear');
+  cnt.textContent = selected.size? `Найдено: ${list.length}` : `Все практики: ${PRACTICES.length}`;
+  clr.style.display = selected.size? 'inline':'none';
+  if(!list.length){ g.innerHTML='<div class="empty">Под выбранные состояния ничего не нашлось. Снимите часть тегов.</div>'; return; }
+  g.innerHTML=list.map(p=>{
+    const c=catColor(p.category);
+    const meta=`<span class="mpill lvl"><svg class="i" width="15" height="15"><use href="#${lvlIcon(p.level)}"/></svg>${esc(p.level)}</span>`
+      +`<span class="mpill">${esc(p.time)}</span>`
+      +`<span class="mpill cat">${esc(p.category)}${p.subcategory?' · '+esc(p.subcategory).toLowerCase():''}</span>`;
+    const chak=(p.chakras||[]).map(ch=>`<span class="ch"><i style="background:${CHAK[ch]||'#ccc'}"></i>${esc(ch)}</span>`).join('');
+    const chips=(p.previewResults||p.resultChips||[]).slice(0,3).map(x=>`<span class="rchip">${esc(x)}</span>`).join('');
+    return `<article class="pcard" style="--c:${c}" data-id="${p.id}">
+      <div class="pc-body">
+        <h3>${esc(p.name)}</h3><div class="tr">${esc(p.translation||'')}</div>
+        <div class="metarow" style="--c:${c}">${meta}</div>
+        <div class="chakrow">${chak}</div>
+        <div class="reslabel">Результат</div>
+        <div class="rchips">${chips}</div>
+        <span class="opencta" style="margin-top:auto">Открыть карточку <svg class="i" width="16" height="16"><use href="#i-arrow"/></svg></span>
+      </div></article>`;
+  }).join('');
+  g.querySelectorAll('.pcard').forEach(el=>el.onclick=()=>openModal(el.dataset.id));
+  g.querySelectorAll('.has-tip').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();el.classList.toggle('open');}));
+}
+document.getElementById('clear').onclick=()=>{selected.clear();renderTags();renderGrid();};
+
+/* ---------- ПОЛНАЯ КАРТОЧКА ---------- */
+let pacer={timer:null};
+function buildVariant(p,vi){
+  const v=p.variants[vi]; const phases=v.phases||[];
+  const hasCounts=phases.some(ph=>ph.count>0);
+  let counts='';
+  if(hasCounts){
+    const cells=phases.concat([]).map(ph=>`<div class="cbox"><div class="cl">${esc(ph.label)}</div><div class="cv">${ph.count}</div></div>`).join('');
+    const tot=phases.reduce((s,ph)=>s+(ph.count||0),0)||1;
+    const COL=["var(--info)","var(--accent)","var(--ink-3)","var(--accent)"];
+    const bar=phases.map((ph,k)=>`<div style="flex:${ph.count||1};background:${COL[k%COL.length]}"></div>`).join('');
+    counts=`<div class="counts">${cells}</div><div class="ritm">${bar}</div>`;
+  }else{
+    const flow=phases.map(ph=>esc(ph.label)).join(' <span class="sep">→</span> ');
+    counts=`<div class="flowrow">${flow}</div>`;
+  }
+  const cyc=v.cycles?`<span class="cyc">циклы: ${esc(v.cycles)}</span>`:'';
+  const note=(v.note||'').replace('Детали — во вкладке «Подробнее».','').trim();
+  return `<div class="vmeta"><span class="vtag">${esc(v.effect||'')}</span>${cyc}</div>${counts}`+(note?`<div class="vnote">${esc(note)}</div>`:'');
+}
+function pacerTimeline(v){
+  const arr=(v.phases||[]).filter(x=>x.count>0);
+  if(!arr.length) return [{label:'Вдох',sec:4},{label:'Выдох',sec:4}];
+  let last='';
+  return arr.map(x=>{const low=(x.label||'').toLowerCase();let l=x.label||'';
+    if(/задерж|кумбхак|пауза/.test(low)){l = last==='out' ? 'Задержка (выдох)' : 'Задержка (вдох)';}
+    else if(/вдох/.test(low)){last='in'; l='Вдох';}
+    else if(/выдох/.test(low)){last='out'; l='Выдох';}
+    return {label:l,sec:x.count};});
+}
+function resetCircle(){
+  const c=document.getElementById('pcircle'); if(c){c.style.transitionDuration='.45s';c.style.transform='scale(.55)';}
+  const l=document.getElementById('pphase'); if(l) l.textContent='готовы?';
+}
+function startPacer(){
+  stopPacer();
+  const v=window.__cur.p.variants[window.__cur.vi];
+  const tl=pacerTimeline(v); let i=0;
+  const circle=document.getElementById('pcircle'), lab=document.getElementById('pphase');
+  function step(){
+    const cur=tl[i%tl.length]; lab.textContent=cur.label;
+    circle.style.transitionDuration=cur.sec+'s';
+    void circle.offsetWidth; /* применяем длительность до смены масштаба */
+    if(cur.label==='Вдох') circle.style.transform='scale(1.18)';
+    else if(cur.label==='Выдох') circle.style.transform='scale(.55)';
+    /* задержки сохраняют текущий масштаб */
+    i++; pacer.timer=setTimeout(step,cur.sec*1000);
+  }
+  pacer.on=true;
+  document.getElementById('pbtn').innerHTML='<svg class="i" width="16" height="16"><use href="#i-x"/></svg>Остановить';
+  step();
+}
+function stopPacer(){
+  if(pacer.timer){clearTimeout(pacer.timer);pacer.timer=null;}
+  pacer.on=false;
+  const b=document.getElementById('pbtn'); if(b) b.innerHTML='<svg class="i" width="16" height="16"><use href="#i-play"/></svg>Запустить ритм';
+}
+function selVar(vi){
+  window.__cur.vi=vi;
+  const p=window.__cur.p;
+  document.querySelectorAll('.segb').forEach((b,k)=>b.className='segb'+(k===vi?' on':''));
+  document.getElementById('vbody').innerHTML=buildVariant(p,vi);
+  stopPacer(); resetCircle();
+}
+function openModal(id){
+  const p=PRACTICES.find(x=>x.id===id); if(!p) return;
+  window.__cur={p,vi:(p.variants||[]).findIndex(v=>v.recommended)>=0?(p.variants).findIndex(v=>v.recommended):0};
+  const c=catColor(p.category);
+  const s=p.safety||{};
+  const safeSection=(title,arr)=> (arr&&arr.length)?`<h5>${title}</h5><ul>${arr.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul>`:'';
+  const safe = (s.contraindications&&s.contraindications.length)||(s.cautions&&s.cautions.length)||(s.generalRecommendations&&s.generalRecommendations.length);
+  const multi=(p.variants||[]).length>1;
+  const seg = multi? `<div class="seg">${p.variants.map((v,k)=>`<button class="segb" onclick="selVar(${k})">${esc(v.name)}${v.recommended?' ★':''}</button>`).join('')}</div>`:'';
+  const chak=(p.chakras||[]).map(ch=>`<span class="ch"><i style="background:${CHAK[ch]||'#ccc'}"></i>${esc(ch)}</span>`).join('');
+  const m=document.getElementById('modal');
+  m.style.setProperty('--c',c);
+  m.innerHTML=`<div class="topcolor"></div>
+    <div class="closeb" onclick="closeModal()"><svg class="i" width="18" height="18"><use href="#i-x"/></svg></div>
+    <div class="face-front" id="faceFront"><div class="modal-in">
+      <div class="m-name">${esc(p.name)}</div><div class="m-tr">${esc(p.translation||'')}</div>
+      ${p.metaphor?`<div class="m-meta">${esc(p.metaphor)}</div>`:''}
+      <div class="metarow" style="--c:${c};margin-top:14px"><span class="mpill lvl"><svg class="i" width="15" height="15"><use href="#${lvlIcon(p.level)}"/></svg>${esc(p.level)}</span><span class="mpill">${esc(p.time)}</span><span class="mpill cat">${esc(p.category)}${p.subcategory?' · '+esc(p.subcategory).toLowerCase():''}</span></div>
+      <div class="chakrow">${chak}</div>
+      <div class="sec"><div class="lbl">Зачем</div><div class="m-sb">${esc(p.shortBenefit||'')}</div><div class="m-chips">${(p.resultChips||[]).map(x=>'<span class="m-chip">'+esc(x)+'</span>').join('')}</div></div>
+      ${safe?`<div class="safebox"><div class="safehead" onclick="toggleSafe(this)"><span><svg class="i" width="16" height="16" style="vertical-align:-3px;margin-right:6px"><use href="#i-alert"/></svg>Безопасность: противопоказания и рекомендации</span><svg class="i" width="18" height="18"><use href="#i-chev"/></svg></div><div class="safebody">${safeSection('Противопоказания / ограничения',s.contraindications)}${safeSection('С осторожностью',s.cautions)}${safeSection('Общие рекомендации',s.generalRecommendations)}</div></div>`:''}
+      <div class="sec"><div class="lbl">Как выполнять</div>${seg}<div id="vbody"></div><a class="techlink" href="wiki.html#${p.id}" target="_blank" rel="noopener">Полная техника в Базе знаний →</a></div>
+      <div class="sec"><div class="lbl">Ритм дыхания</div>
+        <div class="pacer">
+          <div class="pcircle-wrap"><div class="pcircle" id="pcircle"></div></div>
+          <div class="pphase" id="pphase">готовы?</div>
+          <button class="pbtn" id="pbtn" onclick="togglePacer()"><svg class="i" width="16" height="16"><use href="#i-play"/></svg>Запустить ритм</button>
+        </div>
+      </div>
+      <div class="video"><span class="pl"><svg class="i" width="22" height="22"><use href="#i-play"/></svg></span></div>
+      <button class="btnwide" onclick="flip(true)">Нужны подробности — переверни <svg class="i" width="18" height="18"><use href="#i-flip"/></svg></button>
+      <div class="sharerow"><button class="sharebtn" onclick="shareCurrent(this)"><svg class="i" width="15" height="15"><use href="#i-share"/></svg><span class="shtxt">Поделиться</span></button></div>
+    </div></div>
+    <div class="face-back" id="faceBack">${buildBack(p)}</div>`;
+  m.querySelectorAll('.has-tip').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();el.classList.toggle('open');}));
+  selVar(window.__cur.vi);
+  document.getElementById('modal').style.transform='';
+  document.getElementById('overlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){stopPacer();document.getElementById('overlay').classList.remove('show');document.body.style.overflow='';}
+function toggleSafe(el){const b=el.parentElement.querySelector('.safebody');b.classList.toggle('show');el.querySelector('use[href="#i-chev"]').parentElement.style.transform=b.classList.contains('show')?'rotate(180deg)':'';}
+function togglePacer(){ if(pacer.on){stopPacer();resetCircle();} else startPacer(); }
+function buildBack(p){
+  const d=PREP[p.id];
+  if(!d){return '<div class="bkface"><div class="bkhead"><div class="bkname">'+esc(p.name)+'</div><button class="flipb" onclick="flip(false)"><svg class="i" width="15" height="15"><use href="#i-flip"/></svg>к практике</button></div><p class="brt" style="padding:14px 0">Детали скоро появятся.</p><button class="flipbtn ghostflip" onclick="flip(false)"><svg class="i" width="17" height="17"><use href="#i-flip"/></svg>Перевернуть к практике</button></div>';}
+  const pIco=(id,on,lbl)=>'<div class="pose'+(on?' on':'')+'"><span class="pic"><svg class="i" width="26" height="26"><use href="#i-pose-'+id+'"/></svg></span>'+lbl+'</div>';
+  const poses='<div class="poses">'+pIco('lotus',d.pose.sit,'лотос')+pIco('chair',d.pose.chair,'стул')+pIco('lying',d.pose.lying,'лёжа')+'</div>';
+  const poseNote=(d.pose.note?'<div class="brt" style="margin-bottom:2px">'+esc(d.pose.note)+'</div>':'');
+  const mud=(d.mudras||[]).map(m=>'<span class="bpill" data-g="mudra" data-desc="'+escA(m.desc)+'" onclick="pickDesc(\'mudra\',this)"><svg class="i" width="15" height="15"><use href="#i-hand"/></svg>'+esc(m.name)+'</span>').join('');
+  const ban=(d.bandhas||[]).map(b=>{const B=BANDHA[b.k]||{n:b.k,c:'',col:'#999'};return '<span class="bpill" data-g="bandha" data-desc="'+escA(b.desc)+'" onclick="pickDesc(\'bandha\',this)"><span class="cdot" style="background:'+B.col+'"></span><svg class="i" width="15" height="15"><use href="#i-lock"/></svg>'+esc(B.n)+'</span>';}).join('');
+  const du=d.duration||{};
+  let dc='<div class="dcell"><div class="dl"><svg class="i" width="13" height="13"><use href="#i-arrow"/></svg>Начало</div><div class="dv">'+esc(du.start||'')+'</div></div>'+'<div class="dcell"><div class="dl"><svg class="i" width="13" height="13"><use href="#i-repeat"/></svg>Регулярно</div><div class="dv">'+esc(du.regular||'')+'</div></div>';
+  if(du.frequency) dc+='<div class="dcell"><div class="dl"><svg class="i" width="13" height="13"><use href="#i-check"/></svg>Частота</div><div class="dv">'+esc(du.frequency)+'</div></div>';
+  const tips=(d.tips||[]).map(t=>'<li>'+esc(t)+'</li>').join('');
+  return '<div class="bkface">'
+    +'<div class="bkhead"><div class="bkname">'+esc(p.name)+'</div><button class="flipb" onclick="flip(false)"><svg class="i" width="15" height="15"><use href="#i-flip"/></svg>к практике</button></div>'
+    +'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-place"/></svg></div><div><div class="brh">Место</div><div class="brt">'+esc(d.place||'Любое тихое место, где можно сосредоточиться.')+'</div></div></div>'
+    +'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-pose-lotus"/></svg></div><div style="flex:1"><div class="brh">Поза</div>'+poseNote+poses+'<div class="posenote">Подойдёт любая устойчивая поза с прямой спиной — <a href="wiki.html#pozy">все варианты в Базе знаний →</a></div></div></div>'
+    +'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-hand"/></svg></div><div style="flex:1"><div class="brh">Мудра (положение рук)<a class="bklink" href="wiki.html#mudry" target="_blank" rel="noopener">В базу знаний</a></div><div class="bpills">'+mud+'</div><div class="descbox" id="mudraDesc"></div></div></div>'
+    +(ban?'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-lock"/></svg></div><div style="flex:1"><div class="brh">Бандхи<a class="bklink" href="wiki.html#bandhi" target="_blank" rel="noopener">В базу знаний</a></div><div class="bpills">'+ban+'</div><div class="descbox" id="bandhaDesc"></div></div></div>':'')
+    +'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-clock"/></svg></div><div style="flex:1"><div class="brh">Продолжительность</div><div class="dur">'+dc+'</div></div></div>'
+    +'<div class="brow"><div class="bric"><svg class="i" width="22" height="22"><use href="#i-spark"/></svg></div><div style="flex:1"><div class="brh">Советы и фокус</div><ul class="btips">'+tips+'</ul></div></div>'
+    +'<button class="flipbtn ghostflip" onclick="flip(false)"><svg class="i" width="17" height="17"><use href="#i-flip"/></svg>Перевернуть к практике</button>'
+    +'<div class="sharerow"><button class="sharebtn" onclick="shareCurrent(this)"><svg class="i" width="15" height="15"><use href="#i-share"/></svg><span class="shtxt">Поделиться</span></button></div>'
+    +'</div>';
+}
+function pickDesc(group,el){
+  const box=document.getElementById(group+'Desc'); if(!box) return;
+  const isOpen=el.classList.contains('on');
+  document.querySelectorAll('.bpill[data-g="'+group+'"]').forEach(x=>x.classList.remove('on'));
+  if(isOpen){box.classList.remove('show');return;}
+  el.classList.add('on'); box.innerHTML=el.getAttribute('data-desc'); box.classList.add('show');
+}
+function tgDet(b){b.classList.toggle('on');const x=b.nextElementSibling;if(x)x.classList.toggle('show');}
+function flip(toBack){
+  const m=document.getElementById('modal'),ff=document.getElementById('faceFront'),fb=document.getElementById('faceBack');
+  if(!m||!ff||!fb) return;
+  m.style.transform='rotateY(90deg)';
+  setTimeout(()=>{
+    if(toBack){ff.style.display='none';fb.style.display='block';stopPacer();resetCircle();}
+    else{fb.style.display='none';ff.style.display='block';}
+    const ov=document.getElementById('overlay'); if(ov) ov.scrollTop=0;
+    m.style.transform='rotateY(-90deg)';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{m.style.transform='rotateY(0deg)';}));
+  },190);
+}
+function shareCurrent(btn){var id=(window.__cur&&window.__cur.p)?window.__cur.p.id:'';var url=location.origin+location.pathname+(id?'#'+id:'');if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){var t=btn.querySelector('.shtxt');if(t){var o=t.textContent;t.textContent='Ссылка скопирована';setTimeout(function(){t.textContent=o;},1600);}});}}
+document.getElementById('overlay').onclick=e=>{if(e.target.id==='overlay')closeModal();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+renderTags(); renderGrid();
+</script>
+</body>
+</html>

@@ -1,926 +1,270 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мама-Пранаяма</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мама-Пранаяма — простые дыхательные практики</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFAF4; --surface:#F6F0E5; --card:#FFFDF8; --oak:#EFE5D4; --line:#EEE6D7;
+  --accent:#B5824E; --accent-soft:#F1E5D2; --accent-ink:#8C5E30; --sage:#8FA083;
+  --ink:#3B3026; --ink-2:#6F5F4D; --ink-3:#A4937B;
+  --cat-base:#7E8B45; --cat-active:#D98A45; --cat-balance:#5F94A0; --cat-calm:#9484A8;
+  --r-lg:22px; --shadow:0 14px 36px rgba(59,48,38,0.07);
+  --maxw:1060px; --measure:680px;
+  --font-display:"Fraunces", Georgia, serif;
+  --font-body:"Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(60% 50% at 80% 6%,rgba(217,180,120,0.16),transparent 70%),radial-gradient(55% 45% at 10% 20%,rgba(143,160,131,0.12),transparent 70%),radial-gradient(70% 60% at 50% 112%,rgba(181,130,78,0.09),transparent 70%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* иконки (встроенный SVG) */
+svg.i{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle}
+
+/* ШАПКА */
+header{padding:24px 0 4px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pills{display:flex;gap:10px}
+.pill{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-2);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 18px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.pill:hover{color:var(--accent-ink);border-color:var(--accent);background:var(--card)}
+.slogancenter{text-align:center;margin-top:20px}
+.slogan{cursor:pointer;display:inline-block;text-decoration:none}
+.slogan .words{font-family:var(--font-display);font-weight:600;font-size:clamp(21px,4.2vw,38px);letter-spacing:0.03em;color:var(--accent)}
+.slogan .dot{color:var(--cat-active)}
+.slogan .rule{display:block;height:2px;border-radius:2px;margin:16px auto 0;width:min(72%,440px);background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:scaleX(0);transform-origin:center;animation:ruleIn 1000ms cubic-bezier(.2,.75,.2,1) 250ms forwards}
+@keyframes ruleIn{to{transform:scaleX(1)}}
+
+/* ГЕРОЙ */
+.hero{position:relative;text-align:center;padding:60px 0 46px}
+.ring{position:absolute;top:50%;left:50%;width:420px;height:420px;transform:translate(-50%,-46%);z-index:-1;border-radius:50%;border:1px solid rgba(181,130,78,0.18);animation:breathe 7s ease-in-out infinite alternate}
+.ring::after{content:"";position:absolute;inset:54px;border-radius:50%;border:1px solid rgba(143,160,131,0.16)}
+@keyframes breathe{from{transform:translate(-50%,-46%) scale(0.92);opacity:.5}to{transform:translate(-50%,-46%) scale(1.04);opacity:.9}}
+.hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(27px,3.8vw,40px);line-height:1.32;color:var(--ink);letter-spacing:0.005em;max-width:780px;margin:0 auto}
+.hero .tw{font-weight:500;color:var(--accent)}
+.cursor{color:var(--accent);font-weight:300}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;color:var(--paper);background:var(--accent);border:none;border-radius:999px;cursor:pointer;text-decoration:none;transition:all .22s}
+.btn-lg{font-size:18px;padding:18px 46px;margin-top:38px;box-shadow:0 10px 26px rgba(181,130,78,0.30)}
+.btn-lg:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(181,130,78,0.38)}
+.btn.ghost{background:transparent;color:var(--accent-ink);border:1px solid var(--accent);font-size:15px;padding:13px 30px}
+.btn.ghost:hover{background:var(--accent-soft)}
+
+/* СЕКЦИИ */
+section{padding:52px 0}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);text-align:center;margin-bottom:10px}
+.eyebrow::after{content:"";display:block;width:26px;height:1px;background:var(--accent);opacity:.5;margin:10px auto 0}
+.h2{font-family:var(--font-display);font-weight:500;font-size:clamp(25px,3vw,33px);color:var(--ink);text-align:center;margin-bottom:34px;letter-spacing:0.005em}
+.lead{max-width:var(--measure);margin:0 auto;text-align:center}
+.lead p{font-size:clamp(16px,1.7vw,18.5px);line-height:1.75;color:var(--ink-2);margin-bottom:14px}
+.lead p:last-child{margin-bottom:0}
+.lead p b{color:var(--ink);font-weight:600}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.tile{background:var(--card);border-radius:var(--r-lg);padding:26px;box-shadow:0 1px 0 rgba(59,48,38,0.03);transition:transform .22s,box-shadow .22s}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.ic{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--accent)}
+.tile h3{font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--ink);margin-bottom:6px}
+.tile p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+
+/* ШАГИ — «Дорожка» (вертикальный таймлайн) */
+.tl{position:relative;max-width:600px;margin:0 auto;padding-left:66px}
+.tl::before{content:"";position:absolute;left:27px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--accent) 0 4px,transparent 4px 11px);opacity:.5}
+.tlrow{position:relative;margin-bottom:26px}
+.tlrow:last-child{margin-bottom:0}
+.tlnode{position:absolute;left:-66px;top:-4px;width:54px;height:54px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;border:4px solid var(--paper)}
+.tlrow h3{font-family:var(--font-display);font-weight:500;font-size:18px;margin-bottom:3px;color:var(--ink)}
+.tlrow p{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+/* ПОКАЗАНИЯ */
+.ind{background:var(--card);border-radius:var(--r-lg);padding:22px;box-shadow:0 1px 0 rgba(59,48,38,.03)}
+.indh{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--ink);margin-bottom:13px}
+.inddot{width:10px;height:10px;border-radius:50%;background:var(--d)}
+.ind ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ind li{position:relative;padding-left:25px;font-size:14px;color:var(--ink-2);line-height:1.45}
+.ind li::before{content:"";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--d);opacity:.16}
+.ind li::after{content:"";position:absolute;left:4.5px;top:5px;width:6px;height:3px;border-left:1.6px solid var(--d);border-bottom:1.6px solid var(--d);transform:rotate(-45deg)}
+
+/* промо */
+.promo{background:linear-gradient(140deg,var(--accent-soft),var(--surface));border-radius:var(--r-lg);padding:46px 34px;text-align:center}
+.promo-h{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,2.4vw,27px);color:var(--ink);max-width:600px;margin:0 auto 32px;line-height:1.32}
+.promo-trio{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;max-width:640px;margin:0 auto 28px}
+.po{display:flex;flex-direction:column;align-items:center;gap:11px;width:140px}
+.po-ic{width:62px;height:62px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--accent);box-shadow:0 8px 20px rgba(59,48,38,.08)}
+.po b{font-size:15px;color:var(--ink);font-weight:600}
+.promo-feats{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;border-top:1px solid rgba(140,94,48,.16);padding-top:24px;max-width:660px;margin:0 auto}
+.promo-feats span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2)}
+.promo-feats .i{color:var(--sage)}
+.info-lead{font-size:15.5px;line-height:1.75;color:var(--ink-2);max-width:var(--measure);margin:0 auto 30px;text-align:center}
+
+/* 4 типа */
+.type{display:block;text-decoration:none;color:inherit;background:var(--card);border-radius:var(--r-lg);padding:26px;border-top:3px solid var(--c);box-shadow:0 1px 0 rgba(59,48,38,0.03);transition:transform .22s,box-shadow .22s}
+.type:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.type h3{font-family:var(--font-display);font-weight:500;font-size:20px;margin-bottom:8px;color:var(--ink);display:flex;align-items:center;gap:9px}
+.type h3 .dotc{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.type p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+footer{text-align:center;padding:46px 0 56px;color:var(--ink-3);font-size:13px;letter-spacing:0.04em;border-top:1px solid var(--line);margin-top:24px}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.topbar{justify-content:center}section{padding:40px 0}.ring{width:300px;height:300px}.rung{width:100%!important;margin-left:0!important;padding:18px 20px;border-radius:22px}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header class="site-header">
-            <div class="top-nav-bar">
-                <div class="nav-group-left">
-                    <a href="friends.html" class="nav-button">НАШИ ДРУЗЬЯ</a>
-                    <a href="101.html" class="nav-button panel-101">101</a>
-                </div>
-                <h1 class="site-title">
-    <!-- Меняем href на #tags-section. Все стили сохранятся! -->
-    <a class="site-title-link" href="#tags-section"> 
-      <span class="title-part">ДЫХАНИЕ</span><span class="title-separator"> • </span>
-      <span class="title-part">УМ</span><span class="title-separator"> • </span>
-      <span class="title-part">ЭМОЦИИ</span><span class="title-separator"> • </span>
-      <span class="title-part">ТЕЛО</span>
-    </a>
-</h1>
-                <div class="nav-group-right">
-                    <a href="https://www.notion.so/private25/1ce0787de35d4fd7b3238b3dd1a90fca?pvs=4" target="_blank" rel="noopener noreferrer" class="nav-button panel-values">ЦЕННОСТИ</a>
-                    <a href="projects.html" class="nav-button">НАШИ ПРОЕКТЫ</a>
-                </div>
-            </div>
 
-<!-- ======================= ПРАВИЛЬНЫЙ HTML-КОД ДЛЯ ИНТЕРАКТИВНОГО ЗАГОЛОВКА ======================= -->
-<div class="hero-text-container">
-    <div class="typing-headline-multiline">
-        <span class="headline-static-part">ПРОСТЫЕ ДЫХАТЕЛЬНЫЕ ПРАКТКИ ЧТОБЫ</span>
-        <span class="typing-effect"></span> <!-- ВАЖНО: У этого span только ОДИН класс -->
+<!-- SVG-СПРАЙТ ИКОНОК -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-wind" viewBox="0 0 24 24"><path d="M5 8h7a2.5 2.5 0 1 0-2.5-2.5"/><path d="M3 12h11.5a2.5 2.5 0 1 1-2.5 2.5"/><path d="M4 16h6a2 2 0 1 1-2 2"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M3 12.5h18"/></symbol>
+<symbol id="i-stroller" viewBox="0 0 24 24"><path d="M7 13a6 6 0 0 1 12 0"/><path d="M7 13h12"/><path d="M19 13l1.6-6.4"/><circle cx="9.2" cy="18" r="1.6"/><circle cx="16.8" cy="18" r="1.6"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 5 2.5 9 12 13l9.5-4L12 5z"/><path d="M6 11v4c0 1.2 2.7 2.6 6 2.6s6-1.4 6-2.6v-4"/><path d="M21.5 9v4.5"/></symbol>
+<symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 20v-8"/><path d="M12 12c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 10.5c0-2.6 2-4.5 4.6-4.5C16.6 8.6 14.6 10.5 12 10.5z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.4l2.4 2.4 4.6-5"/></symbol>
+<symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 14c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5"/><path d="M9.2 9.5h.01"/><path d="M14.8 9.5h.01"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 21c0-9 5-15 15-15 0 9-5 15-15 15z"/><path d="M5 21 17 9"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6l-1 7.5 8-11h-6l1-7z"/></symbol>
+<symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.5 4l1.6 4.5 4.5 1.6-4.5 1.6L11.5 16l-1.6-4.3L5.5 10l4.4-1.5z"/><path d="M18.5 4l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20S4 14.6 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5.6-8 11-8 11z"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c3.4 4 5.4 6.5 5.4 9.4a5.4 5.4 0 0 1-10.8 0c0-1.3.6-2.4 1.7-3.3.4 1 1 1.6 1.8 1.8C9.4 9 9.4 6 12 3z"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 12.5h6M9 16h4"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5z"/></symbol>
+</defs></svg>
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <nav class="pills"><a class="pill" href="practice.html">Практика</a><a class="pill" href="wiki.html">База знаний</a></nav>
+      <nav class="pills"><a class="pill" href="why.html">Почему</a><a class="pill" href="friends.html">Наши друзья</a></nav>
     </div>
-</div>
-<!-- ======================= КОНЕЦ БЛОКА ======================= -->
-
-   <h2 id="tags-section" class="tags-prompt-headline">КАКОГО СОСТОЯНИЯ ВЫ ХОТИТЕ ДОСТИЧЬ СЕГОДНЯ ?</h2>
-        <div class="tags-navigation">
-            <div class="tag-prompt"> кликай тег и выбирай простую 5-минутную практику для мгновенного результата 👇</div> 
-            
-            <nav class="tags-navigation" aria-label="Фильтр техник по тегам">
-                <!-- Теги как в предыдущей версии, с повторяющимися цветами -->
-                <button class="tag" data-tag="Глубоко_Расслабиться" style="--tag-color: #FFA07A;">Глубоко Расслабиться</button>
-                <button class="tag" data-tag="Сконцентрироваться" style="--tag-color: #FFC300;">Сконцентрироваться</button>
-                <button class="tag" data-tag="Настроить_Себя" style="--tag-color: #4CAF50;">Настроить Себя</button>
-                <button class="tag" data-tag="Гармонизироваться" style="--tag-color: #2196F3;">Гармонизироваться</button>
-                <button class="tag" data-tag="Снять_Стресс" style="--tag-color: #009688;">Снять Стресс</button>
-                <button class="tag" data-tag="Зарядиться_Энергией" style="--tag-color: #E91E63;">Зарядиться Энергией</button>
-                <button class="tag" data-tag="Поднять_Продуктивность" style="--tag-color: #FF9800;">Поднять Продуктивность</button>
-                <button class="tag" data-tag="Укрепить_Уверенность" style="--tag-color: #3F51B5;">Укрепить Уверенность</button>
-                <button class="tag" data-tag="Крепко_Спать" style="--tag-color: #FFA07A;">Крепко Спать</button>
-                <button class="tag" data-tag="Прояснить_Ум" style="--tag-color: #4CAF50;">Прояснить Ум</button>
-                <button class="tag" data-tag="Проявить_Голос" style="--tag-color: #2196F3;">Проявить Голос</button>
-                <button class="tag" data-tag="Освежиться" style="--tag-color: #9C27B0;">Освежиться</button>
-                <button class="tag" data-tag="Уравновеситься" style="--tag-color: #009688;">Уравновеситься</button>
-                <button class="tag" data-tag="Эмоционально_Стабилизироваться" style="--tag-color: #E91E63;">Эмоционально Стабилизироваться</button>
-                <button class="tag" data-tag="Ощутить_Полноту_Дыхания" style="--tag-color: #795548;">Ощутить Полноту Дыхания</button>
-            </nav>
-        </header>
-
-        <!-- ===== НАЧАЛО ВОССТАНОВЛЕННЫХ БЛОКОВ 🌊 🌲 🔥 💚 💦 👁‍🗨 ===== -->
-        <main class="pranayama-content">
-            <h2>Выбери карточку ❤️</h2>
-            <div class="pranayama-grid" id="pranayamaGrid">
-        <!-- ===== КОНЕЦ ВОССТАНОВЛЕННЫХ БЛОКОВ ===== -->
-
-                     <!-- Удджайя -->
-                <a href="https://25rom.github.io/technique_uddjaya.html" target="_blank" class="pranayama-block" data-tags="Проявить_Голос Эмоционально_Стабилизироваться Сконцентрироваться  Ощутить_Полноту_Дыхания Успокоить_Ум">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ <span style="color: #40E0D0;">Внутренний Покой</span> и <span style="color: #40E0D0;">Сила</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение</span> от Стресса</p>
-                            <p>☀️ Приятное <span style="color: #FFC107;">Тепло</span> и <span style="color: #FFC107;">Комфорт</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Ясность</span> и <span style="color: #FFC107;">Собранность Ума</span></p>
-                        </div>
-                    </div>
-                    <h3>Удджайя</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲 🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>💚 <span style="color: #87CEEB;">Анахата</span><p>
-                            <p>🌊 <span style="color: #87CEEB;">Вишудха</span><p>
-                            <p>🔥 Манипура<p>
-                            <p>👁‍🗨 Аджня<p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Полное Йоговское Дыхание -->
-                <a href="https://25rom.github.io/technique_vibhagia.html" target="_blank" class="pranayama-block" data-tags="Крепко_спать Гармонизироваться Проявить_Голос Снять_Стресс Эмоционально_Стабилизироваться  Ощутить_Полноту_Дыхания Успокоить_Ум
-">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-basic">БАЗОВЫЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ Глубокое <span style="color: #40E0D0;">Спокойствие</span> и <span style="color: #40E0D0;">Умиротворение</span>.</p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение</span> от напряжения</p>
-                            <p>🌳 <span style="color: #FF6B6B;">Прилив</span> <span style="color: #FFC107;">Свежести</span> и <span style="color: #FF6B6B;">Жизненных Сил</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Повышение Сосредоточенности</span></p>
-                        </div>
-                    </div>
-                    <h3>Полное Йоговское Дыхание</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🔥 <span style="color: #87CEEB;">Манипура</span><p>
-                            <p>💚 <span style="color: #87CEEB;">Анахата</span><p>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                            <p>Воздействие на всю систему<p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Сурья Бхедана -->
-                <a href="https://25rom.github.io/technique_suria.html" target="_blank" class="pranayama-block" data-tags="Укрепить_Уверенность Зарядиться_Энергией Поднять_Продуктивность Прояснить_Ум">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong><br>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🌳 <span style="color: #FF6B6B;">Прилив</span> <span style="color: #FF6B6B;">Энергии</span> и <span style="color: #FF6B6B;">Бодрости</span></span></p>
-                            <p>☀️ <span style="color: #FFC107;">Внутренний Огонь</span> и <span style="color: #FF6B6B;">Тепло</span></p>
-                            <p>🌳 <span style="color: #FF6B6B;">Рост</span> <span style="color: #FFC107;">Уверенности</span> и <span style="color: #FFC107;">Решительности</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Ясность Ума</span> и <span style="color: #FFC107;">Готовность</span> к Действию</p>
-                        </div>
-                    </div>
-                    <h3>Сурья Бхедана</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа  🌊 🌲🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🔥 <span style="color: #87CEEB;">Манипура</span><p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Чандра Бхедана -->
-                <a href="https://25rom.github.io/technique_chandra.html" target="_blank" class="pranayama-block" data-tags="Крепко_Спать Охладиться Глубоко_Расслабиться Снять_Стресс Прояснить_Ум">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ Глубокий <span style="color: #40E0D0;">Покой</span> и <span style="color: #40E0D0;">Умиротворение</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение</span> от раздражения</p>
-                            <p>☀️ Внутренняя <span style="color: #40E0D0;">Тишина</span> и <span style="color: #40E0D0;">Замедление</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Пробуждение </span> Интуиции</p>
-                        </div>
-                    </div>
-                    <h3>Чандра Бхедана</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>💦 <span style="color: #87CEEB;">Свадхиштхана</span><p>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Капалабхати -->
-                <a href="https://25rom.github.io/technique_kapalabhati.html" target="_blank" class="pranayama-block" data-tags="Прояснить_Ум Зарядиться_Энергией Поднять_Продуктивность">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🪴</span>
-                            <div class="level-tooltip-text"><strong>Средний уровень:</strong>Требует освоения базовых навыков или большей внимательности</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                         <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🦋 <span style="color: #FFC107;"></span>Ясновть Ума и <span style="color: #FFC107;">Просветление</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Легкость</span> и <span style="color: #FFC107;">Чистота</span></p>
-                            <p>🌳 <span style="color: #FF6B6B;">Прилив</span> <span style="color: #FF6B6B;">Бодрости</span> и <span style="color: #FF6B6B;">Энергии</span></p>
-                            <p>☀️ <span style="color: #FFC107;">Свежесть</span> и <span style="color: #FFC107;">Обновление</span></p>
-                        </div>
-                    </div>
-                    <h3>Капалабхати</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">2-5 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🔥 <span style="color: #87CEEB;">Манипура</span><p>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Бхастрика -->
-                <a href="https://25rom.github.io/technique_bhastrika.html" target="_blank" class="pranayama-block" data-tags="Укрепить_Уверенность Зарядиться_Энергией Поднять_Продуктивность">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-activating">АКТИВИЗИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌳</span>
-                            <div class="level-tooltip-text"><strong>Продвинутый уровень:</strong>Для опытных практиков или под руководством инструктора</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🌳 Мощный <span style="color: #FF6B6B;">Прилив Энергии</span></p>
-                            <p>☀️ <span style="color: #FFC107;">Ощутимое тепло</span>, распространяющееся по телу</p>
-                            <p>🦋 <span style="color: #FF6B6B;">Пробуждение Ума</span> и <span style="color: #FFC107;">Ясность</span></p>
-                            <p>🌳 Приток <span style="color: #FF6B6B;">Внутренней Силы </span></p>
-                        </div>
-                    </div>
-                    <h3>Бхастрика</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">2-5 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨 -->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🔥 <span style="color: #87CEEB;">Манипура</span><p>
-                            <p>🌲 Мулабандха<p>
-                            <p>💦 Свадхиштхана<p>
-                            <p>💚 Анахата<p>
-                            <p>👁‍🗨 Аджня<p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Брамари -->
-                <a href="https://25rom.github.io/technique_bramari.html" target="_blank" class="pranayama-block" data-tags="Крепко_Спать Глубоко_Расслабиться Снять_Стресс Прояснить_Ум Успокоить_Ум">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-calming">УСПОКАИВАЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ <span style="color: #40E0D0;">Глубокое Спокойствие</span> и <span style="color: #40E0D0;">Тишина</span></p>
-                            <p>☀️ <span style="color: #40E0D0;">Умиротворение</span> и <span style="color: #40E0D0;">Безмятежность</span></p>
-                            <p>☁️ <span style="color: #FFC107;">Облегчение</span> от Тревоги</p>
-                            <p>☀️ <span style="color: #FFC107;">Приятное Расслабление</span>Тела</p>
-                        </div>
-                    </div>
-                    <h3>Брамари</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-7 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🌊 <span style="color: #87CEEB;">Вишуддха</span><p>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Сама Вритти -->
-                <a href="https://25rom.github.io/techique_samavr.html" target="_blank" class="pranayama-block" data-tags="Глубоко_Расслабиться Уравновеситься Эмоционально_Стабилизироваться Сконцентрироваться Успокоить_Ум">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ <span style="color: #40E0D0;">Спокойствие</span> и <span style="color: #FFC107;">Сбалансированность</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Стабильность</span> и <span style="color: #FFC107;">Ясность Ума</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Уменьшение</span> Тревожности</p>
-                            <p>☀️ <span style="color: #FFC107;">Внутренняя Гармония</span> и <span style="color: #FFC107;">Порядок</span></p>
-                        </div>
-                    </div>
-                    <h3>Сама Вритти</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">5-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>💚 <span style="color: #87CEEB;">Анахата</span><p>
-                            <p>Воздействие на всю систему<p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Вишама Вритти -->
-                <a href="https://25rom.github.io/technique_vishamavr.html" target="_blank" class="pranayama-block" data-tags="Глубоко_Расслабиться Снять_Стресс Зарядиться_Энергией Настроить_Себя Успокоить_Ум Сконцентрироваться">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🪴</span>
-                            <div class="level-tooltip-text"><strong>Средний уровень:</strong>Требует освоения базовых навыков или большей внимательности</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🌳 <span style="color: #FFC107;">Контроль над Состоянием</span></p>
-                            <p>🦋 <span style="color: #FFC107;">Осознание Глубины и Силы</span> Дыхания</p>
-                            <p>🌳 <span style="color: #FF6B6B;">Прилив Энергии</span> и <span style="color: #FF6B6B;">Бодрости</span> (длинный вдох)</p>
-                            <p>☀️ <span style="color: #40E0D0;">Расслабление</span> и <span style="color: #40E0D0;">Спокойствие</span> (длинный выдох)</p>
-                        </div>
-                    </div>
-                    <h3>Вишама Вритти</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">10-20 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>🔥 <span style="color: #87CEEB;">Манипура</span><p>
-                            <p>💚 <span style="color: #87CEEB;">Анахата</span><br>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                            <p>Воздействие на всю систему<p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Нади Шодхана -->
-                <a href="https://25rom.github.io/technique_nadish.html" target="_blank" class="pranayama-block" data-tags="Глубоко_Расслабиться Снять_Стресс Уравновеситься  Прояснить_Ум">
-                     <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-balancing">БАЛАНСИРУЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>☀️ <span style="color: #40E0D0;">Глубокое Спокойствие</span> и <span style="color: #40E0D0;">Умиротворение</span></p>
-                            <p>☀️ <span style="color: #FFC107;">Равновесие</span> и <span style="color: #FFC107;">Гармония</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение</span> Тревоги</p>
-                            <p>🦋 <span style="color: #FFC107;">Ясность</span> и <span style="color: #FFC107;">Чистота Ума</span></p>
-                        </div>
-                    </div>
-                    <h3>Нади Шодхана</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">5-20 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>👁‍🗨 <span style="color: #87CEEB;">Аджня</span><p>
-                            <p>Воздействие на всю систему<p>
-
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Ситкари -->
-                <a href="https://25rom.github.io/technique_sitkari.html" target="_blank" class="pranayama-block" data-tags="Освежиться Проявить_Голос">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-calming">ОХЛАЖДАЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                           <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🦋 <span style="color: #40E0D0;">Ощутимая Прохлада</span> Тела</p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение</span> от Жары</p>
-                            <p>☁️ <span style="color: #40E0D0;">Спокойствие</span> и <span style="color: #40E0D0;">Умиротворение</span></p>
-                            <p>🦋 Приятная <span style="color: #FFC107;">Свежесть</span> и <span style="color: #FFC107;">Утоление Жажды</span></p>
-                        </div>
-                    </div>
-                    <h3>Ситкари</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>💦 <span style="color: #87CEEB;">Свадхиштхана</span><p>
-                            <p>🌊 <span style="color: #87CEEB;">Вишуддха</span><p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Ситали -->
-                <a href="https://25rom.github.io/technique_sitali.html" target="_blank" class="pranayama-block" data-tags="Освежиться Проявить_Голос">
-                    <div class="pranayama-top-info">
-                        <span class="pranayama-class-label label-calming">ОХЛАЖДАЮЩИЕ</span>
-                        <div class="level-indicator">
-                            <span class="level-icon">🌿</span>
-                            <div class="level-tooltip-text"><strong>Начальный уровень:</strong>Доступно каждому, отличный старт</div>
-                        </div>
-                    </div>
-                    <div class="tooltip-icon-container">
-                        <span class="tooltip-icon">ⓘ</span>
-                        <div class="tooltip-text">
-                            <strong>🎯 РЕЗУЛЬТАТ ОТ ПРАКТИКИ</strong><br>
-                            <p>🦋 Мгновенная <span style="color: #40E0D0;">Прохлада Тела</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Облегчение от Жара</span></p>
-                            <p>🦋 Приятная <span style="color: #FFC107;">Свежесть</span> и <span style="color: #FFC107;">Утоление Жажды</span></p>
-                            <p>☁️ <span style="color: #40E0D0;">Спокойствие</span> и <span style="color: #40E0D0;">Комфорт</span></p>
-                        </div>
-                    </div>
-                    <h3>Ситали</h3>
-                    <div class="pranayama-duration">
-                        <span class="duration-icon">🕒</span>
-                        <span class="duration-text">3-10 мин</span>
-                    </div>
-                    <!-- Блок для иконки чакры и тултипа 🌊 🌲🔥 💚 💦 👁‍🗨-->
-                    <div class="chakra-info-container">
-                        <span class="chakra-eye-icon">👁</span>
-                        <div class="chakra-tooltip-text">
-                            <strong>☸ ЧАКРА:</strong><br>
-                            <p>💦 <span style="color: #87CEEB;">Свадхиштхана</span><p>
-                            <p>🌊 <span style="color: #87CEEB;">Вишуддха</span><p>
-                        </div>
-                    </div>
-                </a>
-
-            <!-- ===== НАЧАЛО ЗАКРЫВАЮЩИХ ТЕГОВ ДЛЯ ВОССТАНОВЛЕННЫХ БЛОКОВ ===== -->
-            </div> <!-- Закрывающий div для pranayama-grid -->
-        </main> <!-- Закрывающий main для pranayama-content -->
-        <!-- ===== КОНЕЦ ЗАКРЫВАЮЩИХ ТЕГОВ ДЛЯ ВОССТАНОВЛЕННЫХ БЛОКОВ ===== -->
-
-
-<!-- ======================= ПЕРЕМЕЩЕННЫЙ БЛОК: "ЧТО ЭТО ТАКОЕ" (РАСКРЫВАЮЩИЙСЯ) ======================= -->
-<section class="pranayama-explainer-section standalone">
-    <div class="explainer-toggle">
-        ЧТО ЭТО ТАКОЕ <span class="arrow"> ▾ </span>
+    <div class="slogancenter">
+      <a class="slogan" href="index.html" aria-label="На главную">
+        <span class="words">ДЫХАНИЕ <span class="dot">•</span> УМ <span class="dot">•</span> ЭМОЦИИ <span class="dot">•</span> ТЕЛО</span>
+        <span class="rule"></span>
+      </a>
     </div>
-    <div class="explainer-content">
-        <p><strong> Это - Пранаяма, древнее искусство управления жизненной энергией через дыхание для достижения физического здоровья, эмоционального равновесия, ясности ума</strong></p>
-        <p>С помощью этих техник вы научитесь дышать глубже и свободнее, снимать напряжение в теле и уме, и снижать уровень гормонов стресса</p>
-        <p><strong> Дыхание – это естественный способ управлять своим состоянием. С помощью карточек вы сможете освоить способы дыхания, чтобы чувствовать себя лучше – здесь и сейчас, без специальной подготовки 😀</strong></p>
-    </div>
-</section>
-<!-- ======================= КОНЕЦ ПЕРЕМЕЩЕННОГО БЛОКА ======================= -->
+  </div>
+</header>
 
-        
-        
-<!-- ======================= СЕКЦИЯ "ДЛЯ КОГО ЭТО" ======================= -->
-<section class="for-whom-section">
-    <h2>Идеально для вас если вы</h2>
-    <div class="audience-container">
-        <div class="audience-card">
-            <div class="audience-icon">👩‍💻</div>
-            <h3>Работаете в офисе</h3>
-            <p>Чтобы восстановить концентрацию, снять напряжение с глаз и спины за 7 минут прямо на рабочем месте</p>
+<main>
+  <section class="hero">
+    <span class="ring" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Простые дыхательные практики, чтобы<br><span class="tw" id="tw"></span><span class="cursor" id="cur">|</span></h1>
+      <a class="btn btn-lg" href="practice.html"><svg class="i" width="20" height="20"><use href="#i-wind"/></svg>Попробовать</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Что это такое</p>
+      <div class="lead">
+        <p><b>Это пранаяма</b> — древнее искусство управления жизненной энергией через дыхание ради физического здоровья, эмоционального равновесия и ясности ума.</p>
+        <p>Дыхание — естественный способ управлять своим состоянием. По карточкам вы освоите способы дышать так, чтобы чувствовать себя лучше здесь и сейчас, без специальной подготовки.</p>
+        <p>С помощью этих техник вы научитесь дышать глубже и свободнее, снимать напряжение в теле и уме и снижать уровень гормонов стресса.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Для кого</p>
+      <h2 class="h2">Идеально, если вы</h2>
+      <div class="grid g2">
+        <div class="tile"><div class="ic"><svg class="i" width="26" height="26"><use href="#i-briefcase"/></svg></div><h3>Работаете в офисе</h3><p>Восстановить концентрацию и снять напряжение с глаз и спины за 7 минут прямо на рабочем месте.</p></div>
+        <div class="tile"><div class="ic"><svg class="i" width="26" height="26"><use href="#i-stroller"/></svg></div><h3>Молодая мама</h3><p>Найти островок спокойствия и быстро восполнить ресурс в эмоционально и физически насыщенный день.</p></div>
+        <div class="tile"><div class="ic"><svg class="i" width="26" height="26"><use href="#i-cap"/></svg></div><h3>Студент</h3><p>Быстро настроиться на учёбу, повысить концентрацию перед лекцией или снять лишнее волнение.</p></div>
+        <div class="tile"><div class="ic"><svg class="i" width="26" height="26"><use href="#i-sprout"/></svg></div><h3>Начинающий практик</h3><p>Сделать первый простой шаг в мир осознанности — без сложных курсов, приложений и обязательств.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Показания</p>
+      <h2 class="h2">Что даёт регулярная практика</h2>
+      <div class="grid g3">
+        <div class="ind" style="--d:#534AB7"><div class="indh"><span class="inddot"></span>Ум и эмоции</div><ul><li>Снижает уровень стресса и тревожности</li><li>Повышает концентрацию и ясность ума</li><li>Стабилизирует настроение и сон</li></ul></div>
+        <div class="ind" style="--d:#C0584E"><div class="indh"><span class="inddot"></span>Тело</div><ul><li>Укрепляет дыхательную систему</li><li>Поддерживает нервную и сердечно-сосудистую системы</li><li>Улучшает пищеварение и детоксикацию</li></ul></div>
+        <div class="ind" style="--d:#D98A45"><div class="indh"><span class="inddot"></span>Энергия</div><ul><li>Больше жизненной силы и бодрости</li><li>Балансирует энергетическую систему</li><li>Подготавливает к медитации</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Как это работает</p>
+      <h2 class="h2">Четыре простых шага</h2>
+      <div class="tl">
+        <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-target"/></svg></span><h3>Выберите цель</h3><p>Почувствовали негатив, хотите покоя или мощный заряд энергии? Нажмите тег (или сразу два) и выберите карточку.</p></div>
+        <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-doc"/></svg></span><h3>Следуйте инструкции</h3><p>На каждой карточке — простое и понятное описание техники.</p></div>
+        <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-clock"/></svg></span><h3>Практикуйте 7–15 минут</h3><p>Уделите себе несколько минут в любое время дня.</p></div>
+        <div class="tlrow"><span class="tlnode"><svg class="i" width="26" height="26"><use href="#i-smile"/></svg></span><h3>Осознавайте результат</h3><p>Ощутите мгновенное изменение состояния; замечайте, что поменялось в течение дня после практики.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="promo">
+        <p class="promo-h">Посвятите себе всего от 5 до 15 минут в день — и этот набор карточек поможет вам</p>
+        <div class="promo-trio">
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-smile"/></svg></span><b>Улучшить настроение</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-leaf"/></svg></span><b>Снять стресс</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-bolt"/></svg></span><b>Повысить энергию</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-wind"/></svg></span><b>Снять напряжение</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-target"/></svg></span><b>Осознать момент «здесь и сейчас»</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-moon"/></svg></span><b>Улучшить качество сна</b></div>
+          <div class="po"><span class="po-ic"><svg class="i" width="27" height="27"><use href="#i-heart"/></svg></span><b>Почувствовать комфорт и гармонию в теле</b></div>
         </div>
-        <div class="audience-card">
-            <div class="audience-icon">🤱</div>
-            <h3>Молодая мама</h3>
-            <p>Чтобы найти островок спокойствия и быстро пополнить свой ресурс в течение эмоционально и физически напряженного дня</p>
+        <div class="promo-feats">
+          <span><svg class="i" width="17" height="17"><use href="#i-check"/></svg>Доступно без подготовки</span>
+          <span><svg class="i" width="17" height="17"><use href="#i-sparkles"/></svg>Эффект сразу и надолго</span>
         </div>
-        <div class="audience-card">
-            <div class="audience-icon">🎓</div>
-            <h3>Студент</h3>
-            <p>Чтобы быстро настроиться на учебу, повысить концентрацию перед лекцией или снять лишнее волнение</p>
-        </div>
-        <div class="audience-card">
-            <div class="audience-icon">🧘‍♂️</div>
-            <h3>Начинающий практик</h3>
-            <p>Чтобы сделать свой самый первый и простой шаг в мир осознанности, без сложных курсов, приложений и обязательств</p>
-        </div>
+      </div>
     </div>
-</section>
-<!-- ======================= КОНЕЦ СЕКЦИИ ======================= -->
-        
-<!-- ======================= БЛОК "КАК ЭТО РАБОТАЕТ" (АККОРДЕОН) ======================= -->
-<section class="how-it-works-accordion-section">
-    <h2>Как это работает</h2>
-    <div class="accordion-container">
+  </section>
 
-        <!-- Шаг 1 -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="accordion-title">1. Выберите цель</span>
-                <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <img src="./images/placeholder-1.png" alt="Выбор цели по тегу" class="accordion-image">
-                    <p>Почувствовали негатив? Нужен покой? Хотите получить мощный энергетический буст —> жмите тег (или сразу два 💫)  и выбирайте карточку</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Шаг 2 -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="accordion-title">2. Следуйте инструкции</span>
-                <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <img src="./images/placeholder-2.png" alt="Инструкция на карточке" class="accordion-image">
-                    <p>На каждой карточке простое и понятное описание техники</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Шаг 3 -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="accordion-title">3. Практикуйте 5-10 минут</span>
-                <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-                 <div class="content-inner">
-                    <img src="./images/icon-timer.svg" alt="Иконка таймера" class="accordion-image">
-                    <p>Уделите себе всего несколько минут в любое время дня</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Шаг 4 -->
-        <div class="accordion-item">
-            <button class="accordion-header">
-                <span class="accordion-title">4. Почувствуйте результат</span>
-                <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-                <div class="content-inner">
-                    <img src="./images/icon-result.svg" alt="Иконка результата" class="accordion-image">
-                    <p>Ощутите мгновенное изменение своего состояния</p>
-                </div>
-            </div>
-        </div>
-
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Почему это работает</p>
+      <h2 class="h2">Польза и радость с первого занятия</h2>
+      <p class="info-lead">Дыхание напрямую связано с вегетативной нервной системой. Замедляя или ускоряя его, можно сознательно влиять на своё состояние — успокаиваться или становиться бодрее. Пранаяма — древняя практика, эффективность которой подтверждена веками.</p>
+      <div class="grid g3">
+        <div class="tile"><div class="ic" style="background:rgba(83,74,183,0.10);color:#534AB7"><svg class="i" width="26" height="26"><use href="#i-sparkles"/></svg></div><h3>Ум и самопознание</h3><p>Освобождает ум, обостряет интеллект и готовит к медитации, открывая путь к истинному «я».</p></div>
+        <div class="tile"><div class="ic" style="background:rgba(192,88,78,0.10);color:#C0584E"><svg class="i" width="26" height="26"><use href="#i-heart"/></svg></div><h3>Тело и физиология</h3><p>Улучшает работу лёгких, сердца и кровеносной системы, укрепляя тело и повышая витальность.</p></div>
+        <div class="tile"><div class="ic" style="background:rgba(217,138,69,0.12);color:#D98A45"><svg class="i" width="26" height="26"><use href="#i-flame"/></svg></div><h3>Энергия и очищение</h3><p>Очищает энергетические каналы, стимулирует внутренние органы и нервную систему, даря спокойствие и благополучие.</p></div>
+      </div>
     </div>
-</section>
-<!-- ======================= КОНЕЦ БЛОКА ======================= -->
+  </section>
 
-        <!-- ======================= БЛОК 2: "ЗНАКОМСТВО С ПРОДУКТОМ" ======================= -->
-<section class="product-intro-section">
-    <p class="intro-text">
-        Посвятите себе <span style="color: #FF6B6B;">всего 5-15 минут в день</span> — и этот набор карточек поможет вам
-        <span class="highlight-wavy color-blue">снять напряжение</span>
-        • осознать момент "здесь и сейчас" • <span class="highlight-wavy color-orange">улучшить качество сна</span>
-        • <span class="highlight-wavy color-blue">почувствовать комфорт и гармонию в теле</span>
-    </p>
-    <div class="key-facts-container">
-        <div class="fact-item">✓ Всего 5-15 минут в день</div>
-        <div class="fact-item">✓ Доступно каждому без подготовки</div>
-        <div class="fact-item">✓ Мгновенный эффект и долгосрочная польза</div>
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Карта практик</p>
+      <h2 class="h2">4 типа практик для разных целей</h2>
+      <div class="grid g2">
+        <a class="type" href="wiki.html#tipy-bazovye" style="--c:var(--cat-base)"><h3><span class="dotc"></span>Базовые</h3><p>Основа, с которой начинается путь в пранаяму. Учат осознанному дыханию и создают фундамент для более сложных практик.</p></a>
+        <a class="type" href="wiki.html#tipy-aktiviziruyushchie" style="--c:var(--cat-active)"><h3><span class="dotc"></span>Активизирующие</h3><p>Стимулируют нервную систему, поднимают энергию, согревают тело и настраивают на продуктивный день.</p></a>
+        <a class="type" href="wiki.html#tipy-balansiruyushchie" style="--c:var(--cat-balance)"><h3><span class="dotc"></span>Балансирующие</h3><p>Гармонизируют энергетические каналы и баланс нервной системы, уравновешивая ум.</p></a>
+        <a class="type" href="wiki.html#tipy-uspokaivayushchie" style="--c:var(--cat-calm)"><h3><span class="dotc"></span>Успокаивающие</h3><p>Снижают возбуждение, успокаивают ум и нервную систему, охлаждают организм.</p></a>
+      </div>
+      <div style="text-align:center;margin-top:34px"><a class="btn ghost" href="practice.html">Перейти к практикам</a></div>
     </div>
-</section>
-<!-- ======================= КОНЕЦ БЛОКА 2 ======================= -->
+  </section>
+</main>
 
+<footer><div class="wrap">Мама-Пранаяма · Дыхание • Ум • Эмоции • Тело</div></footer>
 
-<!-- ======================= БЛОК 1: "БЫСТРЫЕ ВЫГОДЫ" (ОСТАЕТСЯ НА МЕСТЕ) ======================= -->
-<section class="quick-benefits-section">
-    <div class="benefit-item">
-        <div class="benefit-icon">😊</div>
-        <h3 class="benefit-title">Улучшить Настроение</h3>
-    </div>
-    <div class="benefit-item">
-        <div class="benefit-icon">🧘‍♀️</div>
-        <h3 class="benefit-title">Снять Стресс</h3>
-    </div>
-    <div class="benefit-item">
-        <div class="benefit-icon">⚡️</div>
-        <h3 class="benefit-title">Повысить Энергию</h3>
-    </div>
-</section>
-<!-- ======================= КОНЕЦ БЛОКА 1 ======================= -->
-
-<!-- ======================= НОВЫЙ БЛОК: "ПОЧЕМУ ЭТО РАБОТАЕТ" + ИНФОГРАФИКА ======================= -->
-<div class="info-wrapper">
-    <section class="why-it-works-section">
-        <h2>Почувствуйте пользу и радость с первого же занятия</h2>
-        <p>Дыхание человека напрямую связано с вегетативной нервной системой. Замедляя или ускоряя дыхание, можно сознательно влиять на свое состояние: успокаиваться или, наоборот, становиться бодрее, активнее. 
-            Пранаяма — это древняя практика, эффективность которой подтверждена веками </p> 
-        <p>
-        <hr>
-        <hr>
-        <p>
-            Мы создали <span class="highlight-wavy color-blue">простой и доступный способ научиться дыхательным практикам</span>, независимо от опыта и уровня подготовки. Все что потребуется - только ваше внимание и интерес
-        </p>
-    </section>
-    <section class="silhouette-infographic-section">
-        <div class="infographic-container">
-            <!-- Маркер 1: Ум и Самопознание (открывается ВПРАВО) -->
-            <div class="interactive-marker marker-mind tooltip-opens-right" style="top: 30%; left: 51%;">
-                <div class="marker-dot"></div>
-                <div class="tooltip-content">
-                    <h4>🧠 Ум и Самопознание</h4>
-                    <p>Освобождает ум, обостряет интеллект и готовит к медитации, открывая путь к истинному Я</p>
-                </div>
-            </div>
-            <!-- Маркер 2: Тело и Физиология (открывается ВЛЕВО) -->
-            <div class="interactive-marker marker-body tooltip-opens-left" style="top: 53%; left: 51%;">
-                <div class="marker-dot"></div>
-                <div class="tooltip-content">
-                    <h4>❤️ Тело и Физиология</h4>
-                    <p>Улучшает работу легких, сердца и кровеносной системы, укрепляя тело и повышая витальность</p>
-                </div>
-            </div>
-            <!-- Маркер 3: Энергия и Очищение (открывается ВПРАВО) -->
-            <div class="interactive-marker marker-energy tooltip-opens-right" style="top: 73.5%; left: 51%;">
-                <div class="marker-dot"></div>
-                <div class="tooltip-content">
-                    <h4>⚡️ Энергия и Очищение</h4>
-                    <p>Очищает энергетические каналы, стимулирует внутренние органы и нервную систему, даруя спокойствие и благополучие</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-<!-- ======================= КОНЕЦ НОВОГО БЛОКА ======================= -->
-
-<!-- ======================= БЛОК "4 ТИПА ПРАКТИК" (ОСТАЕТСЯ НА МЕСТЕ) ======================= -->
-<section class="pranayama-types-section">
-    <h2>4 Типа Практик для Разных Целей</h2>
-    <div class="types-grid-container">
-        
-        <!-- БАЗОВЫЕ -->
-        <a href="https://25rom.github.io/base.html" class="type-card basic">
-            <div class="card-content">
-                <h3>БАЗОВЫЕ</h3>
-                <div class="type-description">
-                    <p>Это основа, с которой начинается путь. Эти практики учат осознанному дыханию и оказывают общегармонизирующее воздействие. Создают фундамент для более сложных техник.</p>
-                </div>
-            </div>
-        </a>
-
-        <!-- АКТИВИЗИРУЮЩИЕ -->
-        <a href="https://25rom.github.io/activating.html" class="type-card activating">
-            <div class="card-content">
-                <h3>АКТИВИЗИРУЮЩИЕ</h3>
-                <div class="type-description">
-                    <p>Стимулируют нервную систему, повышают уровень энергии, согревают тело, заряжают бодростью и помогают настроиться на продуктивный день.</p>
-                </div>
-            </div>
-        </a>
-
-        <!-- БАЛАНСИРУЮЩИЕ -->
-        <a href="https://25rom.github.io/balancing.html" class="type-card balancing">
-            <div class="card-content">
-                <h3>БАЛАНСИРУЮЩИЕ</h3>
-                <div class="type-description">
-                    <p>Направлены на гармонизацию энергетических каналов, симпатической и парасимпатической нервной системы, уравновешивание ума.</p>
-                </div>
-            </div>
-        </a>
-
-        <!-- УСПОКАИВАЮЩИЕ -->
-        <a href="https://25rom.github.io/calming.html" class="type-card calming">
-             <div class="card-content">
-                <h3>УСПОКАИВАЮЩИЕ</h3>
-                <div class="type-description">
-                    <p>Снижают возбуждение, успокаивают ум и нервную систему, некоторые из них охлаждают тело.</p>
-                </div>
-            </div>
-        </a>
-
-    </div>
-</section>
-<!-- ======================= КОНЕЦ БЛОКА ======================= -->
-
-
-
-
-            <!-- ===== НАЧАЛО ЗАКРЫВАЮЩИХ ТЕГОВ ДЛЯ ВОССТАНОВЛЕННЫХ БЛОКОВ ===== -->
-            </div> <!-- Закрывающий div для pranayama-grid -->
-        </main> <!-- Закрывающий main для pranayama-content -->
-        <!-- ===== КОНЕЦ ЗАКРЫВАЮЩИХ ТЕГОВ ДЛЯ ВОССТАНОВЛЕННЫХ БЛОКОВ ===== -->
-        
-      
-     <footer>     
-            <div class="contact-buttons">
-                <!-- TELEGRAM -->
-                <a href="https://t.me/neuro25" target="_blank" rel="noopener noreferrer" class="contact-button contact-telegram" aria-label="Написать в Telegram">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                        <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.08l11.1-4.07c.71-.26 1.36.22 1.15.94l-1.89 9.12c-.2 1.02-.83 1.28-1.7 0.77L9.78 18.65z"/>
-                    </svg>
-                </a>
-
-                <!-- VK (НОВАЯ КНОПКА) -->
-                <a href="https://vk.com/neuro25" target="_blank" rel="noopener noreferrer" class="contact-button contact-vk" aria-label="Группа ВКонтакте">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                        <path d="M19.62 7.5c.12-.4 0-.58-.48-.58h-1.59c-.4 0-.59.21-.69.45c0 0-.81 1.98-1.96 3.3c-.38.38-.55.5-.76.5c-.1 0-.25-.12-.25-.46V7.5c0-.41-.12-.58-.46-.58h-2.54c-.26 0-.41.19-.41.37c0 .39.58.48.64 1.58v2.39c0 .52-.09.62-.3.62c-.55 0-1.88-2.01-2.67-4.31c-.15-.44-.31-.58-.73-.58H4.82c-.45 0-.54.21-.54.45c0 .42.54 2.54 2.49 5.33c1.31 1.9 3.16 2.92 4.84 2.92c.9 0 1-.2 1-.55v-1.26c0-.4.09-.48.37-.48c.21 0 .57.1 1.4.91c.95.95 1.11 1.38 1.64 1.38h1.59c.45 0 .67-.23.55-.67c-.14-.44-.65-1.09-1.33-1.85c-.37-.43-.51-.62 0-1.3c.71-.94 1.59-2.11 1.75-2.77z"/>
-                    </svg>
-                </a>
-
-                <!-- EMAIL -->
-                <a href="mailto:rom.neustroev@icloud.com" class="contact-button contact-email" aria-label="Написать на Email">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"/>
-                    </svg>
-                </a>
-            </div>
-            <p>© Мама Пранаяма, 2025</p>
-        </footer>
-    </div>
-    <script src="script.js"></script>
-</body>
-
-<!-- ======================= ИСПРАВЛЕННЫЙ JAVASCRIPT-КОД ======================= -->
 <script>
-    const typingElement = document.querySelector('.typing-effect');
-    const words = ["ВОССТАНОВИТЬ БАЛАНС", "ЗАРЯДИТЬСЯ ЭНЕРГИЕЙ","СОЗДАТЬ НАСТРОЕНИЕ"];
-    const colors = ["#F2C94C", "#5A9C78", "#4A89A3"];
-    
-    let wordIndex = 0;
-    let letterIndex = 0;
-    let isDeleting = false;
-
-    function type() {
-        if (!typingElement) { return; }
-
-        const currentWord = words[wordIndex];
-        typingElement.style.color = colors[wordIndex];
-
-        let displayText = '';
-        if (isDeleting) {
-            displayText = currentWord.substring(0, letterIndex - 1);
-            letterIndex--;
-        } else {
-            displayText = currentWord.substring(0, letterIndex + 1);
-            letterIndex++;
-        }
-
-        typingElement.textContent = displayText;
-
-        // Двойная гарантия от "скачков": когда текст пуст, вставляем невидимый пробел.
-        if (displayText === '') {
-            typingElement.innerHTML = ' ';
-        }
-        
-        let typeSpeed = 200;
-        if (isDeleting) { typeSpeed /= 2; }
-        
-        if (!isDeleting && letterIndex === currentWord.length) {
-            isDeleting = true;
-            typeSpeed = 2000;
-        } else if (isDeleting && letterIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            typeSpeed = 500;
-        }
-
-        setTimeout(type, typeSpeed);
-    }
-
-    document.addEventListener('DOMContentLoaded', type);
+const phrases=["восстановить баланс","зарядиться энергией","создать настроение"];
+let pi=0,ci=0,del=false;
+const tw=document.getElementById('tw'),cur=document.getElementById('cur');
+function tick(){const w=phrases[pi];ci+=del?-1:1;tw.textContent=w.slice(0,ci);let t=del?40:80;
+  if(!del&&ci===w.length){t=1500;del=true;}else if(del&&ci===0){del=false;pi=(pi+1)%phrases.length;t=320;}setTimeout(tick,t);}
+setInterval(()=>{cur.style.opacity=cur.style.opacity==='0'?'1':'0';},520);tick();
 </script>
-    <!-- ======================= СКРИПТ ДЛЯ КЛИКАБЕЛЬНЫХ ТУЛТИПОВ НА МОБИЛЬНЫХ ======================= -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Находим все интерактивные маркеры на странице
-        const markers = document.querySelectorAll('.interactive-marker');
-
-        // Вешаем обработчик клика на каждый маркер
-        markers.forEach(function(marker) {
-            marker.addEventListener('click', function(event) {
-                // Останавливаем "всплытие" события, чтобы клик по маркеру не закрыл сам себя
-                event.stopPropagation();
-                
-                // Проверяем, активен ли уже этот маркер
-                const isActive = this.classList.contains('is-active');
-
-                // Сначала закрываем ВСЕ остальные открытые тултипы
-                markers.forEach(function(m) {
-                    m.classList.remove('is-active');
-                });
-
-                // Если маркер не был активен, делаем его активным
-                if (!isActive) {
-                    this.classList.add('is-active');
-                }
-            });
-        });
-
-        // Добавляем обработчик на всю страницу, чтобы закрывать тултип по клику вне его
-        document.addEventListener('click', function() {
-            markers.forEach(function(marker) {
-                marker.classList.remove('is-active');
-            });
-        });
-    });
-</script>
-    <!-- ======================= СКРИПТ ДЛЯ РАСКРЫВАЮЩЕГОСЯ БЛОКА ======================= -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.querySelector('.explainer-toggle');
-        const content = document.querySelector('.explainer-content');
-
-        if (toggle && content) {
-            toggle.addEventListener('click', function() {
-                this.classList.toggle('active');
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    content.style.marginTop = '0px';
-                } else {
-                    content.style.marginTop = '30px';
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    });
-</script>
-
-    <!-- СКРИПТ ДЛЯ АККОРДЕОНА -->
-    <script>
-        const accordionItems = document.querySelectorAll('.accordion-item');
-
-        accordionItems.forEach(item => {
-            const header = item.querySelector('.accordion-header');
-
-            header.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-
-                // Закрываем все открытые элементы, если нужно чтобы открыт был только один
-                accordionItems.forEach(i => i.classList.remove('active'));
-                
-                // Если элемент не был открыт, открываем его
-                if (!isOpen) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Дополнительная логика для плавного открытия/закрытия
-        // Мы будем менять max-height вместо display: none
-        const allContent = document.querySelectorAll('.accordion-content');
-        allContent.forEach(content => {
-            // Обертка для доступа к родительскому элементу
-            const parentItem = content.closest('.accordion-item');
-            const header = parentItem.querySelector('.accordion-header');
-            
-            header.addEventListener('click', () => {
-                 if (parentItem.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                 } else {
-                    content.style.maxHeight = '0';
-                 }
-            });
-        });
-    </script>
 </body>
 </html>
