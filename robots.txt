@@ -1,4 +1,4 @@
 User-agent: * 
 Allow: / 
-Sitemap: https://pranaway.art/sitemap.xml
+Sitemap: https://www.pranaway.art/sitemap.xml
 Sitemap: https://www.pranaway.art/motivation-sait/sitemap.xml
